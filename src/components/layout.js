@@ -53,7 +53,7 @@ class Layout extends React.Component {
     }
     return (
       <React.Fragment>
-        <Nav />
+        <Nav title={title} />
         <div
           style={{
             marginLeft: `auto`,

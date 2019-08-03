@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import "./blog-post.scss"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -43,15 +44,7 @@ class BlogPostTemplate extends React.Component {
         />
         {/* <Bio /> */}
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+        <ul className="pagination">
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">

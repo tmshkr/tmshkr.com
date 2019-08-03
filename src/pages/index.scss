@@ -4,3 +4,25 @@ body {
     color: #fff;
   }
 }
+
+main a {
+  color: #2de5b7;
+}
+
+a.blog-post-summary {
+  color: #fff;
+  display: block;
+  h1 {
+    color: #007acc;
+    transition: all 0.5s;
+  }
+  &:hover {
+    h1 {
+      color: #2de5b7;
+    }
+  }
+}
+
+footer {
+  clear: both;
+}

@@ -1,26 +1,23 @@
 import React from "react"
 import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
+import "./Nav.scss"
 
 const navStyle = {
-  marginLeft: `auto`,
-  marginRight: `auto`,
   maxWidth: rhythm(24),
   padding: `0 ${rhythm(3 / 4)}`,
 }
 
-const titleStyle = {
-  boxShadow: `none`,
-  textDecoration: `none`,
-  color: `inherit`,
-}
-
-function Nav() {
+function Nav(props) {
+  console.log(props)
   return (
     <nav style={navStyle}>
-      <Link style={titleStyle} to="/">
-        tmshkr
-      </Link>
+      <Link to="/">{props.title}</Link>
+      <div>
+        <Link to="/">About</Link>
+        <Link to="/">Blog</Link>
+        <Link to="/">Contact</Link>
+      </div>
     </nav>
   )
 }

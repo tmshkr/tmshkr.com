@@ -1,0 +1,11 @@
+ul.pagination {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  li {
+    display: inline-block;
+    &:last-child {
+      float: right;
+    }
+  }
+}
