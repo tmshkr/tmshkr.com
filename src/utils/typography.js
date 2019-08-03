@@ -6,8 +6,13 @@ Wordpress2016.overrideThemeStyles = () => {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
+    "h1, h2, h3, h4, h5, h6, time.date, nav": {
+      fontFamily: `"Helvetica Neue", "Helvetica", "sans-serif"`,
+    },
   }
 }
+
+// Wordpress2016.headerFontFamily = ["Helvetica", "sans-serif"]
 
 delete Wordpress2016.googleFonts
 
