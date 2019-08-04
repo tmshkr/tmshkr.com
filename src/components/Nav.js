@@ -12,11 +12,11 @@ function Nav(props) {
   console.log(props)
   return (
     <nav style={navStyle}>
-      <Link to="/">{props.title}</Link>
+      <Link to="/blog">{props.title}</Link>
       <div>
-        <Link to="/">About</Link>
-        <Link to="/">Blog</Link>
-        <Link to="/">Contact</Link>
+        <Link to="/blog">About</Link>
+        <Link to="/blog">Blog</Link>
+        <Link to="/blog">Contact</Link>
       </div>
     </nav>
   )
