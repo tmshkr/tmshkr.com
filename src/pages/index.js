@@ -1,10 +1,9 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 import "./index.scss"
 
 class BlogIndex extends React.Component {
@@ -18,31 +17,36 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Blog" />
-        {/* <Bio /> */}
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <Link
-              key={node.fields.slug}
-              className="blog-post-summary"
-              style={{ boxShadow: `none`, marginBottom: rhythm(3) }}
-              to={node.fields.slug}
-            >
-              <time className="date">{node.frontmatter.date}</time>
-              <h1
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                  marginTop: rhythm(1 / 4),
-                }}
+            <Fragment key={node.fields.slug}>
+              <Link
+                className="blog-post-summary"
+                style={{ boxShadow: `none`, marginBottom: rhythm(3) }}
+                to={node.fields.slug}
               >
-                {title}
-              </h1>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                <time className="date">{node.frontmatter.date}</time>
+                <h1
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                    marginTop: rhythm(1 / 4),
+                  }}
+                >
+                  {title}
+                </h1>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                />
+              </Link>
+              <hr
+                style={{
+                  marginBottom: rhythm(1),
                 }}
               />
-            </Link>
+            </Fragment>
           )
         })}
       </Layout>

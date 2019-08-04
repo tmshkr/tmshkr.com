@@ -1,26 +1,41 @@
 body {
-  &.dark {
-    background: #333;
-    color: #fff;
-  }
-}
-
-main a {
-  color: #2de5b7;
-}
-
-a.blog-post-summary {
-  color: #fff;
-  display: block;
-  h1 {
-    color: #007acc;
-    transition: all 0.5s;
-  }
-  &:hover {
+  a.blog-post-summary {
+    display: block;
     h1 {
-      color: #2de5b7;
+      transition: all 0.5s;
     }
   }
+}
+
+body.dark {
+  background: #333;
+  color: #fff;
+  .blog-content a {
+    color: #2de5b7;
+  }
+  a.blog-post-summary {
+    color: #fff;
+    time {
+      color: #d0d0d0;
+    }
+    h1 {
+      color: #007acc;
+    }
+    &:hover {
+      h1 {
+        color: #2de5b7;
+      }
+    }
+  }
+}
+
+body.light {
+  background: #fff;
+  color: #000;
+}
+
+hr {
+  background: #555;
 }
 
 footer {

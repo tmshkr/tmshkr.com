@@ -62,7 +62,6 @@ class Layout extends React.Component {
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
-          {/* <header>{header}</header> */}
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
