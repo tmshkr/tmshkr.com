@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Nav from "./Nav"
+import Navbar from "./Navbar"
 import { rhythm, scale } from "../utils/typography"
 
 class Layout extends React.Component {
@@ -53,7 +53,7 @@ class Layout extends React.Component {
     }
     return (
       <React.Fragment>
-        <Nav title={title} />
+        <Navbar title={title} />
         <div
           style={{
             marginLeft: `auto`,
@@ -62,7 +62,7 @@ class Layout extends React.Component {
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
-          <main>{children}</main>
+          <main style={{ marginTop: rhythm(1.5) }}>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
             {` `}

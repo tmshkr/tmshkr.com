@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const handleTheme = () => {
+function handleTheme() {
   window.__onThemeChange = function() {}
   function setTheme(newTheme) {
     window.__theme = newTheme
