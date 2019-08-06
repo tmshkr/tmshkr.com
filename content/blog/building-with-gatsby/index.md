@@ -1,0 +1,10 @@
+---
+title: "Building with Gatsby"
+date: "2019-08-06"
+---
+
+This blog is now built with [Gatsby](https://www.gatsbyjs.org/). If you aren't familiar with it, Gatsby is a free and open source static-site generator powered by React. It provides a framework for building modern, performant, production-ready websites that can be hosted anywhere as static files, with no need for a database or backend server.
+
+Static-site generators are popular for this reason, because they don't need a backend server, so they are faster, cheaper to host, and requires less maintenance than a website that requires its own database or generates pages server-side for clients. There are a quite a few [static-site generators](https://staticsitegenerators.net/) out there. This blog was previously built with [Jekyll](https://jekyllrb.com/), and I do still appreciate its philosophy, as it simply ["does what you tell it to do — no more, no less."](https://github.com/jekyll/jekyll#philosophy)
+
+I found myself becoming more interested in JavaScript and React, though, so I decided to give Gatsby a try. React can be worked into any static-site generator, as I was using it before with Jekyll, but Gatsby is powered by JavaScript and React, so it makes things a bit more cohesive.

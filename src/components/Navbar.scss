@@ -54,12 +54,19 @@ nav {
     li {
       display: inline-block;
       margin: 0;
-      a {
+      a,
+      button {
         padding: 0.5em 1em;
         display: block;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
       }
-      &:last-child a {
-        padding-right: 0;
+      button {
+        position: relative;
+        top: 2px;
+        // padding: 0;
       }
     }
   }
@@ -87,6 +94,7 @@ nav {
     button {
       // position: absolute;
       display: block;
+      cursor: pointer;
       background: none;
       outline: none;
       border: none;
@@ -132,12 +140,18 @@ nav {
 
       li {
         display: block;
-      }
-
-      li a:hover,
-      li a:focus,
-      li a:active {
-        background-color: #3b414e;
+        button {
+          width: 100%;
+          text-align: left;
+        }
+        a:hover,
+        a:focus,
+        a:active,
+        button:hover,
+        button:focus,
+        button:active {
+          background-color: #3b414e;
+        }
       }
     }
     &.menu-closed ul {
