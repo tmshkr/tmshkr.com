@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
 import styled from "styled-components/macro"
+import Bars from "@fortawesome/fontawesome-free/svgs/solid/bars.svg"
+import Sun from "@fortawesome/fontawesome-free/svgs/solid/sun.svg"
+import Moon from "@fortawesome/fontawesome-free/svgs/solid/moon.svg"
 import "./Navbar.scss"
 
 const mobileQuery = window.matchMedia("(max-width: 600px), (max-height: 500px)")
@@ -14,6 +17,17 @@ function Navbar(props) {
   const [menuOpen, openMenu] = useState(false)
   const [isMobile, setMobile] = useState(mobileQuery.matches)
   const [isDarkMode, setDarkMode] = useState(window.__theme === "dark")
+
+  const sunButton = (
+    <button onClick={() => changeTheme("light")}>
+      <Sun id="sun" />
+    </button>
+  )
+  const moonButton = (
+    <button onClick={() => changeTheme("dark")}>
+      <Moon id="moon" />
+    </button>
+  )
 
   useEffect(() => {
     function callback(e) {
@@ -56,9 +70,17 @@ function Navbar(props) {
         <Link id="navbar-title" to="/blog">
           {props.title}
         </Link>
-        <button>
-          <span></span>
-        </button>
+        {menuOpen && isMobile ? (
+          isDarkMode ? (
+            sunButton
+          ) : (
+            moonButton
+          )
+        ) : (
+          <button>
+            <Bars />
+          </button>
+        )}
         <ul>
           <li>
             <Link to="/about">About</Link>
@@ -69,13 +91,7 @@ function Navbar(props) {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
-            {isDarkMode ? (
-              <button onClick={() => changeTheme("light")}>☀️</button>
-            ) : (
-              <button onClick={() => changeTheme("dark")}>🌙</button>
-            )}
-          </li>
+          {!isMobile && <li>{isDarkMode ? sunButton : moonButton}</li>}
         </ul>
       </Container>
     </nav>

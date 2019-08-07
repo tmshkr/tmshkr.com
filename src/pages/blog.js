@@ -23,7 +23,11 @@ class BlogIndex extends React.Component {
             <Fragment key={node.fields.slug}>
               <Link
                 className="blog-post-summary"
-                style={{ boxShadow: `none`, marginBottom: rhythm(3) }}
+                style={{
+                  boxShadow: `none`,
+                  marginBottom: rhythm(1.5),
+                  marginTop: rhythm(1.5),
+                }}
                 to={node.fields.slug}
               >
                 <time className="date">{node.frontmatter.date}</time>

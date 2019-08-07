@@ -23,17 +23,21 @@ nav {
 
   #navbar-title {
     padding: 0.5em 0;
-    float: left;
+    // float: left;
+    // font-size: 1.1em;
     color: #fff;
     text-decoration: none;
   }
 
   button {
     display: none;
+    padding: 0 1em;
+    line-height: 0;
   }
 
   a {
     color: #fff;
+    font-size: 1.1em;
     box-shadow: none;
   }
 
@@ -44,6 +48,17 @@ nav {
   //   //   text-decoration: none;
   //   // }
   // }
+  svg {
+    width: 1.1em;
+    height: 1.1em;
+    fill: #fff;
+    &#sun {
+      fill: #ffa726;
+    }
+    &#moon {
+      fill: #ffcc80;
+    }
+  }
 
   ul {
     // position: absolute;
@@ -51,6 +66,9 @@ nav {
     text-align: left;
     padding: 0;
     margin: 0;
+    display: flex;
+    align-items: center;
+
     li {
       display: inline-block;
       margin: 0;
@@ -58,15 +76,16 @@ nav {
       button {
         padding: 0.5em 1em;
         display: block;
-        background: none;
-        border: none;
-        outline: none;
         cursor: pointer;
       }
       button {
-        position: relative;
-        top: 2px;
-        // padding: 0;
+        background: none;
+        border: none;
+        outline: none;
+        // padding-left: 0;
+        // padding-right: 0;
+        padding: 0.5em;
+        display: flex;
       }
     }
   }
@@ -101,36 +120,36 @@ nav {
       // right: 0;
     }
 
-    span {
-      display: block;
-      // position: absolute;
-      // right: 0;
-      // top: 0.6em;
-      width: 1em;
-      height: 3px;
-      background-color: #fff;
-      margin: 1em;
-    }
+    // span {
+    //   display: block;
+    //   // position: absolute;
+    //   // right: 0;
+    //   // top: 0.6em;
+    //   width: 1em;
+    //   height: 3px;
+    //   background-color: #fff;
+    //   margin: 1em;
+    // }
 
-    span::before {
-      display: block;
-      position: absolute;
-      background-color: #fff;
-      content: "";
-      width: 1em;
-      height: 3px;
-      transform: translateY(-0.33em);
-    }
+    // span::before {
+    //   display: block;
+    //   position: absolute;
+    //   background-color: #fff;
+    //   content: "";
+    //   width: 1em;
+    //   height: 3px;
+    //   transform: translateY(-0.33em);
+    // }
 
-    span::after {
-      display: block;
-      position: absolute;
-      background-color: #fff;
-      content: "";
-      width: 1em;
-      height: 3px;
-      transform: translateY(0.33em);
-    }
+    // span::after {
+    //   display: block;
+    //   position: absolute;
+    //   background-color: #fff;
+    //   content: "";
+    //   width: 1em;
+    //   height: 3px;
+    //   transform: translateY(0.33em);
+    // }
 
     ul {
       position: static;
@@ -143,6 +162,7 @@ nav {
         button {
           width: 100%;
           text-align: left;
+          // padding: 0.5em 1em;
         }
         a:hover,
         a:focus,
@@ -163,15 +183,16 @@ nav {
     }
 
     &.menu-open span {
-      background-color: transparent;
+      // background-color: transparent;
+      display: none;
     }
 
-    &.menu-open span::before {
-      transform: rotate(45deg);
-    }
-    &.menu-open span::after {
-      transform: rotate(-45deg);
-    }
+    // &.menu-open span::before {
+    //   transform: rotate(45deg);
+    // }
+    // &.menu-open span::after {
+    //   transform: rotate(-45deg);
+    // }
   }
 
   #navbar-title::selection {

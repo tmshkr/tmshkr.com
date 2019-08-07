@@ -2,8 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `tmshkr`,
     author: `Tim Shaker`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `Tim Shaker is a designer/developer based in Orange County, California.`,
+    siteUrl: `https://www.tmshkr.com/`,
     social: {
       twitter: `tmshkr`,
     },
@@ -28,6 +28,13 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "noopener noreferrer",
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
@@ -47,6 +54,14 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /svgs/,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
