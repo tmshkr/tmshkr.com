@@ -7,6 +7,9 @@ body.light nav {
   #navbar-title {
     color: #333;
   }
+  svg {
+    fill: #333;
+  }
 }
 
 body.dark nav {
@@ -14,6 +17,9 @@ body.dark nav {
   a,
   #navbar-title {
     color: #fff;
+  }
+  svg {
+    fill: #fff;
   }
 }
 
@@ -63,7 +69,7 @@ nav {
   svg {
     width: 1.1em;
     height: 1.1em;
-    fill: #fff;
+
     &#sun {
       fill: #ffa726;
       stroke: #ff5722;

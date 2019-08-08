@@ -7,16 +7,28 @@ import Sun from "@fortawesome/fontawesome-free/svgs/solid/sun.svg"
 import Moon from "@fortawesome/fontawesome-free/svgs/solid/moon.svg"
 import "./Navbar.scss"
 
-const mobileQuery = window.matchMedia("(max-width: 600px), (max-height: 500px)")
 const Container = styled.div`
   max-width: ${rhythm(24)};
   padding: 0 ${rhythm(3 / 4)};
 `
 
 function Navbar(props) {
-  const [menuOpen, openMenu] = useState(false)
-  const [isMobile, setMobile] = useState(mobileQuery.matches)
-  const [isDarkMode, setDarkMode] = useState(window.__theme === "dark")
+  let mobileQuery
+  const initialState = {
+    menuOpen: false,
+    isMobile: false,
+    isDarkMode: false,
+  }
+
+  if (typeof window !== `undefined`) {
+    mobileQuery = window.matchMedia("(max-width: 600px), (max-height: 500px)")
+    initialState.isDarkMode = window.__theme === "dark"
+    initialState.isMobile = mobileQuery.matches
+  }
+
+  const [menuOpen, openMenu] = useState(initialState.menuOpen)
+  const [isMobile, setMobile] = useState(initialState.isMobile)
+  const [isDarkMode, setDarkMode] = useState(initialState.isDarkMode)
 
   const sunButton = (
     <button title="Change to Light Mode" onClick={() => changeTheme("light")}>
@@ -33,6 +45,7 @@ function Navbar(props) {
     function callback(e) {
       setMobile(e.matches)
     }
+    setMobile(mobileQuery.matches)
     mobileQuery.addListener(callback)
     return () => {
       mobileQuery.removeListener(callback)
