@@ -19,13 +19,13 @@ function Navbar(props) {
   const [isDarkMode, setDarkMode] = useState(window.__theme === "dark")
 
   const sunButton = (
-    <button onClick={() => changeTheme("light")}>
+    <button title="Change to Light Mode" onClick={() => changeTheme("light")}>
       <Sun id="sun" />
     </button>
   )
   const moonButton = (
-    <button onClick={() => changeTheme("dark")}>
-      <Moon id="moon" />
+    <button title="Change to Dark Mode" onClick={() => changeTheme("dark")}>
+      <Moon id="moon" viewBox="-20 -20 540 540" />
     </button>
   )
 
@@ -77,7 +77,7 @@ function Navbar(props) {
             moonButton
           )
         ) : (
-          <button>
+          <button role="button" aria-label="Open Menu">
             <Bars />
           </button>
         )}

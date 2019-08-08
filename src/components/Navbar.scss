@@ -1,12 +1,25 @@
 // nav * {
 //   outline: 1px solid #0ff;
 // }
+body.light nav {
+  background: #d0d0d0;
+  a,
+  #navbar-title {
+    color: #333;
+  }
+}
+
+body.dark nav {
+  background: #333;
+  a,
+  #navbar-title {
+    color: #fff;
+  }
+}
 
 nav {
   color: #fff;
   position: fixed;
-  // font-size: 1.2em;
-  background: #333;
   top: 0;
   left: 0;
   right: 0;
@@ -25,8 +38,8 @@ nav {
     padding: 0.5em 0;
     // float: left;
     // font-size: 1.1em;
-    color: #fff;
-    text-decoration: none;
+    // color: #fff;
+    // text-decoration: none;
   }
 
   button {
@@ -36,7 +49,6 @@ nav {
   }
 
   a {
-    color: #fff;
     font-size: 1.1em;
     box-shadow: none;
   }
@@ -54,9 +66,13 @@ nav {
     fill: #fff;
     &#sun {
       fill: #ffa726;
+      stroke: #ff5722;
+      stroke-width: 11;
     }
     &#moon {
       fill: #ffcc80;
+      stroke: #000;
+      stroke-width: 11;
     }
   }
 
@@ -74,7 +90,7 @@ nav {
       margin: 0;
       a,
       button {
-        padding: 0.5em 1em;
+        padding: 0.5em;
         display: block;
         cursor: pointer;
       }
@@ -159,6 +175,9 @@ nav {
 
       li {
         display: block;
+        a {
+          padding: 0.5em 1em;
+        }
         button {
           width: 100%;
           text-align: left;

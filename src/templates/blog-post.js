@@ -13,7 +13,11 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout
+        className="blog-post"
+        location={this.props.location}
+        title={siteTitle}
+      >
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
@@ -26,15 +30,17 @@ class BlogPostTemplate extends React.Component {
         >
           {post.frontmatter.title}
         </h1>
-        <p
+        <time
+          className="date"
           style={{
             ...scale(-1 / 5),
             display: `block`,
             marginBottom: rhythm(1),
+            paddingLeft: rhythm(0.1),
           }}
         >
           {post.frontmatter.date}
-        </p>
+        </time>
         <div
           className="blog-content"
           dangerouslySetInnerHTML={{ __html: post.html }}

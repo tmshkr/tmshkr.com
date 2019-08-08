@@ -62,12 +62,13 @@ class Layout extends React.Component {
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
-          <main style={{ marginTop: rhythm(1.5) }}>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          <main
+            className={this.props.className}
+            style={{ marginTop: rhythm(1.5) }}
+          >
+            {children}
+          </main>
+          {/* <footer>© {new Date().getFullYear()}</footer> */}
         </div>
       </React.Fragment>
     )
