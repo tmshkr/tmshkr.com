@@ -3,6 +3,8 @@
 // }
 body.light nav {
   background: #d0d0d0;
+  // background: rgba(96, 125, 139, 0.5);
+  background: rgba(151, 170, 180, 0.85);
   a,
   #navbar-title {
     color: #333;
@@ -14,6 +16,8 @@ body.light nav {
 
 body.dark nav {
   background: #333;
+  // background: rgba(96, 125, 139, 0.5);
+  background: rgba(65, 79, 87, 0.85);
   a,
   #navbar-title {
     color: #fff;
@@ -29,7 +33,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  // z-index: 5;
+  z-index: 42;
   // @include transition(transform 0.5s);
 
   div {
@@ -111,11 +115,9 @@ nav {
       }
     }
   }
-
-  // .content {
-  //   color: #dadada;
-  //   margin: 7em auto;
-  // }
+  a::selection {
+    background: transparent;
+  }
 }
 
 @media screen and (max-width: 600px), screen and (max-height: 500px) {
@@ -218,12 +220,5 @@ nav {
     // &.menu-open span::after {
     //   transform: rotate(-45deg);
     // }
-  }
-
-  #navbar-title::selection {
-    background: transparent;
-  }
-  #navbar-title::-moz-selection {
-    background: transparent;
   }
 }

@@ -1,6 +1,7 @@
 ---
 title: "Data Visualization"
 subtitle: "with D3.js"
+scripts: ["https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js", '/gdp.js']
 date: "2018-10-24"
 ---
 
@@ -8,7 +9,7 @@ I've recently learned some valuable skills, building upon previous knowledge in
 web development, by completing the Data Visualization
 Certification program offered by [freeCodeCamp](https://learn.freecodecamp.org/).
 
-[![cert](./fcc-dataviz-cert.png)](https://www.freecodecamp.org/certification/tmshkr/data-visualization)
+[![cert](/fcc-dataviz-cert.png)](https://www.freecodecamp.org/certification/tmshkr/data-visualization)
 
 Data visualization is simply the visual representation of information, e.g.,
 charts, graphs, tables, and so forth, which makes it easier for humans to interpret
@@ -16,7 +17,6 @@ and reason about data in order to make informed decisions. For example, one migh
 reasonably assume that the upward trend in GDP, which has lasted for over 65 years
 as demonstrated in the chart below, will likely continue to persist in the future:
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
 <style>
 #gdp {
   text-align: center;
@@ -60,7 +60,6 @@ rect.bar {
 <div id="gdp">
   <h1 id="title">United States GDP</h1>
 </div>
-<script async src="/blog/gdp.js"></script>
 
 Based on such a reasonable assumption, that the monetary value of goods and services
 produced by the United States will continue to grow, rational agents can make informed financial
