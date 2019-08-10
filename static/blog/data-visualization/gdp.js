@@ -1,8 +1,8 @@
 // Acknowledgement:
 // @Christian-Paul
 // https://codepen.io/freeCodeCamp/pen/GrZVaM
+
 ;(function() {
-  console.log("hello")
   const width = 800
   const height = 500
   var svg = d3
