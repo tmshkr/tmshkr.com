@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
+import { throttle } from "lodash"
 import { rhythm } from "../utils/typography"
 import styled from "styled-components/macro"
 import Bars from "@fortawesome/fontawesome-free/svgs/solid/bars.svg"
@@ -12,23 +13,30 @@ const Container = styled.div`
   padding: 0 ${rhythm(3 / 4)};
 `
 
+let prevScrollY = 0
+
 function Navbar(props) {
   let mobileQuery
   const initialState = {
     isMenuOpen: false,
     isMobile: false,
     isDarkMode: false,
+    isNavbarVisible: true,
   }
 
   if (typeof window !== `undefined`) {
     mobileQuery = window.matchMedia("(max-width: 600px), (max-height: 500px)")
     initialState.isDarkMode = window.__theme === "dark"
     initialState.isMobile = mobileQuery.matches
+    initialState.isNavbarVisible = window.__isNavbarVisible
   }
 
   const [isMenuOpen, openMenu] = useState(initialState.isMenuOpen)
   const [isMobile, setMobile] = useState(initialState.isMobile)
   const [isDarkMode, setDarkMode] = useState(initialState.isDarkMode)
+  const [isNavbarVisible, setNavbarVisible] = useState(
+    initialState.isNavbarVisible
+  )
 
   const sunButton = (
     <button title="Change to Light Mode" onClick={() => changeTheme("light")}>
@@ -49,6 +57,33 @@ function Navbar(props) {
     mobileQuery.addListener(callback)
     return () => {
       mobileQuery.removeListener(callback)
+    }
+  }, [])
+
+  useEffect(() => {
+    window.onscroll = throttle(() => {
+      console.log(prevScrollY)
+
+      if (window.scrollY < prevScrollY) {
+        console.log("scrolling up")
+        window.__isNavbarVisible = true
+        requestAnimationFrame(() => setNavbarVisible(true))
+        // setNavbarVisible(true)
+      } else {
+        console.log("scrolling down")
+        window.__isNavbarVisible = false
+        requestAnimationFrame(() => setNavbarVisible(false))
+        // setNavbarVisible(false)
+      }
+
+      prevScrollY = window.scrollY
+      // console.log(scrollY)
+      // console.log(e)
+    }, 500)
+
+    return () => {
+      window.onscroll = null
+      prevScrollY = 0
     }
   }, [])
 
@@ -78,6 +113,11 @@ function Navbar(props) {
     <nav
       className={isMenuOpen ? "menu-open" : "menu-closed"}
       onClickCapture={!isMenuOpen && isMobile ? handleClickCapture : null}
+      style={
+        isNavbarVisible
+          ? { transform: "translateY(0)" }
+          : { transform: "translateY(-100%)" }
+      }
     >
       <Container className="container">
         <Link id="navbar-title" to="/blog">
