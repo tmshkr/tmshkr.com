@@ -8,25 +8,25 @@ import "./blog-post.scss"
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
-    console.log("BlogPostTemplate mounted")
-
     const { scripts } = this.props.data.markdownRemark.frontmatter
     if (scripts) {
-      scripts.forEach((src, i) => {
-        ;(function(d, script) {
-          script = d.createElement("script")
+      const allowed = {
+        "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js":
+          "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd",
+        "/gdp.js":
+          "sha384-t0+qGnjixk2g7n49JRle9Ebcoir6hFIL7n5DVhLS41KcSsu/Y1wdILbHSGuOU4fD",
+      }
+
+      scripts.forEach(s => {
+        if (allowed[s[0]] === s[1]) {
+          const script = document.createElement("script")
           script.type = "text/javascript"
           script.async = false
-          // script.defer = true
-          script.onload = function() {
-            console.log("script loaded")
-            if (scripts[i + 1]) {
-              console.log("there's another script")
-            }
-          }
-          script.src = src
-          d.getElementsByTagName("main")[0].appendChild(script)
-        })(document)
+          script.integrity = s[1]
+          script.crossOrigin = "anonymous"
+          script.src = s[0]
+          document.getElementsByTagName("main")[0].appendChild(script)
+        }
       })
     }
   }

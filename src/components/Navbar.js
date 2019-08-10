@@ -15,7 +15,7 @@ const Container = styled.div`
 function Navbar(props) {
   let mobileQuery
   const initialState = {
-    ismenuOpen: false,
+    isMenuOpen: false,
     isMobile: false,
     isDarkMode: false,
   }
@@ -26,7 +26,7 @@ function Navbar(props) {
     initialState.isMobile = mobileQuery.matches
   }
 
-  const [ismenuOpen, openMenu] = useState(initialState.ismenuOpen)
+  const [isMenuOpen, openMenu] = useState(initialState.isMenuOpen)
   const [isMobile, setMobile] = useState(initialState.isMobile)
   const [isDarkMode, setDarkMode] = useState(initialState.isDarkMode)
 
@@ -76,14 +76,14 @@ function Navbar(props) {
   }
   return (
     <nav
-      className={ismenuOpen ? "menu-open" : "menu-closed"}
-      onClickCapture={!ismenuOpen && isMobile ? handleClickCapture : null}
+      className={isMenuOpen ? "menu-open" : "menu-closed"}
+      onClickCapture={!isMenuOpen && isMobile ? handleClickCapture : null}
     >
       <Container className="container">
         <Link id="navbar-title" to="/blog">
           {props.title}
         </Link>
-        {ismenuOpen && isMobile ? (
+        {isMenuOpen && isMobile ? (
           isDarkMode ? (
             sunButton
           ) : (
