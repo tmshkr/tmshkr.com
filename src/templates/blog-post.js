@@ -31,12 +31,6 @@ class BlogPostTemplate extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    console.log("BlogPostTemplate updated")
-    // let src
-    // src = "/gdp.js"
-  }
-
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
