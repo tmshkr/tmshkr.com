@@ -14,7 +14,7 @@ const Container = styled.div`
   padding: 0 ${rhythm(3 / 4)};
 `
 
-let prevScrollY = 0
+let prevPageYOffset = 0
 
 function Navbar(props) {
   let mobileQuery
@@ -29,7 +29,6 @@ function Navbar(props) {
     mobileQuery = window.matchMedia("(max-width: 600px), (max-height: 500px)")
     initialState.isDarkMode = window.__theme === "dark"
     initialState.isMobile = mobileQuery.matches
-    // initialState.isNavbarVisible = window.__isNavbarVisible
   }
 
   const [isMenuOpen, openMenu] = useState(initialState.isMenuOpen)
@@ -61,25 +60,42 @@ function Navbar(props) {
     }
   }, [])
 
+  // autohide navbar
   useEffect(() => {
     window.onscroll = throttle(() => {
       if (window.__isNavbarVisible) {
-        if (window.scrollY - prevScrollY > 50 && window.scrollY > 100) {
+        if (
+          // scrolling down
+          window.pageYOffset - prevPageYOffset > 50 &&
+          window.pageYOffset > 100
+        ) {
           window.__isNavbarVisible = false
-          requestAnimationFrame(() => setNavbarVisible(false))
+          if (window.requestAnimationFrame) {
+            requestAnimationFrame(() => setNavbarVisible(false))
+          } else {
+            setNavbarVisible(false)
+          }
         }
       } else {
-        if (prevScrollY - window.scrollY > 100 || window.scrollY < 100) {
+        if (
+          // scrolling up
+          prevPageYOffset - window.pageYOffset > 100 ||
+          window.pageYOffset <= 100
+        ) {
           window.__isNavbarVisible = true
-          requestAnimationFrame(() => setNavbarVisible(true))
+          if (window.requestAnimationFrame) {
+            requestAnimationFrame(() => setNavbarVisible(true))
+          } else {
+            setNavbarVisible(true)
+          }
         }
       }
-      prevScrollY = window.scrollY
+      prevPageYOffset = window.pageYOffset
     }, 500)
 
     return () => {
       window.onscroll = null
-      prevScrollY = 0
+      prevPageYOffset = 0
     }
   }, [])
 
