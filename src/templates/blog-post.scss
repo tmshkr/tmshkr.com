@@ -15,6 +15,10 @@ body.dark {
         background-color: $link-bg;
       }
     }
+    blockquote {
+      color: #aaa;
+      border-left: 0.32813rem solid rgba(99, 99, 99, 0.7);
+    }
     ul.pagination a {
       // filter: brightness(0.85);
       filter: hue-rotate(33deg);
@@ -40,6 +44,10 @@ body.light {
       &:hover {
         background-color: $link-bg;
       }
+    }
+    blockquote {
+      color: #222;
+      border-left: 0.32813rem solid rgba(99, 99, 99, 0.7);
     }
     ul.pagination a {
       filter: hue-rotate(-33deg);

@@ -28,7 +28,7 @@ function Navbar(props) {
     mobileQuery = window.matchMedia("(max-width: 600px), (max-height: 500px)")
     initialState.isDarkMode = window.__theme === "dark"
     initialState.isMobile = mobileQuery.matches
-    initialState.isNavbarVisible = window.__isNavbarVisible
+    // initialState.isNavbarVisible = window.__isNavbarVisible
   }
 
   const [isMenuOpen, openMenu] = useState(initialState.isMenuOpen)
@@ -62,23 +62,18 @@ function Navbar(props) {
 
   useEffect(() => {
     window.onscroll = throttle(() => {
-      console.log(prevScrollY)
-
-      if (window.scrollY < prevScrollY) {
-        console.log("scrolling up")
-        window.__isNavbarVisible = true
-        requestAnimationFrame(() => setNavbarVisible(true))
-        // setNavbarVisible(true)
+      if (window.__isNavbarVisible) {
+        if (window.scrollY - prevScrollY > 50 && window.scrollY > 100) {
+          window.__isNavbarVisible = false
+          requestAnimationFrame(() => setNavbarVisible(false))
+        }
       } else {
-        console.log("scrolling down")
-        window.__isNavbarVisible = false
-        requestAnimationFrame(() => setNavbarVisible(false))
-        // setNavbarVisible(false)
+        if (prevScrollY - window.scrollY > 100 || window.scrollY < 100) {
+          window.__isNavbarVisible = true
+          requestAnimationFrame(() => setNavbarVisible(true))
+        }
       }
-
       prevScrollY = window.scrollY
-      // console.log(scrollY)
-      // console.log(e)
     }, 500)
 
     return () => {
