@@ -53,7 +53,7 @@ function Navbar(props) {
     function callback(e) {
       setMobile(e.matches)
     }
-    setMobile(mobileQuery.matches)
+    // setMobile(mobileQuery.matches)
     mobileQuery.addListener(callback)
     return () => {
       mobileQuery.removeListener(callback)
