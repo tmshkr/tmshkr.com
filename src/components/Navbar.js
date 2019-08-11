@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { throttle } from "lodash"
+import classNames from "classnames"
 import { rhythm } from "../utils/typography"
 import styled from "styled-components/macro"
 import Bars from "@fortawesome/fontawesome-free/svgs/solid/bars.svg"
@@ -104,15 +105,16 @@ function Navbar(props) {
     document.body.style.cursor = "pointer"
     openMenu(true)
   }
+
+  const classes = classNames(
+    { "menu-open": isMenuOpen },
+    { "is-hidden": !isNavbarVisible }
+  )
+
   return (
     <nav
-      className={isMenuOpen ? "menu-open" : "menu-closed"}
+      className={classes}
       onClickCapture={!isMenuOpen && isMobile ? handleClickCapture : null}
-      style={
-        isNavbarVisible
-          ? { transform: "translateY(0)" }
-          : { transform: "translateY(-100%)" }
-      }
     >
       <Container className="container">
         <Link id="navbar-title" to="/blog">
