@@ -1,0 +1,52 @@
+import React, { PureComponent, Fragment } from "react"
+import Navbar from "../components/Navbar"
+import ArrowDown from "@fortawesome/fontawesome-free/svgs/solid/arrow-down.svg"
+import "./Home.scss"
+// import Projects from "./Projects"
+
+class Home extends PureComponent {
+  scrollTo = id => {
+    document.getElementById(id).scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    })
+  }
+  render() {
+    return (
+      <Fragment>
+        <div id="home">
+          <Navbar title="tmshkr" />
+          <div
+            id="hello"
+            className="full-page"
+            onClick={() => this.scrollTo("bio")}
+          >
+            <h1 className="hero">Hello, I'm Tim</h1>
+            <p>I design and develop web applications for humans.</p>
+            <ArrowDown className="arrow bounce" />
+          </div>
+          <div
+            id="bio"
+            className="full-page"
+            onClick={() => this.scrollTo("projects")}
+          >
+            <p>
+              I grew up with computers and have been familiar with web
+              technologies for most of my life. I'm at home with developer tools
+              and am no stranger to the command line.
+            </p>
+            <p>
+              I've studied art, design, science, and most recently earned a
+              degree in philosophy. After graduating, I rekindled my interest in
+              technology, particularly in using React to make web applications.
+            </p>
+          </div>
+          {/* <Projects /> */}
+        </div>
+      </Fragment>
+    )
+  }
+}
+
+export default Home

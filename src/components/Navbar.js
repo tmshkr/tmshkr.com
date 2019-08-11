@@ -133,7 +133,7 @@ function Navbar(props) {
       onClickCapture={!isMenuOpen && isMobile ? handleClickCapture : null}
     >
       <Container className="container">
-        <Link id="navbar-title" to="/blog">
+        <Link id="navbar-title" to="/">
           {props.title}
         </Link>
         {isMenuOpen && isMobile ? (

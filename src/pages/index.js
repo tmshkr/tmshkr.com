@@ -1,7 +1,3 @@
-import React from "react"
+import Home from "./Home"
 
-function Index(props) {
-  return <h1>index.js</h1>
-}
-
-export default Index
+export default Home
