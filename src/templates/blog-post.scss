@@ -1,3 +1,12 @@
+.blog-content {
+  ul {
+    margin-left: 2.75rem;
+    li {
+      margin-bottom: 0.33rem;
+    }
+  }
+}
+
 body.dark {
   $link: #00ffd5;
   main.blog-post {

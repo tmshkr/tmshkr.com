@@ -1,0 +1,22 @@
+main.contact {
+  text-align: center;
+  .social {
+    // text-align: center;
+    svg {
+      fill: #fff;
+      width: 42px;
+    }
+  }
+  .social a,
+  .social a:visited {
+    color: #fff;
+    box-shadow: none;
+    padding: 0.33em;
+    font-size: 2em;
+  }
+  @media screen and (max-width: 360px) {
+    .social a {
+      font-size: 1.5em;
+    }
+  }
+}
