@@ -15,9 +15,7 @@ Though I've been practicing responsive web design for a few years, I learned
 a lot from freeCodeCamp's Responsive Web Design certification program, which I
 have now successfully completed:
 
-<a href="https://www.freecodecamp.org/certification/tmshkr/responsive-web-design" alt="Responsive Web Design Certification" target="_blank">
-<img src="../assets/blog/images/fcc-responsive-web-design-cert.png" />
-</a>
+[![Responsive Web Design Certification](/fcc-responsive-web-design-cert.png)](https://www.freecodecamp.org/certification/tmshkr/responsive-web-design)
 
 The program started off with a basic introduction to HTML, which is always good to
 revisit, since these are the fundamental building blocks of a website. It then transitioned

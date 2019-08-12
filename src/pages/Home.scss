@@ -65,16 +65,16 @@ body {
     max-width: 800px;
     margin: 1em auto;
     $link: #00ffd5;
-    a {
-      color: $link;
-      &:visited {
-        color: $link;
-      }
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-      }
-    }
+    // a {
+    //   color: $link;
+    //   &:visited {
+    //     color: $link;
+    //   }
+    // &:hover,
+    // &:focus {
+    //   text-decoration: underline;
+    // }
+    // }
   }
   #home {
     height: 100vh;

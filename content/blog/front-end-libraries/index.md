@@ -6,9 +6,7 @@ date: "2019-01-24"
 
 I recently completed the Front End Libraries certification program offered by freeCodeCamp:
 
-<a href="https://www.freecodecamp.org/certification/tmshkr/front-end-libraries" alt="Front End Libraries Certification" target="_blank">
-<img src="../assets/blog/images/fcc-frontend-libraries-cert.png" />
-</a>
+[![Front End Libraries Certification](/fcc-frontend-libraries-cert.png)](https://www.freecodecamp.org/certification/tmshkr/front-end-libraries)
 
 I learned a lot. It was a great opportunity to practice my frontend skills, especially with React. I've been tinkering with React for awhile, through online learning resources and projects, so it was mostly reinforcing what I was already familiar with, in order to develop my skills to a professional level. I used React for all of the projects:
 
