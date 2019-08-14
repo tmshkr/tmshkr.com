@@ -4,9 +4,10 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const ProjectTemplate = path.resolve(`./src/templates/project.js`)
 
   createCollection("blog", blogPost)
-  createCollection("projects", blogPost)
+  createCollection("projects", ProjectTemplate)
 
   async function createCollection(dir, component) {
     const result = await graphql(

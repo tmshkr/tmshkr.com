@@ -1,5 +1,0 @@
----
-title: baz
----
-
-hello world
