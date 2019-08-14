@@ -3,58 +3,56 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          filter: { fields: { slug: { regex: "/^/blog//" } } }
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
+
+  async function renderCollection(dir, component) {
+    const result = await graphql(
+      `
+        {
+          allMarkdownRemark(
+            filter: { fields: { slug: { regex: "/^/${dir}//" } } }
+            sort: { fields: [frontmatter___date], order: DESC }
+            limit: 1000
+          ) {
+            edges {
+              node {
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                }
               }
             }
           }
         }
-      }
-    `
-  )
+      `
+    )
 
-  if (result.errors) {
-    throw result.errors
+    if (result.errors) {
+      throw result.errors
+    }
+
+    const { edges } = result.data.allMarkdownRemark
+
+    edges.forEach((edge, index) => {
+      const previous = index === edges.length - 1 ? null : edges[index + 1].node
+      const next = index === 0 ? null : edges[index - 1].node
+
+      createPage({
+        path: edge.node.fields.slug,
+        component,
+        context: {
+          slug: edge.node.fields.slug,
+          previous,
+          next,
+        },
+      })
+    })
   }
 
-  // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
-
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
-    // console.log(post.node.fields.slug)
-    // post.node.fields.slug = `/blog${post.node.fields.slug}`
-    // console.log(post.node.fields.slug)
-
-    createPage({
-      path: post.node.fields.slug,
-      component: blogPost,
-      context: {
-        slug: post.node.fields.slug,
-        previous,
-        next,
-      },
-    })
-  })
-
-  // then do projects
+  renderCollection("blog", blogPost)
+  renderCollection("projects", blogPost)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
