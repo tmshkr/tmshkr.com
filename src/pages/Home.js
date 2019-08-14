@@ -1,9 +1,9 @@
 import React, { Fragment } from "react"
 import Layout from "../components/layout.js"
-import Navbar from "../components/Navbar"
+import Navbar from "../components/navbar"
 import ArrowDown from "@fortawesome/fontawesome-free/svgs/solid/arrow-down.svg"
-import "./Home.scss"
-import Projects from "./Projects"
+import "./home.scss"
+import Projects from "./projects"
 
 function Home(props) {
   const scrollTo = id => {

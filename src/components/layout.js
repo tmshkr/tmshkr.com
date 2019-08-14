@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Navbar from "./Navbar"
+import Navbar from "./navbar"
 import { rhythm, scale } from "../utils/typography"
 
 class Layout extends React.Component {

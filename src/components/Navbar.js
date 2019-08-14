@@ -7,7 +7,7 @@ import styled from "styled-components/macro"
 import Bars from "@fortawesome/fontawesome-free/svgs/solid/bars.svg"
 import Sun from "@fortawesome/fontawesome-free/svgs/solid/sun.svg"
 import Moon from "@fortawesome/fontawesome-free/svgs/solid/moon.svg"
-import "./Navbar.scss"
+import "./navbar.scss"
 
 const Container = styled.div`
   max-width: ${rhythm(24)};
