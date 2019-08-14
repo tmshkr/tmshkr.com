@@ -2,12 +2,14 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import VideoPlayer from "../components/video-player"
 import { rhythm, scale } from "../utils/typography"
 import "./project.scss"
 
 class ProjectTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
+    const project = this.props.data.markdownRemark
+    const { video, url } = project.frontmatter
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
@@ -18,8 +20,8 @@ class ProjectTemplate extends React.Component {
         title={siteTitle}
       >
         <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          title={project.frontmatter.title}
+          description={project.frontmatter.description || project.excerpt}
         />
         <h1
           style={{
@@ -27,22 +29,12 @@ class ProjectTemplate extends React.Component {
             marginBottom: 0,
           }}
         >
-          {post.frontmatter.title}
+          {project.frontmatter.title}
         </h1>
-        <time
-          className="date"
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            paddingLeft: rhythm(0.1),
-          }}
-        >
-          {post.frontmatter.date}
-        </time>
+        <VideoPlayer video={video} />
         <div
           className="blog-content"
-          dangerouslySetInnerHTML={{ __html: post.html }}
+          dangerouslySetInnerHTML={{ __html: project.html }}
         />
         <hr
           style={{
@@ -81,13 +73,11 @@ export const pageQuery = graphql`
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
-        description
+        url
+        video
       }
     }
   }
