@@ -3,7 +3,7 @@ import Layout from "../components/layout.js"
 import Navbar from "../components/Navbar"
 import ArrowDown from "@fortawesome/fontawesome-free/svgs/solid/arrow-down.svg"
 import "./Home.scss"
-import Projects from "./projects/index"
+import Projects from "./Projects"
 
 function Home(props) {
   const scrollTo = id => {

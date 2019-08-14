@@ -5,7 +5,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
-  async function renderCollection(dir, component) {
+  createCollection("blog", blogPost)
+  createCollection("projects", blogPost)
+
+  async function createCollection(dir, component) {
     const result = await graphql(
       `
         {
@@ -50,9 +53,6 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   }
-
-  renderCollection("blog", blogPost)
-  renderCollection("projects", blogPost)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import Navbar from "../../components/Navbar"
+import Navbar from "../components/Navbar"
 // import Layout from "../../components/layout"
 
 function Projects(props) {
