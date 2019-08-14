@@ -1,0 +1,5 @@
+---
+title: foo
+---
+
+hello world

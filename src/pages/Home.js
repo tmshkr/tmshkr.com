@@ -1,10 +1,11 @@
 import React, { Fragment } from "react"
+import Layout from "../components/layout.js"
 import Navbar from "../components/Navbar"
 import ArrowDown from "@fortawesome/fontawesome-free/svgs/solid/arrow-down.svg"
 import "./Home.scss"
-// import Projects from "./Projects"
+import Projects from "./projects/index"
 
-function Home() {
+function Home(props) {
   const scrollTo = id => {
     document.getElementById(id).scrollIntoView({
       behavior: "smooth",
@@ -37,7 +38,7 @@ function Home() {
             technology, particularly in using React to make web applications.
           </p>
         </div>
-        {/* <Projects /> */}
+        <Projects location={props.location} />
       </div>
     </Fragment>
   )

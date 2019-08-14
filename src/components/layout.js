@@ -6,7 +6,7 @@ import { rhythm, scale } from "../utils/typography"
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
+    const { location, title, children, id, className } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
 
     return (
@@ -20,10 +20,7 @@ class Layout extends React.Component {
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
-          <main
-            className={this.props.className}
-            style={{ marginTop: rhythm(1.5) }}
-          >
+          <main className={className} style={{ marginTop: rhythm(1.5) }}>
             {children}
           </main>
           <footer></footer>

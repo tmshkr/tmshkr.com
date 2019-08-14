@@ -1,0 +1,5 @@
+---
+title: bar
+---
+
+hello world

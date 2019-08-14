@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
+          filter: { fields: { slug: { regex: "/^/blog//" } } }
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -38,6 +39,10 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
+    // console.log(post.node.fields.slug)
+    // post.node.fields.slug = `/blog${post.node.fields.slug}`
+    // console.log(post.node.fields.slug)
+
     createPage({
       path: post.node.fields.slug,
       component: blogPost,
@@ -48,6 +53,8 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  // then do projects
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -58,7 +65,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: `/blog${value}`,
+      value,
     })
   }
 }
