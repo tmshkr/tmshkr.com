@@ -2,10 +2,10 @@ import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BreadcrumbPath from "../components/breadcrumb-path"
 import VideoPlayer from "../components/video-player"
 import { rhythm, scale } from "../utils/typography"
 import "./project.scss"
-import BreadcrumbPath from "../components/breadcrumb-path"
 
 class ProjectTemplate extends React.Component {
   render() {

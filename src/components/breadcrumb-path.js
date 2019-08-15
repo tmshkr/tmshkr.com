@@ -1,18 +1,43 @@
 import React, { Fragment } from "react"
+import { css } from "@emotion/core"
+import Folder from "@fortawesome/fontawesome-free/svgs/regular/Folder.svg"
 import { Link } from "gatsby"
 
 function BreadcrumbPath(props) {
-  //   console.log(props)
   const path = props.path.match(/\/[^/]+/g)
-  let pathTo = ""
-  //   return <h1>BreadcrumbPath</h1>
+  let to = ""
+
   return (
-    <div className="breadcrumb-path">
+    <div
+      css={css`
+        font-family: sans-serif;
+      `}
+    >
       {path.map((p, i) => {
-        pathTo += p
+        if (i === path.length - 1) {
+          return p.slice(1)
+        }
+        to += p
         return (
-          <Fragment key={pathTo}>
-            <Link to={pathTo}>{p.slice(1)}</Link>
+          <Fragment key={to}>
+            <Link
+              to={to}
+              css={css`
+                box-shadow: none;
+              `}
+            >
+              {i === 0 && (
+                <Folder
+                  css={css`
+                    fill: #fff;
+                    width: 1em;
+                    margin: 0.25em;
+                    margin-bottom: -3px;
+                  `}
+                />
+              )}
+              {p.slice(1)}
+            </Link>
             {i < path.length - 1 && " / "}
           </Fragment>
         )
