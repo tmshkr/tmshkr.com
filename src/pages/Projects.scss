@@ -1,0 +1,34 @@
+#projects {
+  color: #fff;
+  a {
+    box-shadow: none;
+  }
+  p {
+    a {
+      $link: #00ffd5;
+      padding: 0.2em;
+      color: $link;
+      $link-bg: #1f5775;
+      background: $link-bg;
+      transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+      &:hover {
+        background: lighten($link-bg, 15%);
+      }
+    }
+  }
+  ul {
+    margin: 0 auto;
+    max-width: 1200px;
+    a {
+      display: block;
+      color: #fff;
+      img {
+        margin-bottom: 1rem;
+      }
+      span {
+        display: block;
+        font-family: sans-serif;
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@ Wordpress2016.overrideThemeStyles = () => {
   }
 }
 
-// Wordpress2016.headerFontFamily = ["Helvetica", "sans-serif"]
+// Wordpress2016.baseFontSize = "21px"
 
 delete Wordpress2016.googleFonts
 

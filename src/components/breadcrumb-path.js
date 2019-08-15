@@ -9,8 +9,13 @@ function BreadcrumbPath(props) {
 
   return (
     <div
+      className="breadcrumb-path"
+      data-disable-menu-open={true}
       css={css`
         font-family: sans-serif;
+        a {
+          box-shadow: none;
+        }
       `}
     >
       {path.map((p, i) => {
@@ -20,25 +25,25 @@ function BreadcrumbPath(props) {
         to += p
         return (
           <Fragment key={to}>
-            <Link
-              to={to}
-              css={css`
-                box-shadow: none;
-              `}
-            >
+            <Link to={to} data-disable-menu-open={true}>
               {i === 0 && (
                 <Folder
                   css={css`
-                    fill: #fff;
                     width: 1em;
                     margin: 0.25em;
                     margin-bottom: -3px;
+                    body.dark & {
+                      fill: #fff;
+                    }
+                    body.light & {
+                      fill: #000;
+                    }
                   `}
                 />
               )}
               {p.slice(1)}
             </Link>
-            {i < path.length - 1 && " / "}
+            {" / "}
           </Fragment>
         )
       })}

@@ -1,8 +1,9 @@
 import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
+import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import BreadcrumbPath from "../components/breadcrumb-path"
+// import BreadcrumbPath from "../components/breadcrumb-path"
 import VideoPlayer from "../components/video-player"
 import { rhythm, scale } from "../utils/typography"
 import "./project.scss"
@@ -14,40 +15,37 @@ class ProjectTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
-    // const path = this.props.path.match(/\/[^/]+/g)
-    // let pathTo = ""
-    // console.log(path)
-
     return (
       <Layout
         className="project"
         location={this.props.location}
         title={siteTitle}
+        path={this.props.path}
       >
         <SEO
           title={project.frontmatter.title}
           description={project.frontmatter.description || project.excerpt}
         />
-        <BreadcrumbPath path={this.props.path} />
-        <VideoPlayer video={video} />
         <h2
-          style={{
-            margin: rhythm(1),
-          }}
+          css={css`
+            margin: ${rhythm(0.5)};
+            text-align: center;
+          `}
         >
           {project.frontmatter.title}
         </h2>
+        <VideoPlayer video={video} />
         <div
           className="html-content"
-          style={{
-            margin: rhythm(1),
-          }}
+          css={css`
+            margin: ${rhythm(0.5)};
+          `}
           dangerouslySetInnerHTML={{ __html: project.html }}
         />
         <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
+          css={css`
+            margin-bottom: ${rhythm(1)};
+          `}
         />
         <ul className="pagination">
           <li>

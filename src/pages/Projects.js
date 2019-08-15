@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import Navbar from "../components/navbar"
 import ProjectThumbnail from "../components/project-thumbnail"
 import { useStaticQuery, graphql } from "gatsby"
+import "./projects.scss"
 // import Layout from "../../components/layout"
 
 const query = graphql`
@@ -38,7 +39,7 @@ function Projects(props) {
   console.log(nodes)
   return (
     <Fragment>
-      {/^\/projects/.test(props.location.pathname) && <Navbar title={title} />}
+      <Navbar title={title} />
       <div id="projects" className="full-page">
         <p>Here are some things I've made:</p>
         <ul>

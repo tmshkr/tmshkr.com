@@ -30,6 +30,7 @@ body.dark nav {
 nav {
   color: #fff;
   position: fixed;
+  width: 100vw;
   top: 0;
   left: 0;
   right: 0;
@@ -44,7 +45,7 @@ nav {
 
   // transition: transform 0.5s;
   // @include transition(transform 0.5s);
-  div {
+  > div {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -52,7 +53,8 @@ nav {
     align-items: center;
   }
 
-  #navbar-title {
+  #navbar-title,
+  .breadcrumb-path {
     padding: 0.5em 0;
   }
 
@@ -127,7 +129,8 @@ nav {
       padding: 0;
     }
 
-    #navbar-title {
+    #navbar-title,
+    .breadcrumb-path {
       margin: 0 1em;
     }
 
