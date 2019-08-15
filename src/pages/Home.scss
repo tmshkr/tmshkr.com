@@ -45,31 +45,6 @@ button {
   text-align: center;
 }
 
-#video-player {
-  width: 100vw;
-  max-width: 640px;
-  max-height: 360px;
-  margin: auto;
-  position: relative;
-  i {
-    cursor: pointer;
-    transition: background 0.15s;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: inline-grid;
-    align-content: center;
-    font-size: 3em;
-    background: none;
-
-    &.play-button {
-      background: rgba(42, 42, 42, 0.5);
-    }
-  }
-}
-
 body {
   p {
     max-width: 800px;

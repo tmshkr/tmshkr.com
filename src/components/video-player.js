@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react"
 import ReactPlayer from "react-player"
+import Play from "@fortawesome/fontawesome-free/svgs/solid/play.svg"
+import "./video-player.scss"
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -31,6 +33,7 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
+    // console.log(this.player.getInternalPlayer())
     const { video } = this.props
     const { playing } = this.state
     return (
@@ -47,11 +50,14 @@ class VideoPlayer extends PureComponent {
           onEnded={() => this.setState({ playing: false })}
           url={video}
         />
-        <i
+        <div
+          id="control"
           ref={i => (this.i = i)}
           onClick={this.playPause}
-          className={playing ? undefined : "fas fa-play play-button"}
-        />
+          className={playing ? "playing" : null}
+        >
+          <Play />
+        </div>
       </div>
     )
   }

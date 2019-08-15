@@ -1,0 +1,32 @@
+#video-player {
+  width: 100vw;
+  max-width: 640px;
+  max-height: 360px;
+  margin: auto;
+  position: relative;
+  #control {
+    cursor: pointer;
+    transition: all 0.15s;
+    background: rgba(42, 42, 42, 0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-grid;
+    align-content: center;
+    // font-size: 3em;
+    svg {
+      fill: #fff;
+      width: 42px;
+      justify-self: center;
+    }
+
+    &.playing {
+      background: none;
+      svg {
+        display: none;
+      }
+    }
+  }
+}

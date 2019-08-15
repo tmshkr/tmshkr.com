@@ -1,10 +1,11 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import VideoPlayer from "../components/video-player"
 import { rhythm, scale } from "../utils/typography"
 import "./project.scss"
+import BreadcrumbPath from "../components/breadcrumb-path"
 
 class ProjectTemplate extends React.Component {
   render() {
@@ -12,6 +13,10 @@ class ProjectTemplate extends React.Component {
     const { video, url } = project.frontmatter
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
+
+    // const path = this.props.path.match(/\/[^/]+/g)
+    // let pathTo = ""
+    // console.log(path)
 
     return (
       <Layout
@@ -23,17 +28,20 @@ class ProjectTemplate extends React.Component {
           title={project.frontmatter.title}
           description={project.frontmatter.description || project.excerpt}
         />
-        <h1
+        <BreadcrumbPath path={this.props.path} />
+        <VideoPlayer video={video} />
+        <h2
           style={{
-            marginTop: rhythm(1),
-            marginBottom: 0,
+            margin: rhythm(1),
           }}
         >
           {project.frontmatter.title}
-        </h1>
-        <VideoPlayer video={video} />
+        </h2>
         <div
-          className="blog-content"
+          className="html-content"
+          style={{
+            margin: rhythm(1),
+          }}
           dangerouslySetInnerHTML={{ __html: project.html }}
         />
         <hr
