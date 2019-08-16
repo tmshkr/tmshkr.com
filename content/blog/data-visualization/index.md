@@ -9,7 +9,7 @@ I've recently learned some valuable skills, building upon previous knowledge in
 web development, by completing the Data Visualization
 Certification program offered by [freeCodeCamp](https://learn.freecodecamp.org/).
 
-[![Data Visualization Certification](/fcc-dataviz-cert.png)](https://www.freecodecamp.org/certification/tmshkr/data-visualization)
+[![Data Visualization Certification](./fcc-dataviz-cert.png)](https://www.freecodecamp.org/certification/tmshkr/data-visualization)
 
 Data visualization is simply the visual representation of information, e.g.,
 charts, graphs, tables, and so forth, which makes it easier for humans to interpret

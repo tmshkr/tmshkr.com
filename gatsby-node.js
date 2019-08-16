@@ -6,32 +6,55 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const ProjectTemplate = path.resolve(`./src/templates/project.js`)
 
-  createCollection("blog", blogPost)
-  createCollection("projects", ProjectTemplate)
-
-  async function createCollection(dir, component) {
-    const result = await graphql(
-      `
-        {
-          allMarkdownRemark(
-            filter: { fields: { slug: { regex: "/^/${dir}//" } } }
-            sort: { fields: [frontmatter___date], order: DESC }
-            limit: 1000
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-                frontmatter {
-                  title
-                }
-              }
-            }
+  createCollection(
+    blogPost,
+    `
+  {
+    allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/^/blog//" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 1000
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
           }
         }
-      `
-    )
+      }
+    }
+  }
+`
+  )
+  createCollection(
+    ProjectTemplate,
+    `
+  {
+    allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/^/projects//" } } }
+      sort: { fields: [frontmatter___title], order: DESC }
+      limit: 1000
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+  }
+`
+  )
+
+  async function createCollection(component, query) {
+    const result = await graphql(query)
 
     if (result.errors) {
       throw result.errors

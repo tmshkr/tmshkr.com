@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { throttle } from "lodash"
 import classNames from "classnames"
 import { rhythm } from "../utils/typography"
-import BreadcrumbPath from "./breadcrumb-path"
+// import BreadcrumbPath from "./breadcrumb-path"
 import styled from "@emotion/styled"
 import Bars from "@fortawesome/fontawesome-free/svgs/solid/bars.svg"
 import Sun from "@fortawesome/fontawesome-free/svgs/solid/sun.svg"
@@ -111,7 +111,7 @@ function Navbar(props) {
   }
 
   function handleClickCapture(e) {
-    if (e.target.dataset.disableMenuOpen) {
+    if (e.target.id === "navbar-title") {
       return
     }
     document.onclick = () => {
@@ -134,13 +134,10 @@ function Navbar(props) {
       onClickCapture={!isMenuOpen && isMobile ? handleClickCapture : null}
     >
       <Container className="container">
-        {props.path ? (
-          <BreadcrumbPath path={props.path} />
-        ) : (
-          <Link id="navbar-title" to="/" data-disable-menu-open={true}>
-            tmshkr
-          </Link>
-        )}
+        <Link id="navbar-title" to="/">
+          tmshkr
+        </Link>
+
         {isMenuOpen && isMobile ? (
           isDarkMode ? (
             sunButton

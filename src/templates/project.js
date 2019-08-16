@@ -12,15 +12,11 @@ class ProjectTemplate extends React.Component {
   render() {
     const project = this.props.data.markdownRemark
     const { video, url } = project.frontmatter
-    const siteTitle = this.props.data.site.siteMetadata.title
+    // const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout
-        className="project"
-        location={this.props.location}
-        path={this.props.path}
-      >
+      <Layout className="project" path={this.props.path}>
         <SEO
           title={project.frontmatter.title}
           description={project.frontmatter.description || project.excerpt}
@@ -37,7 +33,7 @@ class ProjectTemplate extends React.Component {
         <div
           className="html-content"
           css={css`
-            margin: ${rhythm(0.5)};
+            margin: ${rhythm(1)} 0;
           `}
           dangerouslySetInnerHTML={{ __html: project.html }}
         />

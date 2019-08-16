@@ -1,5 +1,6 @@
 import React from "react"
 // import Layout from "../components/layout.js"
+import SEO from "../components/seo"
 import Navbar from "../components/navbar"
 import Projects from "./projects"
 import ArrowDown from "@fortawesome/fontawesome-free/svgs/solid/arrow-down.svg"
@@ -15,6 +16,7 @@ function Home(props) {
   }
   return (
     <div id="home">
+      <SEO />
       <Navbar />
       <div id="hello" className="full-page" onClick={() => scrollTo("bio")}>
         <h1 className="hero">Hello, I'm Tim</h1>
@@ -33,7 +35,7 @@ function Home(props) {
           technology, particularly in using React to make web applications.
         </p>
       </div>
-      <Projects location={props.location} />
+      <Projects />
     </div>
   )
 }

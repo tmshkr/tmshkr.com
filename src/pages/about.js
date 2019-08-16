@@ -27,31 +27,26 @@ function About(props) {
   const about = props.data.markdownRemark
 
   return (
-    <Layout className="about" location={props.location} path={props.path}>
+    <Layout className="about">
       <SEO
-        title={about.frontmatter.title}
+        title="About"
         description={about.frontmatter.description || about.excerpt}
       />
-      <h2
+      <h1
         css={css`
-          margin: ${rhythm(0.5)};
           text-align: center;
         `}
       >
         {about.frontmatter.title}
-      </h2>
+      </h1>
       <div
         className="html-content"
         css={css`
-          margin: ${rhythm(0.5)};
+          margin: ${rhythm(0.5)} 0;
         `}
         dangerouslySetInnerHTML={{ __html: about.html }}
       />
-      <hr
-        css={css`
-          margin-bottom: ${rhythm(1)};
-        `}
-      />
+      <hr />
     </Layout>
   )
 }

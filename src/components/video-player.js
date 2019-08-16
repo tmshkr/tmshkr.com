@@ -33,15 +33,16 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    // console.log(this.player.getInternalPlayer())
+    // console.log(this.player)
     const { video } = this.props
     const { playing } = this.state
     return (
-      <div id="video-player">
+      <div id="video-player" className={playing ? "playing" : null}>
         <ReactPlayer
           ref={player => (this.player = player)}
           width="100%"
           height="100%"
+          wrapper={Wrapper}
           style={this.style}
           onClick={this.playPause}
           playing={playing}
@@ -50,12 +51,17 @@ class VideoPlayer extends PureComponent {
           onEnded={() => this.setState({ playing: false })}
           url={video}
         />
-        <div
-          id="control"
-          ref={i => (this.i = i)}
-          onClick={this.playPause}
-          className={playing ? "playing" : null}
-        >
+      </div>
+    )
+  }
+}
+
+class Wrapper extends React.Component {
+  render() {
+    return (
+      <div className="player-wrapper" {...this.props}>
+        {this.props.children}
+        <div className="svg-wrapper">
           <Play />
         </div>
       </div>

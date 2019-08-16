@@ -7,9 +7,9 @@ date: "2019-05-17"
 
 I recently completed the APIs & Microservices certification offered by freeCodeCamp, along with their Algorithms & Data Structures certification. The skills I've learned have given me a solid foundation to dive into fullstack development, so that I can begin to build more useful things.
 
-[![APIs and Microservices Certification](/fcc-apis-microservices-cert.png)](https://www.freecodecamp.org/certification/tmshkr/apis-and-microservices)
+[![APIs and Microservices Certification](./fcc-apis-microservices-cert.png)](https://www.freecodecamp.org/certification/tmshkr/apis-and-microservices)
 
-[![JavaScript Algorithms and Data Structures Certification](/fcc-algorithms-data-structures-cert.png)](https://www.freecodecamp.org/certification/tmshkr/javascript-algorithms-and-data-structures)
+[![JavaScript Algorithms and Data Structures Certification](./fcc-algorithms-data-structures-cert.png)](https://www.freecodecamp.org/certification/tmshkr/javascript-algorithms-and-data-structures)
 
 The APIs & Microservices curriculum covered backend development with Node, Express, Mongoose, and MongoDB. The JavaScript Algorithms & Data Structures curriculum covered problem solving with JavaScript, ES6 syntax, regular expressions, debugging, data structures, object-oriented programming, functional programming, and more.
 
