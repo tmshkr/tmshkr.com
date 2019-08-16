@@ -19,7 +19,6 @@ class ProjectTemplate extends React.Component {
       <Layout
         className="project"
         location={this.props.location}
-        title={siteTitle}
         path={this.props.path}
       >
         <SEO

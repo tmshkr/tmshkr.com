@@ -1,4 +1,4 @@
-.blog-content {
+.html-content {
   ul {
     margin-left: 2.75rem;
     li {
@@ -9,8 +9,8 @@
 
 body.dark {
   $link: #00ffd5;
-  main.blog-post {
-    div.blog-content a,
+  main {
+    div.html-content a,
     ul.pagination a {
       p.date {
         color: #d0d0d0;
@@ -38,8 +38,8 @@ body.dark {
 body.light {
   // $link: #01579b;
   $link: #1a237e;
-  main.blog-post {
-    div.blog-content a,
+  main {
+    div.html-content a,
     ul.pagination a {
       p.date {
         color: #d0d0d0;

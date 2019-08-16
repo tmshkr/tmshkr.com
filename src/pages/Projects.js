@@ -50,6 +50,9 @@ function Projects(props) {
         <p>
           Check out my <a href="/blog">blog</a> to see more projects.
         </p>
+        <footer>
+          <time>© {new Date().getFullYear()}</time>
+        </footer>
       </div>
     </Fragment>
   )

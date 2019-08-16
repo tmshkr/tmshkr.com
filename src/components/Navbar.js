@@ -138,7 +138,7 @@ function Navbar(props) {
           <BreadcrumbPath path={props.path} />
         ) : (
           <Link id="navbar-title" to="/" data-disable-menu-open={true}>
-            {props.title}
+            tmshkr
           </Link>
         )}
         {isMenuOpen && isMobile ? (

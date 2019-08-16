@@ -1,23 +1,57 @@
 import React from "react"
-import Layout from "../components/layout.js"
-import "./about.scss"
+import { useStaticQuery, graphql } from "gatsby"
+import { css } from "@emotion/core"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import { rhythm, scale } from "../utils/typography"
+
+const query = graphql`
+  {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(fields: { slug: { eq: "/about/" } }) {
+      html
+      frontmatter {
+        title
+      }
+    }
+  }
+`
 
 function About(props) {
+  const data = useStaticQuery(query)
+  console.log(data)
+  const about = props.data.markdownRemark
+
   return (
-    <Layout location={props.location} className="about" title={"tmshkr"}>
-      <h1>About Me</h1>
-      <p>Hello, my name is Tim Shaker.</p>
-      <p>
-        I'm a self-taught developer, focusing on JavaScript, Node, React, and
-        UI/UX design, in addition to having a working knowledge of Python. I've
-        completed most of the [freeCodeCamp
-        curriculum](https://www.freecodecamp.org/tmshkr) and am currently
-        seeking opportunities in software development.
-      </p>
-      <p>
-        You can see some of the [projects](/projects/) I've made, check out my
-        [blog](/blog/), or [contact](/contact/) me directly.
-      </p>
+    <Layout className="about" location={props.location} path={props.path}>
+      <SEO
+        title={about.frontmatter.title}
+        description={about.frontmatter.description || about.excerpt}
+      />
+      <h2
+        css={css`
+          margin: ${rhythm(0.5)};
+          text-align: center;
+        `}
+      >
+        {about.frontmatter.title}
+      </h2>
+      <div
+        className="html-content"
+        css={css`
+          margin: ${rhythm(0.5)};
+        `}
+        dangerouslySetInnerHTML={{ __html: about.html }}
+      />
+      <hr
+        css={css`
+          margin-bottom: ${rhythm(1)};
+        `}
+      />
     </Layout>
   )
 }

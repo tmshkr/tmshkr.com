@@ -16,6 +16,11 @@ function BreadcrumbPath(props) {
         a {
           box-shadow: none;
         }
+        body.dark & {
+          color: #fff;
+        }
+        body.light & {
+          color: #000;
       `}
     >
       {path.map((p, i) => {
