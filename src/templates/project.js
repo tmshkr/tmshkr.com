@@ -3,9 +3,9 @@ import { Link, graphql } from "gatsby"
 import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import BreadcrumbPath from "../components/breadcrumb-path"
+import BreadcrumbPath from "../components/breadcrumb-path"
 import VideoPlayer from "../components/video-player"
-import { rhythm, scale } from "../utils/typography"
+// import { rhythm, scale } from "../utils/typography"
 import "./project.scss"
 
 class ProjectTemplate extends React.Component {
@@ -21,25 +21,26 @@ class ProjectTemplate extends React.Component {
           title={project.frontmatter.title}
           description={project.frontmatter.description || project.excerpt}
         />
+        <BreadcrumbPath path={this.props.path} />
+        <VideoPlayer video={video} />
         <h2
           css={css`
-            margin: ${rhythm(0.5)};
+            margin: 1em;
             text-align: center;
           `}
         >
           {project.frontmatter.title}
         </h2>
-        <VideoPlayer video={video} />
         <div
           className="html-content"
           css={css`
-            margin: ${rhythm(1)} 0;
+            margin: 1rem 0;
           `}
           dangerouslySetInnerHTML={{ __html: project.html }}
         />
         <hr
           css={css`
-            margin-bottom: ${rhythm(1)};
+            margin-bottom: 2rem;
           `}
         />
         <ul className="pagination">

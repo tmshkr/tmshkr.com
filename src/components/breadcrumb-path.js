@@ -10,9 +10,9 @@ function BreadcrumbPath(props) {
   return (
     <div
       className="breadcrumb-path"
-      data-disable-menu-open={true}
       css={css`
         font-family: sans-serif;
+        margin-bottom: 1rem;
         a {
           box-shadow: none;
         }
@@ -30,7 +30,7 @@ function BreadcrumbPath(props) {
         to += p
         return (
           <Fragment key={to}>
-            <Link to={to} data-disable-menu-open={true}>
+            <Link to={to}>
               {i === 0 && (
                 <Folder
                   css={css`

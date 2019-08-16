@@ -7,20 +7,21 @@ import { rhythm, scale } from "../utils/typography"
 
 class Layout extends React.Component {
   render() {
-    const { path, title, children, id, className } = this.props
+    const { autoHideNavbar, path, title, children, id, className } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
 
     return (
       <Fragment>
-        <Navbar title={title} path={path} />
+        <Navbar autoHideNavbar={autoHideNavbar} />
         <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
-          }}
+          css={css`
+            margin-left: auto;
+            margin-right: auto;
+            max-width: ${rhythm(24)};
+          `}
         >
           <main
+            id={id}
             className={className}
             css={css`
               margin-top: ${rhythm(1.5)};

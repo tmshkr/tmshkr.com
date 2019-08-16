@@ -41,6 +41,7 @@ class BlogPostTemplate extends React.Component {
         className="blog-post"
         location={this.props.location}
         title={siteTitle}
+        autoHideNavbar={true}
       >
         <SEO
           title={post.frontmatter.title}

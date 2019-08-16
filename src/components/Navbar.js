@@ -62,43 +62,45 @@ function Navbar(props) {
   }, [])
 
   // autohide navbar
-  useEffect(() => {
-    window.onscroll = throttle(() => {
-      if (window.__isNavbarVisible) {
-        if (
-          // scrolling down
-          window.pageYOffset - prevPageYOffset > 50 &&
-          window.pageYOffset > 100
-        ) {
-          window.__isNavbarVisible = false
-          if (window.requestAnimationFrame) {
-            requestAnimationFrame(() => setNavbarVisible(false))
-          } else {
-            setNavbarVisible(false)
+  if (props.autoHideNavbar) {
+    useEffect(() => {
+      window.onscroll = throttle(() => {
+        if (window.__isNavbarVisible) {
+          if (
+            // scrolling down
+            window.pageYOffset - prevPageYOffset > 50 &&
+            window.pageYOffset > 100
+          ) {
+            window.__isNavbarVisible = false
+            if (window.requestAnimationFrame) {
+              requestAnimationFrame(() => setNavbarVisible(false))
+            } else {
+              setNavbarVisible(false)
+            }
+          }
+        } else {
+          if (
+            // scrolling up
+            prevPageYOffset - window.pageYOffset > 100 ||
+            window.pageYOffset <= 100
+          ) {
+            window.__isNavbarVisible = true
+            if (window.requestAnimationFrame) {
+              requestAnimationFrame(() => setNavbarVisible(true))
+            } else {
+              setNavbarVisible(true)
+            }
           }
         }
-      } else {
-        if (
-          // scrolling up
-          prevPageYOffset - window.pageYOffset > 100 ||
-          window.pageYOffset <= 100
-        ) {
-          window.__isNavbarVisible = true
-          if (window.requestAnimationFrame) {
-            requestAnimationFrame(() => setNavbarVisible(true))
-          } else {
-            setNavbarVisible(true)
-          }
-        }
-      }
-      prevPageYOffset = window.pageYOffset
-    }, 500)
+        prevPageYOffset = window.pageYOffset
+      }, 500)
 
-    return () => {
-      window.onscroll = null
-      prevPageYOffset = 0
-    }
-  }, [])
+      return () => {
+        window.onscroll = null
+        prevPageYOffset = 0
+      }
+    }, [])
+  }
 
   function changeTheme(mode) {
     if (mode === "dark") {

@@ -32,3 +32,10 @@ body.dark main.contact svg {
 body.light main.contact svg {
   fill: #000;
 }
+
+.line {
+  display: block;
+  border-top: 0.33rem solid #fff;
+  margin: 3rem auto;
+  width: 7rem;
+}

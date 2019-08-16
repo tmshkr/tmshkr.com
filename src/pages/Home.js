@@ -15,7 +15,7 @@ function Home(props) {
     })
   }
   return (
-    <div id="home">
+    <main id="home">
       <SEO />
       <Navbar />
       <div id="hello" className="full-page" onClick={() => scrollTo("bio")}>
@@ -36,7 +36,7 @@ function Home(props) {
         </p>
       </div>
       <Projects />
-    </div>
+    </main>
   )
 }
 

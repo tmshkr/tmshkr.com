@@ -7,48 +7,47 @@ import { rhythm, scale } from "../utils/typography"
 
 const query = graphql`
   {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    markdownRemark(fields: { slug: { eq: "/about/" } }) {
+    markdownRemark(fields: { slug: { regex: "/^/[^/]+/$/" } }) {
       html
       frontmatter {
         title
+      }
+      fields {
+        slug
       }
     }
   }
 `
 
-function About(props) {
+function Page(props) {
   const data = useStaticQuery(query)
   console.log(data)
-  const about = props.data.markdownRemark
+  const page = props.data.markdownRemark
 
   return (
-    <Layout className="about">
+    <Layout className="page">
       <SEO
-        title="About"
-        description={about.frontmatter.description || about.excerpt}
+        title={page.frontmatter.title}
+        description={page.frontmatter.description || page.excerpt}
       />
       <h1
         css={css`
           text-align: center;
         `}
       >
-        {about.frontmatter.title}
+        {page.frontmatter.title}
       </h1>
+      <span className="line"></span>
       <div
         className="html-content"
         css={css`
           margin: ${rhythm(0.5)} 0;
         `}
-        dangerouslySetInnerHTML={{ __html: about.html }}
+        dangerouslySetInnerHTML={{ __html: page.html }}
       />
       <hr />
     </Layout>
   )
 }
 
-export default About
+export default Page

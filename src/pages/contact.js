@@ -15,6 +15,7 @@ function Contact(props) {
     <Layout className="contact">
       <SEO title="Contact" />
       <h1>Contact</h1>
+      <span className="line"></span>
       <div
         className="html-content"
         css={css`

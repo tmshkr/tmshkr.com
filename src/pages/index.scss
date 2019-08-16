@@ -1,3 +1,5 @@
+@import "../utils/variables";
+
 body {
   a.blog-post-summary {
     display: block;
@@ -10,7 +12,6 @@ body {
 body.dark {
   background: #222;
   color: #fff;
-  $link: #00ffd5;
 
   a.blog-post-summary {
     color: #fff;
@@ -22,7 +23,7 @@ body.dark {
     }
     &:hover {
       h1 {
-        color: $link;
+        color: $dark-link;
       }
     }
   }
@@ -56,6 +57,7 @@ body.light {
 
 hr {
   background: #555;
+  margin: 3rem 0;
 }
 
 footer {
