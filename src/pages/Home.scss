@@ -3,8 +3,8 @@
   justify-self: center;
   text-align: center;
   margin: 0;
+  // margin-top: 5rem;
   align-self: start;
-  fill: #d0d0d0;
   background: none;
   border: none;
   outline: none;
@@ -35,7 +35,7 @@
 .full-page {
   height: 100vh;
   width: 100vw;
-  padding: 2em;
+  padding: 2rem;
   display: grid;
   align-content: center;
   justify-content: center;
@@ -52,7 +52,7 @@
   p {
     max-width: 800px;
     margin: 1em auto;
-    font-size: 1.1em;
+    font-size: 1.1rem;
   }
 
   > div {
@@ -60,31 +60,77 @@
     -webkit-scroll-snap-coordinate: 0% 0%;
   }
   #hello {
-    background: #111;
-    grid-template-rows: 6fr 5fr 5em;
+    grid-template-rows: 1fr 1fr 1fr;
     cursor: pointer;
   }
   h1.hero {
     margin: 0;
+    margin-top: 3rem;
     align-self: end;
     font-size: 72px;
-    text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4,
-      2px 1px 1px #5dabcd, 2px 3px 2px #378ab4, 3px 2px 2px #5dabcd;
   }
   #bio {
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #home {
+    h1.hero {
+      font-size: 20vw;
+    }
+    p {
+      font-size: 5vw;
+    }
+  }
+  #bio {
+    p:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+body.dark #home {
+  #hello {
+    background: #222;
+    // h1.hero {
+    //   text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4,
+    //     2px 1px 1px #5dabcd, 2px 3px 2px #378ab4, 3px 2px 2px #5dabcd;
+    // }
+    h1.hero {
+      $base-shadow-color: #378ab4;
+      text-shadow: 0 1px 0px $base-shadow-color,
+        1px 0 0px lighten($base-shadow-color, 10%),
+        1px 2px 1px $base-shadow-color, 2px 1px 1px $base-shadow-color,
+        2px 3px 2px $base-shadow-color,
+        3px 2px 2px lighten($base-shadow-color, 10%);
+    }
+    .arrow {
+      fill: #d0d0d0;
+    }
+  }
+  #bio {
     background: #0a1b43;
   }
 }
 
-// #root > #projects {
-//   position: fixed;
-// }
-
-@media (max-height: 500px) {
-  .app {
-    .full-page {
-      padding: 3em 1em 1em 2em;
+body.light #home {
+  #hello {
+    background: #cfd8dc;
+    h1.hero {
+      color: #455a64;
+      $base-shadow-color: #609a9f;
+      text-shadow: 0 1px 0px $base-shadow-color,
+        1px 0 0px lighten($base-shadow-color, 10%),
+        1px 2px 1px $base-shadow-color, 2px 1px 1px $base-shadow-color,
+        2px 3px 2px $base-shadow-color,
+        3px 2px 2px lighten($base-shadow-color, 10%);
     }
+    .arrow {
+      fill: #999;
+    }
+  }
+  #bio {
+    background: #b0bec5;
   }
 }

@@ -47,7 +47,9 @@ body.light {
       }
       color: $link;
       // $link-bg: #b3e5fc;
-      $link-bg: #80cbc4;
+      // $link-bg: #80cbc4;
+      // $link-bg: rgba(128, 203, 196, 0.5);
+      $link-bg: #a7d1cf;
       border-bottom: 3px solid $link-bg;
       box-shadow: inset 0 -2px 0 0 $link-bg;
       transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
@@ -65,6 +67,10 @@ body.light {
   }
 }
 
+// .gatsby-highlight {
+//   // overflow: scroll;
+// }
+
 .full-width {
   width: 100vw;
   margin: auto;
@@ -78,24 +84,44 @@ body.light {
     justify-content: center;
   }
 }
+@media screen and (max-width: 42rem) {
+  .gatsby-highlight {
+    width: 100vw;
+    margin: auto;
+    overflow: scroll;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+  }
+  pre,
+  code {
+    width: -webkit-max-content;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .gatsby-resp-image-wrapper {
+    width: 100vw;
+    margin: auto;
+    overflow: scroll;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+  }
+}
 
 ul.pagination {
   list-style: none;
   padding: 0;
-  margin: 0;
-  // display: flex;
-  // justify-content: space-between;
-  // flex-wrap: wrap;
+  margin: 3rem 0;
   li {
-    // flex: 1 0 auto;
     display: inline-block;
-    // &:nth-child(2) {
-    //   // display: block;
-    //   // border: 1px solid red;
-    //   text-align: center;
-    // }
     &:last-child {
-      // text-align: right;
+      text-align: right;
       float: right;
       margin-left: 1em;
     }

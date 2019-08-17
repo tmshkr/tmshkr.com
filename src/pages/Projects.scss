@@ -6,10 +6,10 @@
   p {
     a {
       $link: #00ffd5;
-      padding: 0.2em 0.4em 0.2em 0.3em;
+      padding: 0.33rem;
       // margin: 0 0.1em;
       color: $link;
-      $link-bg: #1f5775;
+      $link-bg: rgba(31, 87, 117, 0.5);
       background: $link-bg;
       transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
       &:hover {
@@ -26,8 +26,9 @@
       img {
         margin-bottom: 1rem;
       }
-      span {
+      span.project-title {
         display: block;
+        font-size: 1.1rem;
         font-family: sans-serif;
       }
     }

@@ -1,6 +1,6 @@
 body.light nav {
   background: #d0d0d0;
-  background: rgba(151, 170, 180, 0.5);
+  background: rgba(151, 170, 180, 0.75);
   a,
   #navbar-title {
     color: #333;
@@ -109,8 +109,7 @@ nav {
       padding: 0;
     }
 
-    #navbar-title,
-    .breadcrumb-path {
+    #navbar-title {
       margin: 0 1rem;
     }
 
@@ -137,14 +136,6 @@ nav {
         button {
           width: 100%;
           text-align: left;
-        }
-        a:hover,
-        a:focus,
-        a:active,
-        button:hover,
-        button:focus,
-        button:active {
-          background-color: #3b414e;
         }
       }
     }

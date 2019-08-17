@@ -1,14 +1,13 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 function ProjectThumbnail(props) {
   const handleClick = () => {
     if (window.location.pathname === "/") {
-      window.history.pushState({}, "", "/projects/")
+      window.history.pushState({}, "Projects | tmshkr", "/projects/")
     }
   }
 
-  console.log(props)
   const { title, thumb } = props.project.frontmatter
   const { slug } = props.project.fields
   return (

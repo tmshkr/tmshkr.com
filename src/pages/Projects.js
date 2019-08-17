@@ -4,13 +4,10 @@ import SEO from "../components/seo"
 import ProjectThumbnail from "../components/project-thumbnail"
 import { useStaticQuery, graphql } from "gatsby"
 import "./projects.scss"
-// import Layout from "../../components/layout"
 
 function Projects(props) {
   const data = useStaticQuery(query)
-  const { title } = data.site.siteMetadata
   const { nodes } = data.allMarkdownRemark
-  console.log(props)
   return (
     <Fragment>
       {props.path === "/projects/" && (

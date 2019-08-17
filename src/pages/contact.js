@@ -5,7 +5,7 @@ import { rhythm, scale } from "../utils/typography"
 import SEO from "../components/seo"
 import LinkedIn from "@fortawesome/fontawesome-free/svgs/brands/linkedin.svg"
 import Instagram from "@fortawesome/fontawesome-free/svgs/brands/instagram.svg"
-import Twitter from "@fortawesome/fontawesome-free/svgs/brands/twitter-square.svg"
+import Twitter from "@fortawesome/fontawesome-free/svgs/brands/twitter.svg"
 import GitHub from "@fortawesome/fontawesome-free/svgs/brands/github.svg"
 import Codepen from "@fortawesome/fontawesome-free/svgs/brands/codepen.svg"
 import "./contact.scss"
@@ -19,7 +19,7 @@ function Contact(props) {
       <div
         className="html-content"
         css={css`
-          margin: ${rhythm(1)};
+          margin: ${rhythm(0.5)} 0;
         `}
       >
         <p>Feel free to connect on social media:</p>

@@ -37,7 +37,9 @@ body.dark {
     text-align: left;
     white-space: pre;
     word-spacing: normal;
-    word-break: normal;
+    word-break: keep-all;
+    // overflow: scroll;
+    // white-space: nowrap;
 
     -moz-tab-size: 4;
     -o-tab-size: 4;
@@ -69,9 +71,9 @@ body.dark {
 
   /* Code blocks */
   pre[class*="language-"] {
-    padding: 1em;
+    padding: 2rem;
     margin: 0.5em 0;
-    overflow: auto;
+    overflow: scroll;
   }
 
   /* Inline code */

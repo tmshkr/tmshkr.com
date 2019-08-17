@@ -59,6 +59,16 @@ function Navbar(props) {
     }
     // setMobile(mobileQuery.matches)
     mobileQuery.addListener(callback)
+
+    const navLinks = document.querySelectorAll("nav li a")
+    navLinks.forEach(function(el) {
+      el.ontouchstart = function() {
+        this.style.backgroundColor = "rgba(64, 149, 191, 0.5)"
+      }
+      el.ontouchend = function() {
+        this.style.backgroundColor = ""
+      }
+    })
     return () => {
       mobileQuery.removeListener(callback)
     }
@@ -109,7 +119,7 @@ function Navbar(props) {
     if (e.target.id === "navbar-title") {
       return
     }
-    document.onclick = () => {
+    document.onclick = e => {
       document.onclick = null
       document.body.style.cursor = null
       openMenu(false)
