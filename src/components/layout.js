@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react"
+import React, { Fragment } from "react"
 import { css } from "@emotion/core"
 import Navbar from "./navbar"
 import { rhythm } from "../utils/typography"

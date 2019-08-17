@@ -13,7 +13,7 @@ function ProjectThumbnail(props) {
   return (
     <li className="project-thumbnail" onClick={handleClick}>
       <Link to={slug}>
-        <img className="thumbnail-image" src={thumb} />
+        <img className="thumbnail-image" alt={title} src={thumb} />
         <span className="project-title">{title}</span>
       </Link>
     </li>

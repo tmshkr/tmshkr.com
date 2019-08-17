@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import { css } from "@emotion/core"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 import SEO from "../components/seo"
 import LinkedIn from "@fortawesome/fontawesome-free/svgs/brands/linkedin.svg"
 import Instagram from "@fortawesome/fontawesome-free/svgs/brands/instagram.svg"

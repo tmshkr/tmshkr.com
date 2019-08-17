@@ -4,21 +4,6 @@ import Play from "@fortawesome/fontawesome-free/svgs/solid/play.svg"
 import "./video-player.scss"
 
 class VideoPlayer extends PureComponent {
-  constructor(props) {
-    super(props)
-    // const preload = document.getElementById("video-preload");
-    // if (preload) {
-    //   preload.href = props.video;
-    // } else {
-    //   const link = document.createElement("link");
-    //   link.id = "video-preload";
-    //   link.rel = "preload";
-    //   link.as = "fetch";
-    //   link.href = props.video;
-    //   document.head.appendChild(link);
-    // }
-  }
-
   state = {
     playing: false,
   }
