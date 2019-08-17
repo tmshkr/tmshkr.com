@@ -1,27 +1,11 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
-const query = graphql`
-  {
-    markdownRemark(fields: { slug: { regex: "/^/[^/]+/$/" } }) {
-      html
-      frontmatter {
-        title
-      }
-      fields {
-        slug
-      }
-    }
-  }
-`
-
 function Page(props) {
-  const data = useStaticQuery(query)
-  console.log(data)
   const page = props.data.markdownRemark
 
   return (
@@ -51,3 +35,14 @@ function Page(props) {
 }
 
 export default Page
+
+export const pageQuery = graphql`
+  query PageBySlug($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+      }
+    }
+  }
+`

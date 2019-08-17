@@ -5,6 +5,21 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const project = path.resolve(`./src/templates/project.js`)
+  const page = path.resolve(`./src/templates/page.js`)
+
+  createPages(
+    page,
+    `{
+    allMarkdownRemark(filter: {fields: {slug: {regex: "/^(?:(?!blog|projects).)+$/"}}}) {
+      nodes {
+        fields {
+          slug
+        }
+      }
+    }
+  }
+  `
+  )
 
   createCollection(
     blogPost,
@@ -52,7 +67,25 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 `
   )
-  // async function createPages(component, query) {}
+  async function createPages(component, query) {
+    const result = await graphql(query)
+
+    if (result.errors) {
+      throw result.errors
+    }
+
+    const { nodes } = result.data.allMarkdownRemark
+
+    nodes.forEach(node => {
+      createPage({
+        path: node.fields.slug,
+        component,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    })
+  }
 
   async function createCollection(component, query) {
     const result = await graphql(query)
