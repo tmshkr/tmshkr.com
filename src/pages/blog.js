@@ -1,6 +1,5 @@
 import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
@@ -9,13 +8,10 @@ import "./blog.scss"
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
-    // console.log(this.props.location)
-
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout>
         <SEO title="Blog" />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
@@ -62,11 +58,6 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allMarkdownRemark(
       filter: { fields: { slug: { regex: "/^/blog//" } } }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -80,7 +71,6 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            description
           }
         }
       }

@@ -52,6 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 `
   )
+  // async function createPages(component, query) {}
 
   async function createCollection(component, query) {
     const result = await graphql(query)

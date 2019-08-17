@@ -3,17 +3,10 @@ import { Link } from "gatsby"
 import { throttle } from "lodash"
 import classNames from "classnames"
 import { rhythm } from "../utils/typography"
-// import BreadcrumbPath from "./breadcrumb-path"
-import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 import Bars from "@fortawesome/fontawesome-free/svgs/solid/bars.svg"
-// import Sun from "@fortawesome/fontawesome-free/svgs/solid/sun.svg"
 import Moon from "@fortawesome/fontawesome-free/svgs/solid/moon.svg"
 import "./navbar.scss"
-
-const Container = styled.div`
-  max-width: ${rhythm(24)};
-  padding: 0 ${rhythm(3 / 4)};
-`
 
 let prevPageYOffset = 0
 
@@ -49,6 +42,16 @@ function Navbar(props) {
       <Moon id="moon" viewBox="-64 -64 640 640" />
     </button>
   )
+
+  function changeTheme(mode) {
+    if (mode === "dark") {
+      window.__setPreferredTheme("dark")
+      setDarkMode(true)
+    } else {
+      window.__setPreferredTheme("light")
+      setDarkMode(false)
+    }
+  }
 
   useEffect(() => {
     function callback(e) {
@@ -102,16 +105,6 @@ function Navbar(props) {
     }, [])
   }
 
-  function changeTheme(mode) {
-    if (mode === "dark") {
-      window.__setPreferredTheme("dark")
-      setDarkMode(true)
-    } else {
-      window.__setPreferredTheme("light")
-      setDarkMode(false)
-    }
-  }
-
   function handleClickCapture(e) {
     if (e.target.id === "navbar-title") {
       return
@@ -135,7 +128,13 @@ function Navbar(props) {
       className={classes}
       onClickCapture={!isMenuOpen && isMobile ? handleClickCapture : null}
     >
-      <Container className="container">
+      <div
+        className="container"
+        css={css`
+          max-width: ${rhythm(24)};
+          padding: 0 ${rhythm(3 / 4)};
+        `}
+      >
         <Link id="navbar-title" to="/">
           tmshkr
         </Link>
@@ -159,7 +158,7 @@ function Navbar(props) {
           </li>
           {!isMobile && <li>{toggleButton}</li>}
         </ul>
-      </Container>
+      </div>
     </nav>
   )
 }

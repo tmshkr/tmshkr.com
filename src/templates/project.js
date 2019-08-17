@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BreadcrumbPath from "../components/breadcrumb-path"
 import VideoPlayer from "../components/video-player"
+import ExternalLink from "@fortawesome/fontawesome-free/svgs/solid/external-link-alt.svg"
 // import { rhythm, scale } from "../utils/typography"
 import "./project.scss"
 
@@ -12,11 +13,10 @@ class ProjectTemplate extends React.Component {
   render() {
     const project = this.props.data.markdownRemark
     const { video, url } = project.frontmatter
-    // const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout className="project" path={this.props.path}>
+      <Layout className="project">
         <SEO
           title={project.frontmatter.title}
           description={project.frontmatter.description || project.excerpt}
@@ -26,11 +26,40 @@ class ProjectTemplate extends React.Component {
         <h2
           css={css`
             margin: 1em;
-            text-align: center;
           `}
         >
-          {project.frontmatter.title}
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            css={css`
+              padding: 0.11em 0.22em 0.22em;
+              border-radius: 0.11em;
+              body.dark & {
+                color: #fff;
+                fill: #fff;
+                &:hover {
+                  background: rgba(187, 222, 251, 0.33);
+                }
+              }
+              body.light & {
+                color: #000;
+                fill: #000;
+                &:hover {
+                  background: rgba(96, 125, 139, 0.33);
+                }
+              }
+
+              svg {
+                width: 1rem;
+                height: auto;
+              }
+            `}
+          >
+            {project.frontmatter.title} <ExternalLink />
+          </a>
         </h2>
+
         <div
           className="html-content"
           css={css`

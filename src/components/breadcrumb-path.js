@@ -13,7 +13,7 @@ function BreadcrumbPath(props) {
       css={css`
         margin-bottom: 1rem;
         body.dark & a {
-          color: #28e8ff;
+          color: #40b2bf;
         }
         body.light & a {
           color: #003269;
