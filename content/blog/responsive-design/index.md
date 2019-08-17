@@ -33,7 +33,7 @@ there isn't much of a reason to avoid using these extremely useful features that
 development easier, better, and more concise.
 
 Centering content, for example, once involved all sorts of strange hacks, like negative margins and transforms
---- vertical centering was frustrating if not impossible. Now all one needs to do is
+-- vertical centering was frustrating if not impossible. Now all one needs to do is
 merely `display` the parent container as a `grid` in order to `justify` and `align`
 content to the `center`.
 
@@ -80,12 +80,12 @@ because they make text easier to read, especially when reading long passages
 of text on a screen all day. For some reason, black text on a blinding-white screen
 became the norm for websites and user interfaces more broadly. Perhaps the designers
 of word processors and the first websites tried to emulate the experience of reading printed text on white paper
---- but as anyone who has spent enough time staring at a computer screen knows,
+-- but as anyone who has spent enough time staring at a computer screen knows,
 this can quickly lead to eyestrain.
 
 Technology empowers users with a potentially limitless amount of ways to do things,
 so there is no real reason, for example, to have a website with a light background
-instead of a dark one --- besides the norms that have been inherited and the preferences
+instead of a dark one -- besides the norms that have been inherited and the preferences
 of the users. This seemingly limitless freedom can be both a blessing and a curse:
 when it helps, a novel solution to a problem can enrich our lives in ways we could
 not imagine before, but when there is no obvious solution, the limitless possibilities

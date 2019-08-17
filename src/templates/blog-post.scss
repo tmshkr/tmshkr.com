@@ -65,6 +65,20 @@ body.light {
   }
 }
 
+.full-width {
+  width: 100vw;
+  margin: auto;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  pre {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 ul.pagination {
   list-style: none;
   padding: 0;
@@ -83,7 +97,7 @@ ul.pagination {
     &:last-child {
       // text-align: right;
       float: right;
-      // margin-left: 1em;
+      margin-left: 1em;
     }
   }
 }

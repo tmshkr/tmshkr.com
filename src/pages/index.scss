@@ -1,57 +1,24 @@
-@import "../utils/variables";
-
-body {
-  a.blog-post-summary {
-    display: block;
-    h1 {
-      transition: all 0.5s;
-    }
-  }
-}
+// @import "../utils/variables";
 
 body.dark {
   background: #222;
   color: #fff;
-
-  a.blog-post-summary {
-    color: #fff;
-    time {
-      color: #d0d0d0;
-    }
-    h1 {
-      color: #03a9f4;
-    }
-    &:hover {
-      h1 {
-        color: $dark-link;
-      }
-    }
+  .line {
+    display: block;
+    border-top: 0.33rem solid #fff;
+    margin: 3rem auto;
+    width: 7rem;
   }
 }
 
 body.light {
   background: #cfd8dc;
   color: #000;
-  a.blog-post-summary {
-    time {
-      color: #333;
-    }
-    p {
-      color: #000;
-    }
-    &:hover {
-      h1 {
-        color: #009688;
-      }
-    }
-    // h1 {
-    //   color: #03a9f4;
-    // }
-    // &:hover {
-    //   h1 {
-    //     color: #2de5b7;
-    //   }
-    // }
+  .line {
+    display: block;
+    border-top: 0.33rem solid #000;
+    margin: 3rem auto;
+    width: 7rem;
   }
 }
 

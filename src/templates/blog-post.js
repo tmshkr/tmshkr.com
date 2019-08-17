@@ -29,6 +29,16 @@ class BlogPostTemplate extends React.Component {
         }
       })
     }
+
+    function isOverflowingX(el) {
+      return el.clientWidth < el.scrollWidth
+    }
+    const codeViews = document.querySelectorAll(".gatsby-highlight pre")
+    codeViews.forEach(function(el) {
+      if (isOverflowingX(el)) {
+        el.parentElement.classList.add("full-width")
+      }
+    })
   }
 
   render() {

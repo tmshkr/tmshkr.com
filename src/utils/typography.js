@@ -3,10 +3,10 @@ import Wordpress2016 from "typography-theme-wordpress-2016"
 
 Wordpress2016.overrideThemeStyles = () => {
   return {
-    "a.gatsby-resp-image-link": {
+    "a.gatsby-resp-image-link, a": {
       boxShadow: `none`,
     },
-    "h1, h2, h3, h4, h5, h6, time.date, nav": {
+    "h1, h2, h3, h4, h5, h6, time.date, nav, .breadcrumb-path": {
       fontFamily: `"Helvetica Neue", "Helvetica", "sans-serif"`,
     },
   }

@@ -1,25 +1,22 @@
-// nav * {
-//   outline: 1px solid #0ff;
-// }
 body.light nav {
   background: #d0d0d0;
-  // background: rgba(96, 125, 139, 0.5);
-  background: rgba(151, 170, 180, 0.85);
+  background: rgba(151, 170, 180, 0.5);
   a,
   #navbar-title {
     color: #333;
   }
   svg {
     fill: #333;
+    &#moon {
+      fill: none;
+      stroke: #333;
+    }
   }
 }
 
 body.dark nav {
   background: #333;
-  // background: rgba(96, 125, 139, 0.5);
-  // background: rgba(65, 79, 87, 0.85);
-  // background: rgba(33, 33, 33, 0.7);
-  background: rgba(17, 17, 17, 0.33);
+  background: rgba(17, 17, 17, 0.5);
   a,
   #navbar-title {
     color: #fff;
@@ -30,7 +27,6 @@ body.dark nav {
 }
 
 nav {
-  color: #fff;
   position: fixed;
   width: 100vw;
   top: 0;
@@ -44,9 +40,6 @@ nav {
   &.is-hidden {
     transform: translateY(-100%);
   }
-
-  // transition: transform 0.5s;
-  // @include transition(transform 0.5s);
   > div {
     margin: 0 auto;
     display: flex;
@@ -55,41 +48,28 @@ nav {
     align-items: center;
   }
 
-  #navbar-title,
-  .breadcrumb-path {
-    padding: 0.5em 0;
+  #navbar-title {
+    padding: 0.5rem 0;
   }
 
   button {
     display: none;
-    padding: 0 1em;
+    padding: 0 1rem;
     line-height: 0;
   }
 
   a {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     box-shadow: none;
   }
 
   svg {
-    width: 1.1em;
-    height: 1.1em;
-
-    // &#sun {
-    //   fill: #ffa726;
-    //   stroke: #ff5722;
-    //   stroke-width: 11;
-    // }
-    // &#moon {
-    //   fill: #ffcc80;
-    //   stroke: #000;
-    //   stroke-width: 11;
-    // }
+    width: 1.3rem;
+    height: 1.3rem;
+    stroke-width: 2.2rem;
   }
 
   ul {
-    // position: absolute;
-    // right: 0;
     text-align: left;
     padding: 0;
     margin: 0;
@@ -101,7 +81,7 @@ nav {
       margin: 0;
       a,
       button {
-        padding: 0.5em;
+        padding: 0.5rem;
         display: block;
         cursor: pointer;
       }
@@ -109,9 +89,7 @@ nav {
         background: none;
         border: none;
         outline: none;
-        // padding-left: 0;
-        // padding-right: 0;
-        padding: 0.5em;
+        padding: 0.5rem;
         display: flex;
       }
     }
@@ -133,17 +111,15 @@ nav {
 
     #navbar-title,
     .breadcrumb-path {
-      margin: 0 1em;
+      margin: 0 1rem;
     }
 
     button {
-      // position: absolute;
       display: block;
       cursor: pointer;
       background: none;
       outline: none;
       border: none;
-      // right: 0;
     }
 
     ul {
@@ -156,12 +132,11 @@ nav {
       li {
         display: block;
         a {
-          padding: 0.5em 1em;
+          padding: 0.5rem 1rem;
         }
         button {
           width: 100%;
           text-align: left;
-          // padding: 0.5em 1em;
         }
         a:hover,
         a:focus,
@@ -173,9 +148,6 @@ nav {
         }
       }
     }
-    // &.menu-closed ul {
-    //   display: none;
-    // }
 
     &.menu-open ul {
       display: block;

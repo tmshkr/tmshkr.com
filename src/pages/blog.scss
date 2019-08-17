@@ -1,0 +1,41 @@
+@import "../utils/variables";
+
+a.blog-post-summary {
+  display: block;
+  h1 {
+    transition: all 0.5s;
+  }
+}
+
+body.dark {
+  a.blog-post-summary {
+    color: #fff;
+    time {
+      color: #d0d0d0;
+    }
+    h1 {
+      color: #03a9f4;
+    }
+    &:hover {
+      h1 {
+        color: $dark-link;
+      }
+    }
+  }
+}
+
+body.light {
+  a.blog-post-summary {
+    time {
+      color: #333;
+    }
+    p {
+      color: #000;
+    }
+    &:hover {
+      h1 {
+        color: #009688;
+      }
+    }
+  }
+}

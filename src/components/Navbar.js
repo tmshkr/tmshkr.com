@@ -6,7 +6,7 @@ import { rhythm } from "../utils/typography"
 // import BreadcrumbPath from "./breadcrumb-path"
 import styled from "@emotion/styled"
 import Bars from "@fortawesome/fontawesome-free/svgs/solid/bars.svg"
-import Sun from "@fortawesome/fontawesome-free/svgs/solid/sun.svg"
+// import Sun from "@fortawesome/fontawesome-free/svgs/solid/sun.svg"
 import Moon from "@fortawesome/fontawesome-free/svgs/solid/moon.svg"
 import "./navbar.scss"
 
@@ -39,14 +39,14 @@ function Navbar(props) {
     initialState.isNavbarVisible
   )
 
-  const sunButton = (
-    <button title="Change to Light Mode" onClick={() => changeTheme("light")}>
-      <Sun id="sun" />
-    </button>
-  )
-  const moonButton = (
-    <button title="Change to Dark Mode" onClick={() => changeTheme("dark")}>
-      <Moon id="moon" viewBox="-20 -20 540 540" />
+  const toggleButton = (
+    <button
+      className="toggle-button"
+      onClick={
+        isDarkMode ? () => changeTheme("light") : () => changeTheme("dark")
+      }
+    >
+      <Moon id="moon" viewBox="-64 -64 640 640" />
     </button>
   )
 
@@ -141,11 +141,7 @@ function Navbar(props) {
         </Link>
 
         {isMenuOpen && isMobile ? (
-          isDarkMode ? (
-            sunButton
-          ) : (
-            moonButton
-          )
+          toggleButton
         ) : (
           <button aria-label="Open Menu">
             <Bars />
@@ -161,7 +157,7 @@ function Navbar(props) {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          {!isMobile && <li>{isDarkMode ? sunButton : moonButton}</li>}
+          {!isMobile && <li>{toggleButton}</li>}
         </ul>
       </Container>
     </nav>
