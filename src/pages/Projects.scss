@@ -1,5 +1,5 @@
 #projects {
-  color: #fff;
+  color: inherit;
   a {
     box-shadow: none;
   }
@@ -22,7 +22,7 @@
     max-width: 1200px;
     a {
       display: block;
-      color: #fff;
+      color: inherit;
       img {
         margin-bottom: 1rem;
       }
@@ -43,17 +43,6 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 3em;
-  background: #0d47a1; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #bf8640,
-    #0d47a1
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #bf8640,
-    #0d47a1
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   ul {
     display: flex;
@@ -69,6 +58,34 @@
   footer {
     margin: 3em auto;
   }
+}
+
+body.dark #projects {
+  background: #0a1b43; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #bf8640,
+    #0a1b43
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #bf8640,
+    #0a1b43
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body.light #projects {
+  background: #90acee; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #bf8640,
+    #90acee
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #bf8640,
+    #90acee
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 @media (max-width: 800px) {

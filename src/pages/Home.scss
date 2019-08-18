@@ -4,7 +4,7 @@
   text-align: center;
   margin: 0;
   // margin-top: 5rem;
-  align-self: start;
+  align-self: center;
   background: none;
   border: none;
   outline: none;
@@ -60,7 +60,7 @@
     -webkit-scroll-snap-coordinate: 0% 0%;
   }
   #hello {
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 3fr 2fr 3fr;
     cursor: pointer;
   }
   h1.hero {
@@ -111,15 +111,30 @@ body.dark #home {
   }
   #bio {
     background: #0a1b43;
+    // background: #0d47a1;
+    // background: #112d6f;
+    background: #222; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to top,
+      #0a1b43,
+      #222
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to top,
+      #0a1b43,
+      #222
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 }
 
 body.light #home {
   #hello {
     background: #cfd8dc;
+
     h1.hero {
       color: #455a64;
-      $base-shadow-color: #609a9f;
+      // $base-shadow-color: #609a9f;
+      $base-shadow-color: #b3a99d;
       text-shadow: 0 1px 0px $base-shadow-color,
         1px 0 0px lighten($base-shadow-color, 10%),
         1px 2px 1px $base-shadow-color, 2px 1px 1px $base-shadow-color,
@@ -127,10 +142,26 @@ body.light #home {
         3px 2px 2px lighten($base-shadow-color, 10%);
     }
     .arrow {
-      fill: #999;
+      fill: #79878c;
     }
   }
   #bio {
-    background: #b0bec5;
+    // background: #b0bec5;
+    // background: #8bbad0;
+    // background: #c7c2ba;
+    // background: #9fb3df;
+    background: #bfae99;
+
+    background: #cfd8dc; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to top,
+      #90acee,
+      #cfd8dc
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to top,
+      #90acee,
+      #cfd8dc
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 }

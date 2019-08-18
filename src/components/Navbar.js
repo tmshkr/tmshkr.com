@@ -135,6 +135,7 @@ function Navbar(props) {
 
   return (
     <nav
+      id="navbar"
       className={classes}
       onClickCapture={!isMenuOpen && isMobile ? handleClickCapture : null}
     >
@@ -153,7 +154,7 @@ function Navbar(props) {
           toggleButton
         ) : (
           <button aria-label="Open Menu">
-            <Bars />
+            <Bars id="bars" />
           </button>
         )}
         <ul>

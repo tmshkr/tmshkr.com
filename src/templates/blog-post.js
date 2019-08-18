@@ -43,16 +43,10 @@ class BlogPostTemplate extends React.Component {
 
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout
-        className="blog-post"
-        location={this.props.location}
-        title={siteTitle}
-        autoHideNavbar={true}
-      >
+      <Layout className="blog-post" autoHideNavbar={true}>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
@@ -85,8 +79,6 @@ class BlogPostTemplate extends React.Component {
             marginBottom: rhythm(1),
           }}
         />
-        {/* <Bio /> */}
-
         <ul className="pagination">
           <li>
             {previous && (

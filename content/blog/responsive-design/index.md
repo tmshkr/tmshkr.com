@@ -47,7 +47,7 @@ content to the `center`.
 }
 </style>
 
-<div class="perfect-center full-width-mobile">
+<div class="perfect-center full-width">
 Perfectly Centered
 </div>
 
