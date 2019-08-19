@@ -75,7 +75,7 @@ function Contact(props) {
           &#101;m&#97;i&#108;
         </a>{" "}
         me and subscribe to my{" "}
-        <a rel="noopener noreferrer" target="_blank" href="/feed.xml">
+        <a rel="noopener noreferrer" target="_blank" href="/rss.xml">
           RSS feed
         </a>
         .
