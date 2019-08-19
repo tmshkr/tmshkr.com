@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
   createPages(
     page,
     `{
-    allMarkdownRemark(filter: {fields: {slug: {regex: "/^(?:(?!blog|projects).)+$/"}}}) {
+    allMarkdownRemark(filter: {fields: {slug: {glob: "/*/"}}}) {
       nodes {
         fields {
           slug

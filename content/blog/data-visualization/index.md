@@ -1,7 +1,7 @@
 ---
 title: "Data Visualization"
 subtitle: "with D3.js"
-scripts: [["https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js", "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd"], ['gdp.js', "sha384-t0+qGnjixk2g7n49JRle9Ebcoir6hFIL7n5DVhLS41KcSsu/Y1wdILbHSGuOU4fD"]]
+scripts: [["https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js", "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd"], ['gdp.js', "sha384-pLdH5L2059XONSo6+nU45ipY3rOLMWQiY/V8pMfgMMoP+iMz+bGQlA7azKqpjcRl"]]
 date: "2018-10-24"
 ---
 
@@ -21,15 +21,18 @@ as demonstrated in the chart below, will likely continue to persist in the futur
 #gdp {
   text-align: center;
   font-family: sans-serif;
-  color: #fff;
 }
 
 #gdp svg {
   transform: translateX(-40px);
 }
 
-rect.bar {
+body.dark rect.bar {
   fill: #007f80;
+}
+
+body.light rect.bar {
+  fill: #70afb2;
 }
 
 #tooltip {
@@ -38,6 +41,7 @@ rect.bar {
   text-align: center;
   padding: 0.5em;
   white-space: nowrap;
+  color: #fff;
   background-color: #00f;
   visibility: hidden;
   opacity: 0;

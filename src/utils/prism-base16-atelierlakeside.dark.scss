@@ -8,22 +8,22 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
 
 */
 body.dark {
-  $base00: #131f25;
-  $base01: #1f292e;
-  $base02: #516d7b;
-  $base03: #5a7b8c;
-  $base04: #7195a8;
-  $base05: #7ea2b4;
-  $base06: #c1e4f6;
-  $base07: #ebf8ff;
-  $base08: #d22d72;
-  $base09: #935c25;
-  $base0a: #8a8a0f;
-  $base0b: #568c3b;
-  $base0c: #2d8f6f;
-  $base0d: #257fad;
-  $base0e: #5d5db1;
-  $base0f: #b72dd2;
+  $base00: scale-color(#09151b, $hue: 0, $saturation: 0, $lightness: 0);
+  $base01: scale-color(#1f292e, $hue: 0, $saturation: 0, $lightness: 0);
+  $base02: scale-color(#516d7b, $hue: 0, $saturation: 0, $lightness: 0);
+  $base03: scale-color(#5a7b8c, $hue: 0, $saturation: 0, $lightness: 0);
+  $base04: scale-color(#7195a8, $hue: 0, $saturation: 0, $lightness: 0);
+  $base05: scale-color(#7ea2b4, $hue: 0, $saturation: 0, $lightness: 50%);
+  $base06: scale-color(#c1e4f6, $hue: 0, $saturation: 0, $lightness: 0);
+  $base07: scale-color(#ebf8ff, $hue: 0, $saturation: 0, $lightness: 0);
+  $base08: scale-color(#d22d72, $hue: 0, $saturation: 0, $lightness: 0);
+  $base09: scale-color(#935c25, $hue: 0, $saturation: 25%, $lightness: 25%);
+  $base0a: scale-color(#8a8a0f, $hue: 0, $saturation: 50%, $lightness: 50%);
+  $base0b: scale-color(#568c3b, $hue: 0, $saturation: 25%, $lightness: 25%);
+  $base0c: scale-color(#2d8f6f, $hue: 0, $saturation: 25%, $lightness: 25%);
+  $base0d: scale-color(#257fad, $hue: 0, $saturation: 0, $lightness: 0);
+  $base0e: scale-color(#5d5db1, $hue: 0, $saturation: 50%, $lightness: 50%);
+  $base0f: scale-color(#b72dd2, $hue: 0, $saturation: 0, $lightness: 0);
 
   code[class*="language-"],
   pre[class*="language-"] {

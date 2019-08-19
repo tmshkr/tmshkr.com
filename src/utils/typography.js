@@ -7,7 +7,7 @@ Wordpress2016.overrideThemeStyles = () => {
       boxShadow: `none`,
     },
     "h1, h2, h3, h4, h5, h6, time.date, nav, .breadcrumb-path": {
-      fontFamily: `"Helvetica Neue", "Helvetica", "sans-serif"`,
+      fontFamily: `"Helvetica Neue", Helvetica, Arial, sans-serif`,
     },
   }
 }

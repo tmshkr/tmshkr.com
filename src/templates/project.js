@@ -87,14 +87,14 @@ function ProjectTemplate(props) {
       <ul className="pagination">
         <li>
           {previous && (
-            <Link to={previous.fields.slug} rel="prev">
+            <Link className="project-link" to={previous.fields.slug} rel="prev">
               ← {previous.frontmatter.title}
             </Link>
           )}
         </li>
         <li>
           {next && (
-            <Link to={next.fields.slug} rel="next">
+            <Link className="project-link" to={next.fields.slug} rel="next">
               {next.frontmatter.title} →
             </Link>
           )}

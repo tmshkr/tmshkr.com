@@ -1,22 +1,26 @@
+#projects p a,
+body.light main ul.pagination a.project-link,
+body.dark main ul.pagination a.project-link {
+  // $link: #00ffd5;
+  // $link: #00ffd5;
+  $link: #20dfbf;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.11rem;
+  color: $link;
+  $link-bg: rgba(31, 87, 117, 0.25);
+  background: $link-bg;
+  transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+  &:hover {
+    background: lighten($link-bg, 15%);
+  }
+}
+
 #projects {
   color: inherit;
-  a {
-    box-shadow: none;
-  }
-  p {
-    a {
-      $link: #00ffd5;
-      padding: 0.33rem;
-      // margin: 0 0.1em;
-      color: $link;
-      $link-bg: rgba(31, 87, 117, 0.5);
-      background: $link-bg;
-      transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
-      &:hover {
-        background: lighten($link-bg, 15%);
-      }
-    }
-  }
+  // a {
+  //   box-shadow: none;
+  // }
+
   ul {
     margin: 0 auto;
     max-width: 1200px;

@@ -11,13 +11,9 @@
 
 body.dark {
   main {
-    div.html-content a,
-    ul.pagination a {
-      p.date {
-        color: #d0d0d0;
-      }
+    $link-bg: #1f5775;
+    div.html-content a {
       color: $dark-link;
-      $link-bg: #1f5775;
       border-bottom: 3px solid $link-bg;
       box-shadow: inset 0 -2px 0 0 $link-bg;
       transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
@@ -25,10 +21,9 @@ body.dark {
         background-color: $link-bg;
       }
       code {
-        transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
         border-bottom: 5px solid $link-bg;
         &:hover {
-          // border-top: 3px solid $link-bg;
+          border-top: 3px solid $link-bg;
           background: $link-bg;
         }
       }
@@ -38,8 +33,14 @@ body.dark {
       border-left: 0.32813rem solid rgba(99, 99, 99, 0.7);
     }
     ul.pagination a {
-      // filter: brightness(0.85);
-      filter: hue-rotate(33deg);
+      color: $dark-link;
+      background-color: transparentize($link-bg, 0.5);
+      padding: 0.33rem;
+      border-radius: 0.11rem;
+      transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+      &:hover {
+        background: lighten($link-bg, 15%);
+      }
     }
   }
 }
@@ -47,17 +48,10 @@ body.dark {
 body.light {
   // $link: #01579b;
   $link: #1a237e;
+  $link-bg: #a7d1cf;
   main {
-    div.html-content a,
-    ul.pagination a {
-      p.date {
-        color: #d0d0d0;
-      }
+    div.html-content a {
       color: $link;
-      // $link-bg: #b3e5fc;
-      // $link-bg: #80cbc4;
-      // $link-bg: rgba(128, 203, 196, 0.5);
-      $link-bg: #a7d1cf;
       border-bottom: 3px solid $link-bg;
       box-shadow: inset 0 -2px 0 0 $link-bg;
       transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
@@ -65,10 +59,8 @@ body.light {
         background-color: $link-bg;
       }
       code {
-        transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
         border-bottom: 5px solid $link-bg;
         &:hover {
-          // border-top: 3px solid $link-bg;
           background: $link-bg;
         }
       }
@@ -78,14 +70,15 @@ body.light {
       border-left: 0.32813rem solid rgba(99, 99, 99, 0.7);
     }
     ul.pagination a {
-      filter: hue-rotate(-33deg);
+      color: $link;
+      background-color: transparentize($link-bg, 0.5);
+      transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+      &:hover {
+        background: lighten($link-bg, 15%);
+      }
     }
   }
 }
-
-// .gatsby-highlight {
-//   // overflow: scroll;
-// }
 
 .full-width {
   width: 100vw;
@@ -101,7 +94,8 @@ body.light {
   }
 }
 @media screen and (max-width: 42rem) {
-  .gatsby-highlight {
+  .gatsby-highlight,
+  .mobile-full-width {
     width: 100vw;
     margin: auto;
     overflow: scroll;
@@ -111,10 +105,9 @@ body.light {
     margin-left: -50vw !important;
     margin-right: -50vw !important;
   }
-  pre,
-  code {
-    width: 100%;
-    // width: -webkit-max-content;
+  pre {
+    min-width: 100vw;
+    width: max-content;
   }
 }
 
@@ -137,10 +130,16 @@ ul.pagination {
   margin: 3rem 0;
   li {
     display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.11rem;
     &:last-child {
       text-align: right;
       float: right;
       margin-left: 1em;
+    }
+    a {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.11rem;
     }
   }
 }
