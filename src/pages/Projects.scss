@@ -61,31 +61,15 @@
 }
 
 body.dark #projects {
-  background: #0a1b43; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #bf8640,
-    #0a1b43
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #bf8640,
-    #0a1b43
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #0a1b43;
+  background: -webkit-linear-gradient(to top, #bf8640, #0a1b43);
+  background: linear-gradient(to top, #bf8640, #0a1b43);
 }
 
 body.light #projects {
-  background: #90acee; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #bf8640,
-    #90acee
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #bf8640,
-    #90acee
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #90acee;
+  background: -webkit-linear-gradient(to top, #bf8640, #6697cc);
+  background: linear-gradient(to top, #bf8640, #6697cc);
 }
 
 @media (max-width: 800px) {

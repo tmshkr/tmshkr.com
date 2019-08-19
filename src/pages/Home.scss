@@ -92,7 +92,7 @@
 
 body.dark #home {
   #hello {
-    background: #222;
+    background: #111;
     // h1.hero {
     //   text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4,
     //     2px 1px 1px #5dabcd, 2px 3px 2px #378ab4, 3px 2px 2px #5dabcd;
@@ -110,20 +110,12 @@ body.dark #home {
     }
   }
   #bio {
-    background: #0a1b43;
+    // background: #0a1b43;
     // background: #0d47a1;
     // background: #112d6f;
-    background: #222; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to top,
-      #0a1b43,
-      #222
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to top,
-      #0a1b43,
-      #222
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #111;
+    background: -webkit-linear-gradient(to top, #0a1b43, #111);
+    background: linear-gradient(to top, #0a1b43, #111);
   }
 }
 
@@ -152,16 +144,8 @@ body.light #home {
     // background: #9fb3df;
     background: #bfae99;
 
-    background: #cfd8dc; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to top,
-      #90acee,
-      #cfd8dc
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to top,
-      #90acee,
-      #cfd8dc
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #cfd8dc;
+    background: -webkit-linear-gradient(to top, #6697cc, #cfd8dc);
+    background: linear-gradient(to top, #6697cc, #cfd8dc);
   }
 }

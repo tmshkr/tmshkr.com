@@ -1,29 +1,29 @@
 /*
 
-Name:       Base16 harmonic16 Dark
-Author:     Jannik Siebert (https://github.com/janniks)
+Name:       Base16 Atelier Lakeside Dark
+Author:     Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/lakeside/)
 
 Prism template by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/prism/)
 Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
 
 */
 body.dark {
-  $base00: #0b1c2c;
-  $base01: #223b54;
-  $base02: #405c79;
-  $base03: #627e99;
-  $base04: #aabcce;
-  $base05: #cbd6e2;
-  $base06: #e5ebf1;
-  $base07: #f7f9fb;
-  $base08: #bf8b56;
-  $base09: #bfbf56;
-  $base0a: #8bbf56;
-  $base0b: #56bf8b;
-  $base0c: #568bbf;
-  $base0d: #8b56bf;
-  $base0e: #bf568b;
-  $base0f: #bf5656;
+  $base00: #131f25;
+  $base01: #1f292e;
+  $base02: #516d7b;
+  $base03: #5a7b8c;
+  $base04: #7195a8;
+  $base05: #7ea2b4;
+  $base06: #c1e4f6;
+  $base07: #ebf8ff;
+  $base08: #d22d72;
+  $base09: #935c25;
+  $base0a: #8a8a0f;
+  $base0b: #568c3b;
+  $base0c: #2d8f6f;
+  $base0d: #257fad;
+  $base0e: #5d5db1;
+  $base0f: #b72dd2;
 
   code[class*="language-"],
   pre[class*="language-"] {
@@ -37,9 +37,7 @@ body.dark {
     text-align: left;
     white-space: pre;
     word-spacing: normal;
-    word-break: keep-all;
-    // overflow: scroll;
-    // white-space: nowrap;
+    word-break: normal;
 
     -moz-tab-size: 4;
     -o-tab-size: 4;
@@ -71,15 +69,15 @@ body.dark {
 
   /* Code blocks */
   pre[class*="language-"] {
-    padding: 2rem;
+    padding: 2em;
     margin: 0.5em 0;
-    overflow: scroll;
+    overflow: auto;
   }
 
   /* Inline code */
   :not(pre) > code[class*="language-"] {
     padding: 0.1em;
-    border-radius: 0.3em;
+    // border-radius: 0.3em;
   }
 
   .token.comment,
@@ -172,22 +170,5 @@ body.dark {
   pre > code.highlight {
     outline: 0.4em solid $base08;
     outline-offset: 0.4em;
-  }
-
-  .line-numbers .line-numbers-rows {
-    border-right-color: $base01 !important;
-  }
-
-  .line-numbers-rows > span:before {
-    color: $base02 !important;
-  }
-
-  .line-highlight {
-    background: transparentize($base07, 0.8) !important;
-    background: linear-gradient(
-      to right,
-      transparentize($base07, 0.8) 70%,
-      transparentize($base07, 1)
-    ) !important;
   }
 }

@@ -24,6 +24,14 @@ body.dark {
       &:hover {
         background-color: $link-bg;
       }
+      code {
+        transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+        border-bottom: 5px solid $link-bg;
+        &:hover {
+          // border-top: 3px solid $link-bg;
+          background: $link-bg;
+        }
+      }
     }
     blockquote {
       color: #aaa;
@@ -55,6 +63,14 @@ body.light {
       transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
       &:hover {
         background-color: $link-bg;
+      }
+      code {
+        transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+        border-bottom: 5px solid $link-bg;
+        &:hover {
+          // border-top: 3px solid $link-bg;
+          background: $link-bg;
+        }
       }
     }
     blockquote {

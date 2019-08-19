@@ -94,7 +94,7 @@ function Navbar(props) {
         } else {
           if (
             // scrolling up
-            prevPageYOffset - window.pageYOffset > 100 ||
+            prevPageYOffset - window.pageYOffset > 50 ||
             window.pageYOffset <= 100
           ) {
             window.__isNavbarVisible = true

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { css } from "@emotion/core"
+import { Global, css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BreadcrumbPath from "../components/breadcrumb-path"
@@ -14,6 +14,20 @@ function ProjectTemplate(props) {
 
   return (
     <Layout className="project">
+      <Global
+        styles={css`
+          body.dark {
+            background: #0a1b43;
+            background: -webkit-linear-gradient(to top, #bf8640, #0a1b43);
+            background: linear-gradient(to top, #bf8640, #0a1b43);
+          }
+          body.light {
+            background: #90acee;
+            background: -webkit-linear-gradient(to top, #bf8640, #6697cc);
+            background: linear-gradient(to top, #bf8640, #6697cc);
+          }
+        `}
+      />
       <SEO
         title={project.frontmatter.title}
         description={project.frontmatter.description || project.excerpt}
