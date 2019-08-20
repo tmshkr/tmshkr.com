@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import { css } from "@emotion/core"
-import Folder from "@fortawesome/fontawesome-free/svgs/regular/Folder.svg"
+import Folder from "@fortawesome/fontawesome-free/svgs/regular/folder.svg"
 import { Link } from "gatsby"
 
 function BreadcrumbPath(props) {
