@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, graphql } from "gatsby"
 import { Global, css } from "@emotion/core"
 import Layout from "../components/layout"
@@ -12,9 +12,13 @@ function ProjectTemplate(props) {
   const { video, url } = project.frontmatter
   const { previous, next } = props.pageContext
 
+  useEffect(() => {
+    document.getElementById("project").scrollIntoView()
+  }, [])
+
   return (
     <Layout
-      className="project"
+      id="project"
       css={css`
         margin-top: 0;
         padding-top: 5.25rem;
