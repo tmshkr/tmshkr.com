@@ -13,7 +13,13 @@ function ProjectTemplate(props) {
   const { previous, next } = props.pageContext
 
   return (
-    <Layout className="project">
+    <Layout
+      className="project"
+      css={css`
+        margin-top: 0;
+        padding-top: 5.25rem;
+      `}
+    >
       <Global
         styles={css`
           body {
