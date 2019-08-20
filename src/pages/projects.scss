@@ -1,3 +1,5 @@
+@import "../utils/variables";
+
 #projects p a,
 body.light main ul.pagination a.project-link,
 body.dark main ul.pagination a.project-link {
@@ -17,10 +19,6 @@ body.dark main ul.pagination a.project-link {
 
 #projects {
   color: inherit;
-  // a {
-  //   box-shadow: none;
-  // }
-
   ul {
     margin: 0 auto;
     max-width: 1200px;
@@ -33,7 +31,7 @@ body.dark main ul.pagination a.project-link {
       span.project-title {
         display: block;
         font-size: 1.1rem;
-        font-family: sans-serif;
+        font-family: $sans-serif;
       }
     }
   }
