@@ -12,26 +12,20 @@ function ProjectTemplate(props) {
   const { video, url } = project.frontmatter
   const { previous, next } = props.pageContext
 
-  useEffect(() => {
-    document.getElementById("project").scrollIntoView()
-  }, [])
-
   return (
     <Layout
       id="project"
       css={css`
         margin-top: 0;
         padding-top: 5.25rem;
+        height: 100vh;
+        width: 100vw;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
       `}
     >
       <Global
         styles={css`
-          body {
-            height: 100vh;
-            width: 100vw;
-            overflow-y: scroll;
-            -webkit-overflow-scrolling: touch;
-          }
           body.dark {
             background: #0a1b43;
             background: -webkit-linear-gradient(to top, #bf8640, #0a1b43);
