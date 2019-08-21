@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import { Global, css } from "@emotion/core"
 import Layout from "../components/layout"
@@ -13,17 +13,7 @@ function ProjectTemplate(props) {
   const { previous, next } = props.pageContext
 
   return (
-    <Layout
-      id="project"
-      css={css`
-        margin-top: 0;
-        padding-top: 5.25rem;
-        height: 100vh;
-        width: 100vw;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-      `}
-    >
+    <Fragment>
       <Global
         styles={css`
           body.dark {
@@ -42,75 +32,96 @@ function ProjectTemplate(props) {
         title={project.frontmatter.title}
         description={project.frontmatter.description || project.excerpt}
       />
-      <BreadcrumbPath path={props.path} />
-      <VideoPlayer video={video} />
-      <h2
+      <div
         css={css`
-          margin: 1em;
-          text-align: center;
+          height: 100vh;
+          width: 100vw;
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
         `}
       >
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Layout
+          id="project"
           css={css`
-            padding: 0.33em;
-            border-radius: 0.11em;
-            body.dark & {
-              color: #fff;
-              fill: #fff;
-              &:hover {
-                background: rgba(187, 222, 251, 0.33);
-              }
-            }
-            body.light & {
-              color: #000;
-              fill: #000;
-              &:hover {
-                background: rgba(96, 125, 139, 0.33);
-              }
-            }
-
-            svg {
-              width: 1rem;
-              height: auto;
-            }
+            margin-top: 0;
+            padding-top: 5.25rem;
           `}
         >
-          {project.frontmatter.title} <ExternalLink />
-        </a>
-      </h2>
+          <BreadcrumbPath path={props.path} />
+          <VideoPlayer video={video} />
+          <h2
+            css={css`
+              margin: 1em;
+              text-align: center;
+            `}
+          >
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              css={css`
+                padding: 0.33em;
+                border-radius: 0.11em;
+                body.dark & {
+                  color: #fff;
+                  fill: #fff;
+                  &:hover {
+                    background: rgba(187, 222, 251, 0.33);
+                  }
+                }
+                body.light & {
+                  color: #000;
+                  fill: #000;
+                  &:hover {
+                    background: rgba(96, 125, 139, 0.33);
+                  }
+                }
 
-      <div
-        className="html-content"
-        css={css`
-          margin: 1rem 0;
-        `}
-        dangerouslySetInnerHTML={{ __html: project.html }}
-      />
-      <hr
-        css={css`
-          margin-bottom: 2rem;
-        `}
-      />
-      <ul className="pagination">
-        <li>
-          {previous && (
-            <Link className="project-link" to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          )}
-        </li>
-        <li>
-          {next && (
-            <Link className="project-link" to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          )}
-        </li>
-      </ul>
-    </Layout>
+                svg {
+                  width: 1rem;
+                  height: auto;
+                }
+              `}
+            >
+              {project.frontmatter.title} <ExternalLink />
+            </a>
+          </h2>
+
+          <div
+            className="html-content"
+            css={css`
+              margin: 1rem 0;
+            `}
+            dangerouslySetInnerHTML={{ __html: project.html }}
+          />
+          <hr
+            css={css`
+              margin-bottom: 2rem;
+            `}
+          />
+          <ul className="pagination">
+            <li>
+              {previous && (
+                <Link
+                  className="project-link"
+                  to={previous.fields.slug}
+                  rel="prev"
+                >
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link className="project-link" to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+        </Layout>
+      </div>
+    </Fragment>
   )
 }
 
