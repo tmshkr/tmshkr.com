@@ -13,7 +13,7 @@ class BlogPostTemplate extends React.Component {
         "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js":
           "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd",
         "gdp.js":
-          "sha384-pLdH5L2059XONSo6+nU45ipY3rOLMWQiY/V8pMfgMMoP+iMz+bGQlA7azKqpjcRl",
+          "sha384-jrBWheuK0ITDNBnOqnBFMeAP1hpXLsMQUMozmo4uwgH0MzA2lbMdzarrr27sygYz",
       }
 
       scripts.forEach(s => {

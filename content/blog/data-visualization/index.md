@@ -1,7 +1,7 @@
 ---
 title: "Data Visualization"
 subtitle: "with D3.js"
-scripts: [["https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js", "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd"], ['gdp.js', "sha384-pLdH5L2059XONSo6+nU45ipY3rOLMWQiY/V8pMfgMMoP+iMz+bGQlA7azKqpjcRl"]]
+scripts: [["https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js", "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd"], ['gdp.js', "sha384-jrBWheuK0ITDNBnOqnBFMeAP1hpXLsMQUMozmo4uwgH0MzA2lbMdzarrr27sygYz"]]
 date: "2018-10-24"
 ---
 
@@ -21,10 +21,6 @@ as demonstrated in the chart below, will likely continue to persist in the futur
 #gdp {
   text-align: center;
   font-family: sans-serif;
-}
-
-#gdp svg {
-  transform: translateX(-40px);
 }
 
 body.dark rect.bar {
@@ -49,15 +45,6 @@ body.light rect.bar {
 
 #tooltip text {
   display: block;
-}
-
-@media screen and (max-width: 960px) {
-  
-  #gdp div {
-    overflow-x: scroll;
-  }
-  #gdp svg {
-  transform: none;
 }
 }
 </style>
