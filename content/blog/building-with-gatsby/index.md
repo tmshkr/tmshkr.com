@@ -21,7 +21,7 @@ class BlogPostTemplate extends React.Component {
       const allowed = {
         "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js":
           "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd",
-        "gdp.js":
+        "GDP.js":
           "sha384-PC96xYETvEZI5H5XZY6cxqZ9tY/UdYzLSCoE0ARjjwmt6ThyKuzJ+b9xAwpZmPJU",
       }
 
@@ -42,7 +42,7 @@ class BlogPostTemplate extends React.Component {
 }
 ```
 
-`componentDidMount` injects the scripts specified in the frontmatter, after checking that it is an __allowed script__ (otherwise it could just inject any script, so this would be important, e.g., if an attacker was somehow able to modify the json which specifies the scripts to be loaded). `script.async = false` makes the browser execute the scripts in the order they are injected into the DOM. The chart in `gdp.js` depends on `d3.min.js` so they must be executed in order. It doesn't make sense to bundle them when they are only needed for one blog post, so this code lazy-loads the scripts as necessary. Gatsby can also handle [code splitting](https://www.gatsbyjs.org/docs/how-code-splitting-works/), but I found the way described above to be effective in this particular use case.
+`componentDidMount` injects the scripts specified in the frontmatter, after checking that it is an __allowed script__ (otherwise it could just inject any script, so this would be important, e.g., if an attacker was somehow able to modify the json which specifies the scripts to be loaded). `script.async = false` makes the browser execute the scripts in the order they are injected into the DOM. The chart in `GDP.js` depends on `d3.min.js` so they must be executed in order. It doesn't make sense to bundle them when they are only needed for one blog post, so this code lazy-loads the scripts as necessary. Gatsby can also handle [code splitting](https://www.gatsbyjs.org/docs/how-code-splitting-works/), but I found the way described above to be effective in this particular use case.
 
 Of course, security measures like this on the frontend client can only do so much, since the browser’s environment can be affected by any number of unknown factors, but it seems that if one is going to create an opening into their code, they should also make sure to secure it.
 
