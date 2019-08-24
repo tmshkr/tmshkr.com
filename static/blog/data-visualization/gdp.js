@@ -10,7 +10,6 @@
     .append("div")
     .append("svg")
     .attr("width", "100%")
-    .attr("height", "auto")
     .attr("viewBox", "0 0 860 520")
     .attr("preserveAspectRatio", "xMidYMid meet");
 

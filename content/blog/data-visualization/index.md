@@ -1,7 +1,7 @@
 ---
 title: "Data Visualization"
 subtitle: "with D3.js"
-scripts: [["https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js", "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd"], ['gdp.js', "sha384-jrBWheuK0ITDNBnOqnBFMeAP1hpXLsMQUMozmo4uwgH0MzA2lbMdzarrr27sygYz"]]
+scripts: [["https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js", "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd"], ['gdp.js', "sha384-PC96xYETvEZI5H5XZY6cxqZ9tY/UdYzLSCoE0ARjjwmt6ThyKuzJ+b9xAwpZmPJU"]]
 date: "2018-10-24"
 ---
 

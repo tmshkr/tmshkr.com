@@ -53,6 +53,17 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          "/data-visualization": [
+            // matching headers (by type) are replaced by Netlify with more specific routes
+            "cache-control: public, max-age=0, must-revalidate",
+          ],
+        },
+      },
+    },
     `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
