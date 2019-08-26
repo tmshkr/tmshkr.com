@@ -4,8 +4,8 @@ html {
   visibility: hidden;
 }
 
-[class$="active"],
-[class$="inactive"] {
+html.wf-active,
+html.wf-inactive {
   visibility: visible;
 }
 
