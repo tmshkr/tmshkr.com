@@ -3,7 +3,6 @@
   justify-self: center;
   text-align: center;
   margin: 0;
-  // margin-top: 5rem;
   align-self: center;
   background: none;
   border: none;
@@ -82,21 +81,16 @@
     p {
       font-size: 5vw;
     }
+    #bio {
+      padding-top: 3rem;
+      // line-height: 1.7rem;
+    }
   }
-  // #bio {
-  //   p:first-child {
-  //     margin-top: 0;
-  //   }
-  // }
 }
 
 body.dark #home {
   #hello {
     background: #111;
-    // h1.hero {
-    //   text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4,
-    //     2px 1px 1px #5dabcd, 2px 3px 2px #378ab4, 3px 2px 2px #5dabcd;
-    // }
     h1.hero {
       $base-shadow-color: #378ab4;
       text-shadow: 0 1px 0px $base-shadow-color,
@@ -122,7 +116,7 @@ body.light #home {
 
     h1.hero {
       color: #455a64;
-      $base-shadow-color: #b3a99d;
+      $base-shadow-color: #777;
       text-shadow: 0 1px 0px $base-shadow-color,
         1px 0 0px lighten($base-shadow-color, 10%),
         1px 2px 1px $base-shadow-color, 2px 1px 1px $base-shadow-color,
@@ -134,10 +128,6 @@ body.light #home {
     }
   }
   #bio {
-    // background: #b0bec5;
-    // background: #8bbad0;
-    // background: #c7c2ba;
-    // background: #9fb3df;
     background: #bfae99;
 
     background: #cfd8dc;

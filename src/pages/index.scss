@@ -1,5 +1,9 @@
 // @import "../utils/variables";
 
+[class$="loading"] {
+  visibility: hidden;
+}
+
 body.dark {
   background: #111;
   color: #fff;
