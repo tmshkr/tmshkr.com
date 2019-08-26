@@ -1,7 +1,12 @@
 // @import "../utils/variables";
 
-[class$="loading"] {
+html {
   visibility: hidden;
+}
+
+[class$="active"],
+[class$="inactive"] {
+  visibility: visible;
 }
 
 body.dark {
