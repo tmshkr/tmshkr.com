@@ -25,6 +25,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/drafts/`,
+        name: `drafts`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
@@ -51,17 +58,6 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        headers: {
-          "/data-visualization": [
-            // matching headers (by type) are replaced by Netlify with more specific routes
-            "cache-control: public, max-age=0, must-revalidate",
-          ],
-        },
       },
     },
     `gatsby-plugin-emotion`,
