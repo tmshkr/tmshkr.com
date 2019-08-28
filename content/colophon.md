@@ -2,7 +2,7 @@
 title: "Colophon"
 ---
 
-<style>.html-content{text-align: center;}</style>
+<style>.content{text-align: center;}</style>
 
 This website is created with [Gatsby](https://www.gatsbyjs.org/) and hosted on [Netlify](https://www.netlify.com/).
 

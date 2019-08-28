@@ -88,7 +88,7 @@ function ProjectTemplate(props) {
           </h2>
 
           <div
-            className="html-content"
+            className="content"
             css={css`
               margin: 1rem 0;
             `}

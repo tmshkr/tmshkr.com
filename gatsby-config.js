@@ -31,6 +31,7 @@ module.exports = {
         name: `drafts`,
       },
     },
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

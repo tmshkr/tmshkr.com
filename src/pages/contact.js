@@ -1,7 +1,5 @@
 import React from "react"
 import Layout from "../components/layout"
-import { css } from "@emotion/core"
-import { rhythm } from "../utils/typography"
 import SEO from "../components/seo"
 import LinkedIn from "@fortawesome/fontawesome-free/svgs/brands/linkedin.svg"
 import Instagram from "@fortawesome/fontawesome-free/svgs/brands/instagram.svg"
@@ -16,12 +14,7 @@ function Contact(props) {
       <SEO title="Contact" />
       <h1>Contact</h1>
       <span className="line"></span>
-      <div
-        className="html-content"
-        css={css`
-          margin: ${rhythm(0.5)} 0;
-        `}
-      >
+      <div className="content">
         <p>Feel free to connect on social media:</p>
         <div id="social-links">
           <a

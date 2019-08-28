@@ -70,7 +70,7 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.date}
         </time>
         <div
-          className="html-content"
+          className="content"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
         <hr

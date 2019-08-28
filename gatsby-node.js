@@ -10,14 +10,22 @@ exports.createPages = async ({ graphql, actions }) => {
   createPages(
     page,
     `{
-    allMarkdownRemark(filter: {fields: {slug: {glob: "/*/"}}}) {
-      nodes {
-        fields {
-          slug
+      allMarkdownRemark(filter: {fields: {slug: {glob: "/*/"}}}) {
+        nodes {
+          fields {
+            slug
+          }
+        }
+      }
+      allMdx(filter: {fields: {slug: {glob: "/*/"}}}) {
+        nodes {
+          fields {
+            slug
+          }
         }
       }
     }
-  }
+    
   `
   )
 
@@ -74,7 +82,10 @@ exports.createPages = async ({ graphql, actions }) => {
       throw result.errors
     }
 
-    const { nodes } = result.data.allMarkdownRemark
+    const nodes = [
+      ...result.data.allMarkdownRemark.nodes,
+      ...result.data.allMdx.nodes,
+    ]
 
     nodes.forEach(node => {
       createPage({
@@ -116,7 +127,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if ([`MarkdownRemark`, `Mdx`].includes(node.internal.type)) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
