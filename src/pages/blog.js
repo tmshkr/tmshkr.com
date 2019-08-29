@@ -7,7 +7,7 @@ import "./blog.scss"
 
 function BlogIndex(props) {
   const { data } = props
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMarkdown.edges
 
   return (
     <Layout>
@@ -55,10 +55,10 @@ function BlogIndex(props) {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/blog//" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+  query BlogIndexFeed {
+    allMarkdown(
+      filter: { fields: { slug: { glob: "/blog/*/" } } }
+      sort: { fields: frontmatter___date, order: DESC }
     ) {
       edges {
         node {

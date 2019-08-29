@@ -9,71 +9,63 @@ exports.createPages = async ({ graphql, actions }) => {
 
   createPages(
     page,
-    `{
-      allMarkdownRemark(filter: {fields: {slug: {glob: "/*/"}}}) {
+    `
+    query TopLevelPages {
+      allMarkdown(filter: {fields: {slug: {glob: "/*/"}}}) {
         nodes {
           fields {
             slug
           }
         }
       }
-      allMdx(filter: {fields: {slug: {glob: "/*/"}}}) {
-        nodes {
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    
-  `
+    }    
+    `
   )
 
   createCollection(
     blogPost,
     `
-  {
-    allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/blog//" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 1000
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
+    query BlogPosts {
+      allMarkdown(
+        filter: {fields: {slug: {glob: "/blog/*/"}}},
+        sort: {fields: frontmatter___date, order: DESC}
+        ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
           }
         }
       }
-    }
-  }
-`
+    }    
+    `
   )
+
   createCollection(
     project,
     `
-  {
-    allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^/projects//" } } }
-      sort: { fields: [frontmatter___title], order: DESC }
-      limit: 1000
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
+    query Projects {
+      allMarkdown(
+        filter: {fields: {slug: {glob: "/projects/*/"}}},
+        sort: {fields: [frontmatter___title], order: DESC}
+        ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
           }
         }
       }
     }
-  }
-`
+    `
   )
   async function createPages(component, query) {
     const result = await graphql(query)
@@ -82,10 +74,7 @@ exports.createPages = async ({ graphql, actions }) => {
       throw result.errors
     }
 
-    const nodes = [
-      ...result.data.allMarkdownRemark.nodes,
-      ...result.data.allMdx.nodes,
-    ]
+    const { nodes } = result.data.allMarkdown
 
     nodes.forEach(node => {
       createPage({
@@ -105,7 +94,7 @@ exports.createPages = async ({ graphql, actions }) => {
       throw result.errors
     }
 
-    const { edges } = result.data.allMarkdownRemark
+    const { edges } = result.data.allMarkdown
 
     edges.forEach((edge, index) => {
       const previous = index === edges.length - 1 ? null : edges[index + 1].node
@@ -135,4 +124,38 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    interface Markdown @nodeInterface {
+      id: ID!
+      fields: Fields
+      frontmatter: Frontmatter
+      excerpt: String
+    }
+
+    type Fields {
+      slug: String!
+    }
+
+    type Frontmatter {
+      title: String
+      date: Date
+    }
+
+    type MarkdownRemark implements Node & Markdown {
+      id: ID!
+      fields: Fields
+      frontmatter: Frontmatter
+    }
+
+    type Mdx implements Node & Markdown {
+      id: ID!
+      fields: Fields
+      frontmatter: Frontmatter
+    }
+  `
+  createTypes(typeDefs)
 }

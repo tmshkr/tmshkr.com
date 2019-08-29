@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
@@ -7,27 +8,27 @@ import "./blog-post.scss"
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
-    const { scripts } = this.props.data.markdownRemark.frontmatter
-    if (scripts) {
-      const allowed = {
-        "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js":
-          "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd",
-        "GDP.js":
-          "sha384-PC96xYETvEZI5H5XZY6cxqZ9tY/UdYzLSCoE0ARjjwmt6ThyKuzJ+b9xAwpZmPJU",
-      }
+    // const { scripts } = this.props.data.markdownRemark.frontmatter
+    // if (scripts) {
+    //   const allowed = {
+    //     "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js":
+    //       "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd",
+    //     "GDP.js":
+    //       "sha384-PC96xYETvEZI5H5XZY6cxqZ9tY/UdYzLSCoE0ARjjwmt6ThyKuzJ+b9xAwpZmPJU",
+    //   }
 
-      scripts.forEach(s => {
-        if (allowed.hasOwnProperty(s[0]) && allowed[s[0]] === s[1]) {
-          const script = document.createElement("script")
-          script.async = false
-          script.crossOrigin = "anonymous"
-          script.integrity = s[1]
-          script.src = s[0]
-          script.type = "text/javascript"
-          document.getElementsByTagName("main")[0].appendChild(script)
-        }
-      })
-    }
+    //   scripts.forEach(s => {
+    //     if (allowed.hasOwnProperty(s[0]) && allowed[s[0]] === s[1]) {
+    //       const script = document.createElement("script")
+    //       script.async = false
+    //       script.crossOrigin = "anonymous"
+    //       script.integrity = s[1]
+    //       script.src = s[0]
+    //       script.type = "text/javascript"
+    //       document.getElementsByTagName("main")[0].appendChild(script)
+    //     }
+    //   })
+    // }
 
     function isOverflowingX(el) {
       return el.clientWidth < el.scrollWidth
@@ -41,7 +42,7 @@ class BlogPostTemplate extends React.Component {
   }
 
   render() {
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.markdownRemark || this.props.data.mdx
     const { previous, next } = this.props.pageContext
 
     return (
@@ -71,8 +72,10 @@ class BlogPostTemplate extends React.Component {
         </time>
         <div
           className="content"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+          dangerouslySetInnerHTML={post.html && { __html: post.html }}
+        >
+          {post.body && <MDXRenderer>{post.body}</MDXRenderer>}
+        </div>
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -103,21 +106,24 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         scripts
       }
+      id
+      excerpt(pruneLength: 160)
+      html
+    }
+    mdx(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+      }
+      id
+      excerpt
+      body
     }
   }
 `
