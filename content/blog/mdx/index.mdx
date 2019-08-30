@@ -58,6 +58,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       frontmatter: Frontmatter
     }
   `
+  createTypes(typeDefs)
+}
 ```
 
 This makes it possible to just query generic `Markdown` nodes instead of having to deal with `MarkdownRemark` and `Mdx` nodes separately, while still being able to filter and sort the results even though they're generated from different types of nodes. It's also possible to query fields that are not common to both types of nodes using [inline fragments](https://graphql.org/learn/queries/#inline-fragments):
