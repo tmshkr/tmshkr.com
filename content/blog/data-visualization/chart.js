@@ -1,26 +1,32 @@
-import React from "react"
-import { Helmet } from "react-helmet"
+import React, { useEffect } from "react"
 import { Global, css } from "@emotion/core"
 
 function Chart() {
+  useEffect(() => {
+    const scripts = [
+      [
+        "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js",
+        "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd",
+      ],
+      [
+        "GDP.js",
+        "sha384-PC96xYETvEZI5H5XZY6cxqZ9tY/UdYzLSCoE0ARjjwmt6ThyKuzJ+b9xAwpZmPJU",
+      ],
+    ]
+
+    scripts.forEach(s => {
+      const script = document.createElement("script")
+      script.async = false
+      script.crossOrigin = "anonymous"
+      script.integrity = s[1]
+      script.src = s[0]
+      script.type = "text/javascript"
+      document.getElementsByTagName("main")[0].appendChild(script)
+    })
+  }, [])
+
   return (
     <div id="gdp">
-      <Helmet>
-        <script
-          async="false"
-          crossorigin="anonymous"
-          integrity="sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd"
-          src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"
-          type="text/javascript"
-        />
-        <script
-          async="false"
-          crossorigin="anonymous"
-          integrity="sha384-PC96xYETvEZI5H5XZY6cxqZ9tY/UdYzLSCoE0ARjjwmt6ThyKuzJ+b9xAwpZmPJU"
-          src="GDP.js"
-          type="text/javascript"
-        />
-      </Helmet>
       <Global
         styles={css`
           #gdp {
