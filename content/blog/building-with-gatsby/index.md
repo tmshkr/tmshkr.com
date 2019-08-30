@@ -11,7 +11,7 @@ I found myself wanting to do things with React and GraphQL, though, so I decided
 
 After overcoming a bit of a learning curve, I had a lot of fun getting started with Gatsby. I began with the [`gatsby-starter-blog`](https://github.com/gatsbyjs/gatsby-starter-blog) and borrowed some code from [`overreacted.io`](https://github.com/gaearon/overreacted.io) to handle theming.  I then made a new [`Navbar`](https://github.com/tmshkr/tmshkr.com/blob/master/src/components/navbar.js) using React Hooks and included some new styling.
 
-I did run into an issue while migrating my blog posts from Jekyll. I was using `script` tags in the markdown for a [blog post](/blog/data-visualization/), because it worked with Jekyll in order to include a d3.js chart. Gatsby wasn't allowing the scripts to execute, so I modified the [`BlogPostTemplate`](https://github.com/tmshkr/tmshkr.com/blob/master/src/templates/blog-post.js) component to allow injecting scripts specified in the [`markdown`](https://github.com/tmshkr/tmshkr.com/blob/master/content/blog/data-visualization/index.md) frontmatter:
+I did run into an issue while migrating my blog posts from Jekyll. I was using `script` tags in the markdown for a [blog post](/blog/data-visualization/), because it worked with Jekyll in order to include a d3.js chart. Gatsby wasn't allowing the scripts to execute, so I modified the [`BlogPostTemplate`](https://github.com/tmshkr/tmshkr.com/blob/62eeadfa3335322fc854288df05ffca588cd2d2a/src/templates/blog-post.js) component to allow injecting scripts specified in the [`markdown`](https://github.com/tmshkr/tmshkr.com/blob/62eeadfa3335322fc854288df05ffca588cd2d2a/content/blog/data-visualization/index.md) frontmatter:[^1]
 
 ```javascript
 class BlogPostTemplate extends React.Component {
@@ -46,3 +46,4 @@ class BlogPostTemplate extends React.Component {
 
 Of course, security measures like this on the frontend client can only do so much, since the browser’s environment can be affected by any number of unknown factors, but it seems that if one is going to create an opening into their code, they should also make sure to secure it.
 
+[^1]: I've since moved to an [MDX-based solution](/blog/mdx/) to include scripts and interactive components in blog posts.

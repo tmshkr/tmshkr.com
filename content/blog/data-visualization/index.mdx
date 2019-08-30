@@ -1,7 +1,5 @@
 ---
 title: "Data Visualization"
-subtitle: "with D3.js"
-scripts: [["https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js", "sha384-HL96dun1KbYEq6UT/ZlsspAODCyQ+Zp4z318ajUPBPSMzy5dvxl6ziwmnil8/Cpd"], ['GDP.js', "sha384-PC96xYETvEZI5H5XZY6cxqZ9tY/UdYzLSCoE0ARjjwmt6ThyKuzJ+b9xAwpZmPJU"]]
 date: "2018-10-24"
 ---
 
@@ -17,40 +15,9 @@ and reason about data in order to make informed decisions. For example, one migh
 reasonably assume that the upward trend in GDP, which has lasted for over 65 years
 as demonstrated in the chart below, will likely continue to persist in the future:
 
-<style>
-#gdp {
-  text-align: center;
-  font-family: sans-serif;
-}
+import Chart from "./chart"
 
-body.dark rect.bar {
-  fill: #007f80;
-}
-
-body.light rect.bar {
-  fill: #70afb2;
-}
-
-#tooltip {
-  position: absolute;
-  font-family: sans-serif;
-  text-align: center;
-  padding: 0.5em;
-  white-space: nowrap;
-  color: #fff;
-  background-color: #00f;
-  visibility: hidden;
-  opacity: 0;
-}
-
-#tooltip text {
-  display: block;
-}
-}
-</style>
-<div id="gdp">
-  <h1 id="title">United States GDP</h1>
-</div>
+<Chart />
 
 Based on such a reasonable assumption, that the monetary value of goods and services
 produced by the United States will continue to grow, rational agents can make informed financial
