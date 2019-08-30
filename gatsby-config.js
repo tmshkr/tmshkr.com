@@ -1,4 +1,29 @@
-module.exports = {
+const remarkPlugins = [
+  {
+    resolve: "gatsby-remark-external-links",
+    options: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+  },
+  {
+    resolve: `gatsby-remark-images`,
+    options: {
+      maxWidth: 590,
+    },
+  },
+  {
+    resolve: `gatsby-remark-responsive-iframe`,
+    options: {
+      wrapperStyle: `margin-bottom: 1.0725rem`,
+    },
+  },
+  `gatsby-remark-prismjs`,
+  `gatsby-remark-copy-linked-files`,
+  `gatsby-remark-smartypants`,
+]
+
+const config = {
   siteMetadata: {
     title: `tmshkr`,
     author: `Tim Shaker`,
@@ -25,68 +50,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/drafts/`,
-        name: `drafts`,
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-external-links",
-            options: {
-              target: "_blank",
-              rel: "noopener noreferrer",
-            },
-          },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
+        plugins: remarkPlugins,
       },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: "gatsby-remark-external-links",
-            options: {
-              target: "_blank",
-              rel: "noopener noreferrer",
-            },
-          },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
+        gatsbyRemarkPlugins: remarkPlugins,
       },
     },
     `gatsby-plugin-emotion`,
@@ -131,3 +103,17 @@ module.exports = {
     `gatsby-plugin-catch-links`,
   ],
 }
+
+process.argv.forEach(arg => {
+  if (arg === "drafts") {
+    config.plugins.push({
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/drafts/`,
+        name: `drafts`,
+      },
+    })
+  }
+})
+
+module.exports = config
