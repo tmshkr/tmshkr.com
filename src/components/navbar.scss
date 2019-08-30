@@ -50,6 +50,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
+  touch-action: manipulation;
   z-index: 42;
   transform: translateZ(0);
   will-change: transform;
@@ -71,6 +72,7 @@ nav {
   }
 
   button {
+    touch-action: manipulation;
     display: none;
     padding: 0 1rem;
     line-height: 0;

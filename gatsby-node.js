@@ -142,7 +142,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Frontmatter {
       title: String
-      date: Date
+      date: Date @dateformat
     }
 
     type MarkdownRemark implements Node & Markdown {
