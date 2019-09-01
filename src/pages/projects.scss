@@ -3,8 +3,6 @@
 #projects p a,
 body.light main ul.pagination a.project-link,
 body.dark main ul.pagination a.project-link {
-  // $link: #00ffd5;
-  // $link: #00ffd5;
   $link: #20dfbf;
   padding: 0.25rem 0.5rem;
   border-radius: 0.11rem;
@@ -18,7 +16,6 @@ body.dark main ul.pagination a.project-link {
 }
 
 #projects {
-  color: inherit;
   ul {
     margin: 0 auto;
     max-width: 1200px;
@@ -70,8 +67,8 @@ body.dark #projects {
 
 body.light #projects {
   background: #90acee;
-  background: -webkit-linear-gradient(to top, #bf8640, #6697cc);
-  background: linear-gradient(to top, #bf8640, #6697cc);
+  background: -webkit-linear-gradient(to top, #bf8640, #1b73bb);
+  background: linear-gradient(to top, #bf8640, #1b73bb);
 }
 
 @media (max-width: 800px) {

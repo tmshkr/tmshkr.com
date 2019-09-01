@@ -1,4 +1,4 @@
-const remarkPlugins = [
+const gatsbyRemarkPlugins = [
   {
     resolve: "gatsby-remark-external-links",
     options: {
@@ -52,13 +52,13 @@ const config = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: remarkPlugins,
+        plugins: gatsbyRemarkPlugins,
       },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        gatsbyRemarkPlugins: remarkPlugins,
+        gatsbyRemarkPlugins,
       },
     },
     `gatsby-plugin-emotion`,
@@ -104,16 +104,14 @@ const config = {
   ],
 }
 
-process.argv.forEach(arg => {
-  if (arg === "drafts") {
-    config.plugins.push({
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/drafts/`,
-        name: `drafts`,
-      },
-    })
-  }
-})
+if (process.env.NODE_ENV === "development") {
+  config.plugins.push({
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      path: `${__dirname}/drafts/`,
+      name: `drafts`,
+    },
+  })
+}
 
 module.exports = config

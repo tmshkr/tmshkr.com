@@ -7,6 +7,7 @@
   background: none;
   border: none;
   outline: none;
+  fill: #777;
 }
 
 .bounce {
@@ -83,7 +84,6 @@
     }
     #bio {
       padding-top: 3rem;
-      // line-height: 1.7rem;
     }
   }
 }
@@ -99,9 +99,6 @@ body.dark #home {
         2px 3px 2px $base-shadow-color,
         3px 2px 2px lighten($base-shadow-color, 10%);
     }
-    .arrow {
-      fill: #d0d0d0;
-    }
   }
   #bio {
     background: #111;
@@ -112,12 +109,7 @@ body.dark #home {
 
 body.light #home {
   #hello {
-    // background: #1b73bb;
-    // background: #007acc;
-    background: #cfd8dc;
-
     h1.hero {
-      color: #455a64;
       $base-shadow-color: #777;
       text-shadow: 0 1px 0px $base-shadow-color,
         1px 0 0px lighten($base-shadow-color, 10%),
@@ -125,15 +117,10 @@ body.light #home {
         2px 3px 2px $base-shadow-color,
         3px 2px 2px lighten($base-shadow-color, 10%);
     }
-    .arrow {
-      fill: #79878c;
-    }
   }
   #bio {
-    background: #bfae99;
-
-    background: #cfd8dc;
-    background: -webkit-linear-gradient(to top, #6697cc, #cfd8dc);
-    background: linear-gradient(to top, #6697cc, #cfd8dc);
+    background: #1b73bb;
+    background: -webkit-linear-gradient(to top, #1b73bb, #cfd8dc);
+    background: linear-gradient(to top, #1b73bb, #cfd8dc);
   }
 }

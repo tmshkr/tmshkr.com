@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import { css, Global } from "@emotion/core"
 import Navbar from "../components/navbar"
 import SEO from "../components/seo"
 import ProjectThumbnail from "../components/project-thumbnail"
@@ -11,6 +12,13 @@ function Projects(props) {
 
   return (
     <Fragment>
+      <Global
+        styles={css`
+          body.light #navbar {
+            background-color: rgba(207, 216, 220, 0.25);
+          }
+        `}
+      />
       {props.path === "/projects/" && (
         <Fragment>
           <SEO title="Projects" />

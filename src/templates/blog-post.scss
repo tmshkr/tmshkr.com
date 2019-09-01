@@ -124,13 +124,23 @@ body.light {
   }
 }
 
+div.footnotes {
+  font-size: 0.777rem;
+  p {
+    display: inline;
+  }
+  hr {
+    display: none;
+  }
+}
+
 ul.pagination {
   list-style: none;
   padding: 0;
   margin: 3rem 0;
   li {
     display: inline-block;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0;
     border-radius: 0.11rem;
     &:last-child {
       text-align: right;

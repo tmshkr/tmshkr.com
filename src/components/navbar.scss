@@ -1,10 +1,6 @@
 body.light nav {
-  background: #d0d0d0;
-  background: rgba(151, 170, 180, 0.75);
-  background: rgba(165, 181, 190, 0.75);
-  background: rgba(86, 121, 168, 0.75);
-  background: hsla(214, 20%, 65%, 0.75);
-  // background: rgba(159, 174, 198, 0.8);
+  background: rgba(207, 216, 220, 0.75);
+
   color: #333;
   fill: #333;
   stroke: #333;
@@ -12,12 +8,8 @@ body.light nav {
   #navbar-title {
     color: inherit;
   }
-  svg {
-    // fill: #333;
-    &#moon {
-      fill: none;
-      // stroke: #333;
-    }
+  #moon {
+    fill: none;
   }
   &.light-text {
     background: rgba(17, 17, 17, 0.5);

@@ -23,8 +23,11 @@ function ProjectTemplate(props) {
           }
           body.light {
             background: #90acee;
-            background: -webkit-linear-gradient(to top, #bf8640, #6697cc);
-            background: linear-gradient(to top, #bf8640, #6697cc);
+            background: -webkit-linear-gradient(to top, #bf8640, #1b73bb);
+            background: linear-gradient(to top, #bf8640, #1b73bb);
+            #navbar {
+              background-color: rgba(207, 216, 220, 0.25);
+            }
           }
         `}
       />
