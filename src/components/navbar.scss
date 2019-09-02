@@ -1,5 +1,8 @@
 body.light nav {
   background: rgba(207, 216, 220, 0.75);
+  &#navbar.menu-open {
+    background: rgba(207, 216, 220, 0.9);
+  }
 
   color: #333;
   fill: #333;
@@ -25,8 +28,10 @@ body.light nav {
 }
 
 body.dark nav {
-  background: #333;
   background: rgba(17, 17, 17, 0.5);
+  &.menu-open {
+    background: rgba(17, 17, 17, 0.9);
+  }
   a,
   #navbar-title {
     color: #fff;
@@ -46,7 +51,7 @@ nav {
   z-index: 42;
   transform: translateZ(0);
   will-change: transform;
-  transition: transform 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+  transition: transform 0.5s cubic-bezier(0.65, 0.05, 0.36, 1), background 0.15s;
 
   &.is-hidden {
     transform: translateY(-100%);
