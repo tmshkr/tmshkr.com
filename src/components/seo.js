@@ -49,6 +49,10 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: "/tmshkr-com.png",
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
