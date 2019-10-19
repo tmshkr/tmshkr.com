@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const sanitizeHtml = require("sanitize-html")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -34,6 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             fields {
               slug
+              title
             }
             frontmatter {
               title
@@ -57,6 +59,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             fields {
               slug
+              title
             }
             frontmatter {
               title
@@ -82,6 +85,7 @@ exports.createPages = async ({ graphql, actions }) => {
         component,
         context: {
           slug: node.fields.slug,
+          title: node.fields.title,
         },
       })
     })
@@ -105,6 +109,7 @@ exports.createPages = async ({ graphql, actions }) => {
         component,
         context: {
           slug: edge.node.fields.slug,
+          title: edge.node.fields.title,
           previous,
           next,
         },
@@ -116,13 +121,59 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if ([`MarkdownRemark`, `Mdx`].includes(node.internal.type)) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
+  // if ([`MarkdownRemark`, `Mdx`].includes(node.internal.type)) {
+  //   const value = createFilePath({ node, getNode })
+  //   createNodeField({
+  //     name: `slug`,
+  //     node,
+  //     value,
+  //   })
+  // }
+  switch (node.internal.type) {
+    case `MarkdownRemark`:
+    case `Mdx`:
+      const filePath = createFilePath({ node, getNode })
+      createNodeField({
+        name: `date`,
+        node,
+        value: node.frontmatter.date,
+      })
+      createNodeField({
+        name: `slug`,
+        node,
+        value: filePath,
+      })
+      createNodeField({
+        name: `title`,
+        node,
+        value: node.frontmatter.title,
+      })
+      break
+
+    case `wordpress__POST`:
+      createNodeField({
+        name: `date`,
+        node,
+        value: node.date,
+      })
+      createNodeField({
+        name: `excerpt`,
+        node,
+        value: sanitizeHtml(node.excerpt, {
+          allowedTags: [],
+        }).replace("\n", ""),
+      })
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `/blog/${node.slug}/`,
+      })
+      createNodeField({
+        name: `title`,
+        node,
+        value: node.title,
+      })
+      break
   }
 }
 
@@ -136,8 +187,17 @@ exports.createSchemaCustomization = ({ actions }) => {
       excerpt: String
     }
 
+    interface TextDocument @nodeInterface {
+      id: ID!
+      fields: Fields
+      excerpt: String
+    }
+
     type Fields {
+      date: Date @dateformat
+      excerpt: String
       slug: String!
+      title: String
     }
 
     type Frontmatter {
@@ -145,16 +205,21 @@ exports.createSchemaCustomization = ({ actions }) => {
       date: Date @dateformat
     }
 
-    type MarkdownRemark implements Node & Markdown {
+    type MarkdownRemark implements Node & Markdown & TextDocument {
       id: ID!
       fields: Fields
       frontmatter: Frontmatter
     }
 
-    type Mdx implements Node & Markdown {
+    type Mdx implements Node & Markdown & TextDocument {
       id: ID!
       fields: Fields
       frontmatter: Frontmatter
+    }
+
+    type wordpress__POST implements Node & TextDocument {
+      id: ID!
+      fields: Fields
     }
   `
   createTypes(typeDefs)

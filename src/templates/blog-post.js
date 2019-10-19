@@ -20,14 +20,14 @@ class BlogPostTemplate extends React.Component {
   }
 
   render() {
-    const post = this.props.data.markdown
+    const post = this.props.data.textDocument
     const { previous, next } = this.props.pageContext
 
     return (
       <Layout className="blog-post" autoHideNavbar={true}>
         <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          title={post.fields.title}
+          description={post.fields.description || post.excerpt}
         />
         <h1
           style={{
@@ -35,7 +35,7 @@ class BlogPostTemplate extends React.Component {
             marginBottom: 0,
           }}
         >
-          {post.frontmatter.title}
+          {post.fields.title}
         </h1>
         <time
           className="date"
@@ -46,7 +46,7 @@ class BlogPostTemplate extends React.Component {
             paddingLeft: rhythm(0.1),
           }}
         >
-          {post.frontmatter.date}
+          {post.fields.date}
         </time>
         <div
           className="content"
@@ -63,14 +63,14 @@ class BlogPostTemplate extends React.Component {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+                ← {previous.fields.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+                {next.fields.title} →
               </Link>
             )}
           </li>
@@ -84,10 +84,12 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    markdown(fields: { slug: { eq: $slug } }) {
-      frontmatter {
+    textDocument(fields: { slug: { eq: $slug } }) {
+      fields {
         title
         date(formatString: "MMMM DD, YYYY")
+        excerpt
+        slug
       }
       excerpt
       ... on Mdx {
@@ -95,6 +97,9 @@ export const pageQuery = graphql`
       }
       ... on MarkdownRemark {
         html
+      }
+      ... on wordpress__POST {
+        content
       }
     }
   }

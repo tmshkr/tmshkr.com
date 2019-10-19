@@ -7,15 +7,15 @@ import "./blog.scss"
 
 function BlogIndex(props) {
   const { data } = props
-  const posts = data.allMarkdown.edges
+  const posts = data.allTextDocument.edges
 
   return (
     <Layout>
       <SEO title="Blog" />
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
+        const { date, excerpt, slug, title } = node.fields
         return (
-          <Fragment key={node.fields.slug}>
+          <Fragment key={slug}>
             <Link
               className="blog-post-summary"
               style={{
@@ -23,9 +23,9 @@ function BlogIndex(props) {
                 marginBottom: rhythm(1.5),
                 marginTop: rhythm(1.5),
               }}
-              to={node.fields.slug}
+              to={slug}
             >
-              <time className="date">{node.frontmatter.date}</time>
+              <time className="date">{date}</time>
               <h1
                 style={{
                   marginBottom: rhythm(1 / 4),
@@ -36,7 +36,7 @@ function BlogIndex(props) {
               </h1>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: excerpt || node.excerpt,
                 }}
               />
             </Link>
@@ -56,18 +56,17 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query BlogIndexFeed {
-    allMarkdown(
+    allTextDocument(
       filter: { fields: { slug: { glob: "/blog/*/" } } }
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: { fields: fields___date, order: DESC }
     ) {
       edges {
         node {
           excerpt
           fields {
-            slug
-          }
-          frontmatter {
             date(formatString: "MMMM DD, YYYY")
+            excerpt
+            slug
             title
           }
         }
