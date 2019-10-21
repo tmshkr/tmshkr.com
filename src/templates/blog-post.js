@@ -50,7 +50,9 @@ class BlogPostTemplate extends React.Component {
         </time>
         <div
           className="content"
-          dangerouslySetInnerHTML={post.html && { __html: post.html }}
+          dangerouslySetInnerHTML={
+            (post.html || post.content) && { __html: post.html || post.content }
+          }
         >
           {post.body && <MDXRenderer>{post.body}</MDXRenderer>}
         </div>

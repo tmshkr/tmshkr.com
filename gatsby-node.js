@@ -1,6 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const sanitizeHtml = require("sanitize-html")
+const parseWPExcerpt = require("./src/utils/parse-wp-excerpt")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -25,43 +25,28 @@ exports.createPages = async ({ graphql, actions }) => {
 
   createCollection(
     blogPost,
-    `
-    query BlogPosts {
-      allMarkdown(
-        filter: {fields: {slug: {glob: "/blog/*/"}}},
-        sort: {fields: frontmatter___date, order: DESC}
-        ) {
+    `query BlogPosts {
+      allTextDocument(filter: {fields: {slug: {glob: "/blog/*/"}}}, sort: {fields: fields___date, order: DESC}) {
         edges {
           node {
             fields {
               slug
-              title
-            }
-            frontmatter {
               title
             }
           }
         }
       }
-    }    
-    `
+    }`
   )
 
   createCollection(
     project,
-    `
-    query Projects {
-      allMarkdown(
-        filter: {fields: {slug: {glob: "/projects/*/"}}},
-        sort: {fields: [frontmatter___title], order: DESC}
-        ) {
+    `query Projects {
+      allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}}, sort: {fields: fields___title, order: ASC}) {
         edges {
           node {
             fields {
               slug
-              title
-            }
-            frontmatter {
               title
             }
           }
@@ -70,6 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
     `
   )
+
   async function createPages(component, query) {
     const result = await graphql(query)
 
@@ -98,7 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
       throw result.errors
     }
 
-    const { edges } = result.data.allMarkdown
+    const { edges } = result.data.allTextDocument
 
     edges.forEach((edge, index) => {
       const previous = index === edges.length - 1 ? null : edges[index + 1].node
@@ -121,14 +107,6 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  // if ([`MarkdownRemark`, `Mdx`].includes(node.internal.type)) {
-  //   const value = createFilePath({ node, getNode })
-  //   createNodeField({
-  //     name: `slug`,
-  //     node,
-  //     value,
-  //   })
-  // }
   switch (node.internal.type) {
     case `MarkdownRemark`:
     case `Mdx`:
@@ -159,9 +137,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       createNodeField({
         name: `excerpt`,
         node,
-        value: sanitizeHtml(node.excerpt, {
-          allowedTags: [],
-        }).replace("\n", ""),
+        value: parseWPExcerpt(node.excerpt),
       })
       createNodeField({
         name: `slug`,
