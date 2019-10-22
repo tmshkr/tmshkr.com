@@ -26,7 +26,8 @@ exports.createPages = async ({ graphql, actions }) => {
   createCollection(
     blogPost,
     `query BlogPosts {
-      allTextDocument(filter: {fields: {slug: {glob: "/blog/*/"}}}, sort: {fields: fields___date, order: DESC}) {
+      allTextDocument(filter: {fields: {slug: {glob: "/blog/*/"}}},
+      sort: {fields: fields___date, order: DESC}) {
         edges {
           node {
             fields {
@@ -42,7 +43,8 @@ exports.createPages = async ({ graphql, actions }) => {
   createCollection(
     project,
     `query Projects {
-      allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}}, sort: {fields: fields___title, order: ASC}) {
+      allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}},
+      sort: {fields: fields___title, order: DESC}) {
         edges {
           node {
             fields {
