@@ -72,16 +72,16 @@ function Navbar(props) {
     return () => {
       mobileQuery.removeListener(callback)
     }
-  }, [])
+  })
 
   // autohide navbar
-  if (props.autoHideNavbar) {
-    useEffect(() => {
+  useEffect(() => {
+    if (props.autoHideNavbar) {
       window.onscroll = throttle(() => {
         if (window.__isNavbarVisible) {
           if (
             // scrolling down
-            window.pageYOffset - prevPageYOffset > 50 &&
+            window.pageYOffset - prevPageYOffset > 10 &&
             window.pageYOffset > 100
           ) {
             window.__isNavbarVisible = false
@@ -94,7 +94,7 @@ function Navbar(props) {
         } else {
           if (
             // scrolling up
-            prevPageYOffset - window.pageYOffset > 50 ||
+            prevPageYOffset - window.pageYOffset > 10 ||
             window.pageYOffset <= 100
           ) {
             window.__isNavbarVisible = true
@@ -112,8 +112,8 @@ function Navbar(props) {
         window.onscroll = null
         prevPageYOffset = 0
       }
-    }, [])
-  }
+    }
+  })
 
   function handleClickCapture(e) {
     if (e.target.id === "navbar-title") {

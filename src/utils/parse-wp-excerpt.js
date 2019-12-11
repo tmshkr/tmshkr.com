@@ -3,7 +3,7 @@ const sanitizeHtml = require("sanitize-html")
 function truncate(str, num) {
   if (str[num]) {
     for (let i = num; i < str.length; i++) {
-      if ([".", " "].includes(str[i]) && str[i + 1]) {
+      if (/\W/.test(str[i]) && str[i + 1]) {
         str = str.slice(0, i) + "..."
         break
       }
