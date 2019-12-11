@@ -72,7 +72,7 @@ function Navbar(props) {
     return () => {
       mobileQuery.removeListener(callback)
     }
-  })
+  }, [])
 
   // autohide navbar
   useEffect(() => {
@@ -81,7 +81,7 @@ function Navbar(props) {
         if (window.__isNavbarVisible) {
           if (
             // scrolling down
-            window.pageYOffset - prevPageYOffset > 10 &&
+            window.pageYOffset - prevPageYOffset > 50 &&
             window.pageYOffset > 100
           ) {
             window.__isNavbarVisible = false
@@ -94,7 +94,7 @@ function Navbar(props) {
         } else {
           if (
             // scrolling up
-            prevPageYOffset - window.pageYOffset > 10 ||
+            prevPageYOffset - window.pageYOffset > 50 ||
             window.pageYOffset <= 100
           ) {
             window.__isNavbarVisible = true
@@ -113,7 +113,7 @@ function Navbar(props) {
         prevPageYOffset = 0
       }
     }
-  })
+  }, [])
 
   function handleClickCapture(e) {
     if (e.target.id === "navbar-title") {
