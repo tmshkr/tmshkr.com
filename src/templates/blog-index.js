@@ -49,13 +49,27 @@ function BlogIndex(props) {
           </Fragment>
         )
       })}
-      <div>
-        {currentPage === 2 && <Link to={`blog/`}>Prev</Link>}
-        {currentPage > 2 && <Link to={`blog/${currentPage - 1}`}>Prev</Link>}
-        {currentPage < numPages && (
-          <Link to={`blog/${currentPage + 1}`}>Next</Link>
-        )}
-      </div>
+      <ul className="pagination">
+        <li>
+          {currentPage < numPages && (
+            <Link to={`blog/${currentPage + 1}`}>
+              <i>←</i> Prev
+            </Link>
+          )}
+        </li>
+        <li>
+          {currentPage === 2 && (
+            <Link to={`blog/`}>
+              Next <i>→</i>
+            </Link>
+          )}
+          {currentPage > 2 && (
+            <Link to={`blog/${currentPage - 1}`}>
+              Next <i>→</i>
+            </Link>
+          )}
+        </li>
+      </ul>
     </Layout>
   )
 }
