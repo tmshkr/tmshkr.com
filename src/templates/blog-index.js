@@ -7,6 +7,8 @@ import "./blog-index.scss"
 
 function BlogIndex(props) {
   const posts = props.data.allTextDocument.edges
+  const { currentPage, numPages } = props.pageContext
+  console.log(props.pageContext)
 
   return (
     <Layout>
@@ -47,6 +49,13 @@ function BlogIndex(props) {
           </Fragment>
         )
       })}
+      <div>
+        {currentPage === 2 && <Link to={`blog/`}>Prev</Link>}
+        {currentPage > 2 && <Link to={`blog/${currentPage - 1}`}>Prev</Link>}
+        {currentPage < numPages && (
+          <Link to={`blog/${currentPage + 1}`}>Next</Link>
+        )}
+      </div>
     </Layout>
   )
 }
