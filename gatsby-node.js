@@ -4,10 +4,33 @@ const parseWPExcerpt = require("./src/utils/parse-wp-excerpt")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
+
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const blogIndex = path.resolve(`./src/templates/blog-index.js`)
   const project = path.resolve(`./src/templates/project.js`)
   const page = path.resolve(`./src/templates/page.js`)
+
+  const blogPostsQuery = `
+  query BlogPosts {
+    allTextDocument(filter: {fields: {slug: {glob: "/blog/*/"}}},
+    sort: {fields: fields___date, order: DESC}
+    limit: 1000
+    ) {
+
+      edges {
+        node {
+          fields {
+            slug
+            title
+          }
+        }
+      }
+    }
+  }
+  `
+
+  createCollection(blogPost, blogPostsQuery)
+  createPaginatedIndex(blogIndex, blogPostsQuery)
 
   createPages(
     page,
@@ -22,23 +45,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }    
     `
-  )
-
-  createCollection(
-    blogPost,
-    `query BlogPosts {
-      allTextDocument(filter: {fields: {slug: {glob: "/blog/*/"}}},
-      sort: {fields: fields___date, order: DESC}) {
-        edges {
-          node {
-            fields {
-              slug
-              title
-            }
-          }
-        }
-      }
-    }`
   )
 
   createCollection(
@@ -57,26 +63,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
     `
-  )
-
-  createPaginatedIndex(
-    blogIndex,
-    `query BlogPosts {
-    allTextDocument(filter: {fields: {slug: {glob: "/blog/*/"}}},
-    sort: {fields: fields___date, order: DESC}
-    limit: 1000
-    ) {
-
-      edges {
-        node {
-          fields {
-            slug
-            title
-          }
-        }
-      }
-    }
-  }`
   )
 
   async function createCollection(component, query) {
