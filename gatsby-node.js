@@ -5,6 +5,7 @@ const parseWPExcerpt = require("./src/utils/parse-wp-excerpt")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogIndex = path.resolve(`./src/templates/blog-index.js`)
   const project = path.resolve(`./src/templates/project.js`)
   const page = path.resolve(`./src/templates/page.js`)
 
@@ -58,26 +59,25 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  async function createPages(component, query) {
-    const result = await graphql(query)
+  createPaginatedIndex(
+    blogIndex,
+    `query BlogPosts {
+    allTextDocument(filter: {fields: {slug: {glob: "/blog/*/"}}},
+    sort: {fields: fields___date, order: DESC}
+    limit: 1000
+    ) {
 
-    if (result.errors) {
-      throw result.errors
+      edges {
+        node {
+          fields {
+            slug
+            title
+          }
+        }
+      }
     }
-
-    const { nodes } = result.data.allMarkdown
-
-    nodes.forEach(node => {
-      createPage({
-        path: node.fields.slug,
-        component,
-        context: {
-          slug: node.fields.slug,
-          title: node.fields.title,
-        },
-      })
-    })
-  }
+  }`
+  )
 
   async function createCollection(component, query) {
     const result = await graphql(query)
@@ -100,6 +100,52 @@ exports.createPages = async ({ graphql, actions }) => {
           title: edge.node.fields.title,
           previous,
           next,
+        },
+      })
+    })
+  }
+
+  async function createPages(component, query) {
+    const result = await graphql(query)
+
+    if (result.errors) {
+      throw result.errors
+    }
+
+    const { nodes } = result.data.allMarkdown
+
+    nodes.forEach(node => {
+      createPage({
+        path: node.fields.slug,
+        component,
+        context: {
+          slug: node.fields.slug,
+          title: node.fields.title,
+        },
+      })
+    })
+  }
+
+  async function createPaginatedIndex(component, query) {
+    const result = await graphql(query)
+
+    if (result.errors) {
+      throw result.errors
+    }
+
+    const posts = result.data.allTextDocument.edges
+
+    const postsPerPage = 5
+    const numPages = Math.ceil(posts.length / postsPerPage)
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+        component,
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
         },
       })
     })

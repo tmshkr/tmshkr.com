@@ -3,11 +3,10 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-import "./blog.scss"
+import "./blog-index.scss"
 
 function BlogIndex(props) {
-  const { data } = props
-  const posts = data.allTextDocument.edges
+  const posts = props.data.allTextDocument.edges
 
   return (
     <Layout>
@@ -55,10 +54,12 @@ function BlogIndex(props) {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query BlogIndexFeed {
+  query BlogIndexFeed($skip: Int!, $limit: Int!) {
     allTextDocument(
       filter: { fields: { slug: { glob: "/blog/*/" } } }
       sort: { fields: fields___date, order: DESC }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {
