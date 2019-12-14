@@ -68,6 +68,6 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-drafts/
+drafts
 .vscode/
 foo*
