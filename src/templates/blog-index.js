@@ -3,6 +3,8 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import ArrowLeft from "@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
+import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg"
 import "./blog-index.scss"
 
 function BlogIndex(props) {
@@ -52,19 +54,19 @@ function BlogIndex(props) {
         <li>
           {currentPage < numPages && (
             <Link to={`blog/${currentPage + 1}`}>
-              <i>←</i> Prev
+              <ArrowLeft /> Prev
             </Link>
           )}
         </li>
         <li>
           {currentPage === 2 && (
             <Link to={`blog/`}>
-              Next <i>→</i>
+              Next <ArrowRight />
             </Link>
           )}
           {currentPage > 2 && (
             <Link to={`blog/${currentPage - 1}`}>
-              Next <i>→</i>
+              Next <ArrowRight />
             </Link>
           )}
         </li>

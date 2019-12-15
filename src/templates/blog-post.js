@@ -4,6 +4,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import ArrowLeft from "@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
+import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg"
 import "./blog-post.scss"
 
 class BlogPostTemplate extends React.Component {
@@ -65,14 +67,14 @@ class BlogPostTemplate extends React.Component {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                <i>←</i> {previous.fields.title}
+                <ArrowLeft /> {previous.fields.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.fields.title} <i>→</i>
+                {next.fields.title} <ArrowRight />
               </Link>
             )}
           </li>

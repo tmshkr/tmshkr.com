@@ -55,8 +55,8 @@ function Contact(props) {
           </a>
           <a
             href="https://codepen.io/tmshkr/"
-            alt="Codepen"
-            title="Codepen"
+            alt="CodePen"
+            title="CodePen"
             target="_blank"
             rel="noopener noreferrer"
           >

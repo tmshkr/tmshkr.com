@@ -6,6 +6,8 @@ import SEO from "../components/seo"
 import BreadcrumbPath from "../components/breadcrumb-path"
 import VideoPlayer from "../components/video-player"
 import ExternalLink from "@fortawesome/fontawesome-free/svgs/solid/external-link-alt.svg"
+import ArrowLeft from "@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
+import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg"
 
 function ProjectTemplate(props) {
   const project = props.data.markdownRemark
@@ -110,14 +112,14 @@ function ProjectTemplate(props) {
                   to={previous.fields.slug}
                   rel="prev"
                 >
-                  <i>←</i> {previous.fields.title}
+                  <ArrowLeft /> {previous.fields.title}
                 </Link>
               )}
             </li>
             <li>
               {next && (
                 <Link className="project-link" to={next.fields.slug} rel="next">
-                  {next.fields.title} <i>→</i>
+                  {next.fields.title} <ArrowRight />
                 </Link>
               )}
             </li>

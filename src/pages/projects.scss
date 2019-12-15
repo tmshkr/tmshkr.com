@@ -7,6 +7,7 @@ body.dark main ul.pagination a.project-link {
   padding: 0.25rem 0.5rem;
   border-radius: 0.11rem;
   color: $link;
+  fill: $link;
   $link-bg: rgba(31, 87, 117, 0.25);
   background: $link-bg;
   transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
