@@ -29,10 +29,10 @@ exports.createPages = async ({ graphql, actions }) => {
   }
   `
 
-  createCollection(blogPost, blogPostsQuery)
-  createPaginatedIndex(blogIndex, blogPostsQuery)
+  await createCollection(blogPost, blogPostsQuery)
+  await createPaginatedIndex(blogIndex, blogPostsQuery)
 
-  createPages(
+  await createPages(
     page,
     `
     query TopLevelPages {
@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  createCollection(
+  await createCollection(
     project,
     `query Projects {
       allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}},
