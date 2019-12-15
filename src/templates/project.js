@@ -110,14 +110,14 @@ function ProjectTemplate(props) {
                   to={previous.fields.slug}
                   rel="prev"
                 >
-                  ← {previous.fields.title}
+                  <i>←</i> {previous.fields.title}
                 </Link>
               )}
             </li>
             <li>
               {next && (
                 <Link className="project-link" to={next.fields.slug} rel="next">
-                  {next.fields.title} →
+                  {next.fields.title} <i>→</i>
                 </Link>
               )}
             </li>
