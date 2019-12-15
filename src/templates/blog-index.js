@@ -8,7 +8,6 @@ import "./blog-index.scss"
 function BlogIndex(props) {
   const posts = props.data.allTextDocument.edges
   const { currentPage, numPages } = props.pageContext
-  console.log(props.pageContext)
 
   return (
     <Layout>
