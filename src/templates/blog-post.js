@@ -10,21 +10,15 @@ import "./blog-post.scss"
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
-    function isOverflowingX(el) {
-      return el.clientWidth < el.scrollWidth
-    }
-    const codeViews = document.querySelectorAll(".gatsby-highlight pre")
-    codeViews.forEach(function(el) {
-      if (isOverflowingX(el)) {
+    document.querySelectorAll(".gatsby-highlight pre").forEach(el => {
+      if (el.clientWidth < el.scrollWidth) {
         el.parentElement.classList.add("full-width")
       }
     })
-
-    const mermaidSVG = document.querySelector(".mermaid > svg")
-    if (mermaidSVG) {
-      mermaidSVG.attributes.width.value = "100%"
-      mermaidSVG.attributes.height.value = "100%"
-    }
+    document.querySelectorAll(".mermaid > svg").forEach(el => {
+      el.attributes.width.value = "100%"
+      el.attributes.height.value = "100%"
+    })
   }
 
   render() {
