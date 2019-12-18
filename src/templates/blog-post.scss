@@ -161,3 +161,29 @@ ul.pagination {
     }
   }
 }
+
+.mermaid {
+  text-align: center;
+  > svg {
+    max-height: 500px;
+  }
+  .edgePath > .path {
+    stroke: #999 !important;
+  }
+  .edgeLabel {
+    background-color: #555 !important;
+    color: #fff !important;
+  }
+  .arrowheadPath {
+    fill: #999 !important;
+  }
+  .cluster {
+    > .label {
+      color: #fff !important;
+    }
+    > rect {
+      fill: #333 !important;
+      stroke: #555 !important;
+    }
+  }
+}

@@ -19,6 +19,10 @@ class BlogPostTemplate extends React.Component {
         el.parentElement.classList.add("full-width")
       }
     })
+
+    const mermaidSVG = document.querySelector(".mermaid > svg")
+    mermaidSVG.attributes.width.value = "100%"
+    mermaidSVG.attributes.height.value = "100%"
   }
 
   render() {

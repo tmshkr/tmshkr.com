@@ -20,6 +20,17 @@ const gatsbyRemarkPlugins = [
       wrapperStyle: `margin-bottom: 1.0725rem`,
     },
   },
+  {
+    resolve: "gatsby-remark-mermaid",
+    options: {
+      theme: "forest",
+      mermaidOptions: {
+        sequence: {
+          useMaxWidth: true,
+        },
+      },
+    },
+  },
   `gatsby-remark-prismjs`,
   `gatsby-remark-copy-linked-files`,
   `gatsby-remark-smartypants`,
