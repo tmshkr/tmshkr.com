@@ -21,8 +21,10 @@ class BlogPostTemplate extends React.Component {
     })
 
     const mermaidSVG = document.querySelector(".mermaid > svg")
-    mermaidSVG.attributes.width.value = "100%"
-    mermaidSVG.attributes.height.value = "100%"
+    if (mermaidSVG) {
+      mermaidSVG.attributes.width.value = "100%"
+      mermaidSVG.attributes.height.value = "100%"
+    }
   }
 
   render() {
