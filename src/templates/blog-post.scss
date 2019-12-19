@@ -164,8 +164,9 @@ ul.pagination {
 
 .mermaid {
   text-align: center;
+  margin-bottom: 1.75rem;
   > svg {
-    max-height: 500px;
+    max-width: 500px;
   }
   .edgePath > .path {
     stroke: #999 !important;
