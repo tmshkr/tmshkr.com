@@ -17,7 +17,7 @@ function Subscribe(props) {
     const date = new Date()
 
     axios
-      .post("http://mbp2008.local:9000/mg-list", {
+      .post("/.netlify/functions/mg-list", {
         address: email,
         name: "test user",
         vars: { created: date.toUTCString() },

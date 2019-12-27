@@ -132,6 +132,10 @@ const config = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-catch-links`,
   ],
+  proxy: {
+    prefix: "/.netlify/functions",
+    url: "http://localhost:9000",
+  },
 }
 
 if (process.env.NODE_ENV === "development") {
