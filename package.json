@@ -9,11 +9,12 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
+    "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "d3": "^5.14.2",
-    "dotenv": "^8.2.0",
     "gatsby": "^2.18.4",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-catch-links": "^2.1.19",
@@ -43,6 +44,8 @@
     "gatsby-transformer-remark": "^2.6.39",
     "gatsby-transformer-sharp": "^2.3.7",
     "lodash": "^4.17.15",
+    "mailgun-js": "^0.22.0",
+    "netlify-lambda": "^1.6.3",
     "node-sass": "^4.13.0",
     "prismjs": "^1.17.1",
     "react": "^16.12.0",
@@ -56,7 +59,7 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.11.2",
+    "dotenv": "^8.2.0",
     "date-fns": "^2.8.1",
     "prettier": "^1.19.1",
     "slug": "^1.1.0"
@@ -71,11 +74,13 @@
     "url": "git+https://github.com/tmshkr/tmshkr.com"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && npm run build:functions",
+    "build:functions": "netlify-lambda build functions/",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve:client": "gatsby serve",
+    "serve:functions": "netlify-lambda serve functions/",
     "new-post": "node .scripts/new-post.js"
   }
 }

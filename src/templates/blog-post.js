@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Subscribe from "../components/subscribe"
 import { rhythm, scale } from "../utils/typography"
 import ArrowLeft from "@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
 import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg"
@@ -79,6 +80,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+        <Subscribe />
       </Layout>
     )
   }
