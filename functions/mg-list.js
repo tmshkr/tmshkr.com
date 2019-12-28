@@ -7,21 +7,11 @@ const validator = require("email-validator")
 const list = mg.lists(MG_LIST_ADDRESS)
 
 exports.handler = (event, context, callback) => {
-  console.log("EVENT:")
-  console.log(event)
   const { body, httpMethod } = event
-  let contact
+  let email = body
+  let date = new Date()
 
-  try {
-    contact = JSON.parse(body)
-  } catch {
-    return callback(null, {
-      statusCode: 400,
-      body: "400 Bad Request",
-    })
-  }
-
-  if (!validator.validate(contact.address)) {
+  if (!validator.validate(email)) {
     return callback(null, {
       statusCode: 400,
       body: "400 Bad Request",
@@ -30,34 +20,27 @@ exports.handler = (event, context, callback) => {
 
   switch (httpMethod) {
     case "POST":
-      return list.members().create(contact, function(err, data) {
-        if (err) {
-          console.error(err)
+      return list.members().create(
+        {
+          address: email,
+          vars: { subscribed_at: date.toUTCString() },
+          subscribed: true,
+          upsert: "yes",
+        },
+        function(err, data) {
+          if (err) {
+            console.error(err)
+            return callback(null, {
+              statusCode: 500,
+              body: "500 Internal Server Error",
+            })
+          }
           return callback(null, {
-            statusCode: 500,
-            body: "500 Internal Server Error",
+            statusCode: 200,
+            body: "200 OK",
           })
         }
-        return callback(null, {
-          statusCode: 200,
-          body: "200 OK",
-        })
-      })
-
-    case "PUT":
-      return list.members(contact.address).update(contact, function(err, data) {
-        if (err) {
-          console.error(err)
-          return callback(null, {
-            statusCode: 500,
-            body: "500 Internal Server Error",
-          })
-        }
-        return callback(null, {
-          statusCode: 200,
-          body: "200 OK",
-        })
-      })
+      )
 
     default:
       return callback(null, {

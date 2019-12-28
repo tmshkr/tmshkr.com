@@ -1,7 +1,7 @@
 {
   "name": "tmshkr.com",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.4.2",
   "author": "Tim Shaker <tim@tmshkr.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"

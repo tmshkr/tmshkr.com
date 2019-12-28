@@ -5,14 +5,14 @@ import validator from "email-validator"
 function Subscribe(props) {
   let { canHide } = props
   let blogSubscribeHidden = false
+
   try {
-    const t = localStorage.getItem("blogSubscribeHidden")
+    const t =
+      localStorage.getItem("blogSubscribeHidden") ||
+      localStorage.getItem("blogSubscribed")
     const d = Date.now() - t
     const millisecondsInDay = 86400000
     if (d < millisecondsInDay * 14) {
-      if (!(canHide === false)) {
-        canHide = true
-      }
       blogSubscribeHidden = true
       window.__blogSubscribeHidden = true
     }
@@ -35,17 +35,15 @@ function Subscribe(props) {
       return setMessage("Please enter a valid email address")
     }
 
-    const date = new Date()
-
     axios
-      .post("/.netlify/functions/mg-list", {
-        address: email,
-        vars: { modified: date.toUTCString() },
-        subscribed: true,
-        upsert: "yes",
+      .post("/.netlify/functions/mg-list", email, {
+        headers: { "Content-Type": "text/plain" },
       })
       .then(function(response) {
         setMessage(`${email} subscribed! Stay tuned for future updates.`)
+        try {
+          localStorage.setItem("blogSubscribed", Date.now())
+        } catch (err) {}
       })
       .catch(function(error) {
         setMessage("There was a problem.")
@@ -69,7 +67,7 @@ function Subscribe(props) {
           ? message
           : canHide && (
               <button id="hide-subscribe" onClick={handleHide}>
-                hide
+                maybe later
               </button>
             )}
       </p>
