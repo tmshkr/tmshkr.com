@@ -80,7 +80,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
-        <Subscribe />
+        {!window.__blogSubscribeHidden && <Subscribe canHide={true} />}
       </Layout>
     )
   }
