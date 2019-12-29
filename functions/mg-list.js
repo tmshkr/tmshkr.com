@@ -9,21 +9,19 @@ const list = mg.lists(MG_LIST_ADDRESS)
 exports.handler = (event, context, callback) => {
   const { body, httpMethod } = event
   let email = body
-  let date = new Date()
-
-  if (!validator.validate(email)) {
-    return callback(null, {
-      statusCode: 400,
-      body: "400 Bad Request",
-    })
-  }
 
   switch (httpMethod) {
     case "POST":
+      if (!validator.validate(email)) {
+        return callback(null, {
+          statusCode: 400,
+          body: "400 Bad Request",
+        })
+      }
       return list.members().create(
         {
           address: email,
-          vars: { subscribed_at: date.toUTCString() },
+          vars: { subscribed_at: new Date().toUTCString() },
           subscribed: true,
           upsert: "yes",
         },
