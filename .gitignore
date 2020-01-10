@@ -72,3 +72,4 @@ drafts
 .vscode/
 foo*
 .netlify/
+.history/
