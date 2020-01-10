@@ -21,7 +21,7 @@ exports.handler = (event, context, callback) => {
       return list.members().create(
         {
           address: email,
-          vars: { subscribed_at: new Date().toUTCString() },
+          vars: { subscribed_on: new Date().toUTCString() },
           subscribed: true,
           upsert: "yes",
         },

@@ -8,8 +8,8 @@ function Subscribe(props) {
 
   try {
     const t =
-      localStorage.getItem("blogSubscribeHidden") ||
-      localStorage.getItem("blogSubscribed")
+      localStorage.getItem("blogSubscribed") ||
+      localStorage.getItem("blogSubscribeHidden")
     const d = Date.now() - t
     const millisecondsInDay = 86400000
     if (d < millisecondsInDay * 14) {
