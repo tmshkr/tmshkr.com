@@ -6,7 +6,7 @@ date: "2020-01-10"
 
 I just completed Lambda School's orientation program, Lambda Launch. It was basically what you'd expect from an orientation program: administrative details, school policies, going over the schedule, and explaining the ISA terms, in addition to communicating some of the values, practices, and principles that will help students succeed at Lambda School.
 
-There were daily assignments to help students prepare for the first week of the program, which were submitted though the same web form used to submit projects during the course. This helped with getting used to the Lambda School workflow, as a kind of dry run.
+There were daily assignments to help students prepare for the first week of the program, which were submitted through the same web form used to submit projects during the course. This helped with getting used to the Lambda School workflow, as a kind of dry run.
 
 ### What's Your Why?
 
