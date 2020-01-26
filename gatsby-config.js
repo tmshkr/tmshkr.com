@@ -63,23 +63,6 @@ const config = {
       },
     },
     {
-      resolve: "gatsby-source-wordpress",
-      options: {
-        baseUrl: process.env.WP_HOSTNAME,
-        protocol: "https",
-        hostingWPCOM: false,
-        useACF: false,
-        includedRoutes: [
-          "**/categories",
-          "**/posts",
-          "**/pages",
-          "**/media",
-          "**/tags",
-          "**/taxonomies",
-        ],
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: gatsbyRemarkPlugins,

@@ -106,9 +106,6 @@ export const pageQuery = graphql`
       ... on MarkdownRemark {
         html
       }
-      ... on wordpress__POST {
-        content
-      }
     }
   }
 `

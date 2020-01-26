@@ -1,6 +1,5 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const parseWPExcerpt = require("./src/utils/parse-wp-excerpt")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -162,29 +161,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         value: node.frontmatter.title,
       })
       break
-
-    case `wordpress__POST`:
-      createNodeField({
-        name: `date`,
-        node,
-        value: node.date,
-      })
-      createNodeField({
-        name: `excerpt`,
-        node,
-        value: parseWPExcerpt(node.excerpt),
-      })
-      createNodeField({
-        name: `slug`,
-        node,
-        value: `/blog/${node.slug}/`,
-      })
-      createNodeField({
-        name: `title`,
-        node,
-        value: node.title,
-      })
-      break
   }
 }
 
@@ -226,11 +202,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       id: ID!
       fields: Fields
       frontmatter: Frontmatter
-    }
-
-    type wordpress__POST implements Node & TextDocument {
-      id: ID!
-      fields: Fields
     }
   `
   createTypes(typeDefs)
