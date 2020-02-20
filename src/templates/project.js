@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
-import { Global, css } from "@emotion/core"
+import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BreadcrumbPath from "../components/breadcrumb-path"
@@ -16,35 +16,11 @@ function ProjectTemplate(props) {
 
   return (
     <Fragment>
-      <Global
-        styles={css`
-          body.dark {
-            background: #0a1b43;
-            background: -webkit-linear-gradient(to top, #bf8640, #0a1b43);
-            background: linear-gradient(to top, #bf8640, #0a1b43);
-          }
-          body.light {
-            background: #90acee;
-            background: -webkit-linear-gradient(to top, #bf8640, #1b73bb);
-            background: linear-gradient(to top, #bf8640, #1b73bb);
-            #navbar {
-              background-color: rgba(207, 216, 220, 0.25);
-            }
-          }
-        `}
-      />
       <SEO
         title={project.frontmatter.title}
         description={project.frontmatter.description || project.excerpt}
       />
-      <div
-        css={css`
-          height: 100vh;
-          width: 100vw;
-          overflow-y: scroll;
-          -webkit-overflow-scrolling: touch;
-        `}
-      >
+      <div>
         <Layout
           id="project"
           css={css`
@@ -53,7 +29,7 @@ function ProjectTemplate(props) {
           `}
         >
           <BreadcrumbPath path={props.path} />
-          <VideoPlayer video={video} />
+          {video && <VideoPlayer video={video} />}
           <h2
             css={css`
               margin: 1em;

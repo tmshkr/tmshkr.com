@@ -165,6 +165,9 @@ function Navbar(props) {
             <Link to="/blog">Blog</Link>
           </li>
           <li>
+            <Link to="/projects">Projects</Link>
+          </li>
+          <li>
             <Link to="/contact">Contact</Link>
           </li>
           {!isMobile && <li>{toggleButton}</li>}

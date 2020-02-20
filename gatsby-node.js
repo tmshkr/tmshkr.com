@@ -7,6 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const blogIndex = path.resolve(`./src/templates/blog-index.js`)
   const project = path.resolve(`./src/templates/project.js`)
+  const projectIndex = path.resolve(`./src/templates/project-index.js`)
   const page = path.resolve(`./src/templates/page.js`)
 
   const blogPostsQuery = `
@@ -28,8 +29,25 @@ exports.createPages = async ({ graphql, actions }) => {
   }
   `
 
+  const projectQuery = `
+  query Projects {
+    allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}}, sort: {fields: fields___date, order: DESC}) {
+      edges {
+        node {
+          fields {
+            slug
+            title
+          }
+        }
+      }
+    }
+  }  
+  `
+
   await createCollection(blogPost, blogPostsQuery)
-  await createPaginatedIndex(blogIndex, blogPostsQuery)
+  await createPaginatedIndex(blogIndex, blogPostsQuery, "blog")
+  await createCollection(project, projectQuery)
+  await createPaginatedIndex(projectIndex, projectQuery, "projects")
 
   await createPages(
     page,
@@ -43,24 +61,6 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }    
-    `
-  )
-
-  await createCollection(
-    project,
-    `query Projects {
-      allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}},
-      sort: {fields: fields___title, order: DESC}) {
-        edges {
-          node {
-            fields {
-              slug
-              title
-            }
-          }
-        }
-      }
-    }
     `
   )
 
@@ -111,7 +111,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
 
-  async function createPaginatedIndex(component, query) {
+  async function createPaginatedIndex(component, query, slug) {
     const result = await graphql(query)
 
     if (result.errors) {
@@ -125,7 +125,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     for (let i = 0; i < numPages; i++) {
       createPage({
-        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+        path: i === 0 ? `/${slug}` : `/${slug}/${i + 1}`,
         component,
         context: {
           limit: postsPerPage,
