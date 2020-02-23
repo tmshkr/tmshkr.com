@@ -29,6 +29,20 @@ exports.createPages = async ({ graphql, actions }) => {
   }
   `
 
+  const lambdaLogQuery = `
+  query LambdaLog {
+    allTextDocument(filter: {fields: {slug: {glob: "/lambda-log/*/"}}}) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }  
+  `
+
   const projectQuery = `
   query Projects {
     allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}}, sort: {fields: fields___date, order: DESC}) {
@@ -145,10 +159,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     case `MarkdownRemark`:
     case `Mdx`:
       const filePath = createFilePath({ node, getNode })
+      let match
+
+      if (!node.frontmatter.date) {
+        match = filePath.match(/\d{4}-\d{2}-\d{2}/) // YYYY-MM-DD
+      }
+
       createNodeField({
         name: `date`,
         node,
-        value: node.frontmatter.date,
+        value: node.frontmatter.date || (match && match[0]),
       })
       createNodeField({
         name: `slug`,
