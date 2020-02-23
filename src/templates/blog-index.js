@@ -53,19 +53,19 @@ function BlogIndex(props) {
       <ul className="pagination">
         <li>
           {currentPage < numPages && (
-            <Link to={`blog/${currentPage + 1}`}>
+            <Link to={`/blog/${currentPage + 1}`}>
               <ArrowLeft /> Prev
             </Link>
           )}
         </li>
         <li>
           {currentPage === 2 && (
-            <Link to={`blog/`}>
+            <Link to={`/blog/`}>
               Next <ArrowRight />
             </Link>
           )}
           {currentPage > 2 && (
-            <Link to={`blog/${currentPage - 1}`}>
+            <Link to={`/blog/${currentPage - 1}`}>
               Next <ArrowRight />
             </Link>
           )}
