@@ -20,6 +20,21 @@ class BlogPostTemplate extends React.Component {
       el.attributes.width.value = "100%"
       el.attributes.height.value = "100%"
     })
+    document.onkeyup = this.handleKeyup.bind(this)
+  }
+
+  handleKeyup(e) {
+    const { previous, next } = this.props.pageContext
+    switch (e.which) {
+      case 37:
+        previous && this.props.navigate(previous.fields.slug)
+        break
+      case 39:
+        next && this.props.navigate(next.fields.slug)
+        break
+      default:
+        break
+    }
   }
 
   render() {
