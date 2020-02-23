@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useEffect } from "react"
 import { Link, graphql } from "gatsby"
 import { css } from "@emotion/core"
 import Layout from "../components/layout"
@@ -13,6 +13,25 @@ function ProjectTemplate(props) {
   const project = props.data.markdownRemark
   const { video, url } = project.frontmatter
   const { previous, next } = props.pageContext
+
+  function handleKeyup(e) {
+    const { previous, next } = props.pageContext
+    switch (e.which) {
+      case 37:
+        previous && props.navigate(previous.fields.slug)
+        break
+      case 39:
+        next && props.navigate(next.fields.slug)
+        break
+      default:
+        break
+    }
+  }
+
+  useEffect(() => {
+    document.onkeyup = handleKeyup
+    return () => (document.onkeyup = null)
+  }, [])
 
   return (
     <Fragment>

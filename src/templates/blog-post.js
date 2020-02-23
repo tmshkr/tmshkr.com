@@ -23,6 +23,10 @@ class BlogPostTemplate extends React.Component {
     document.onkeyup = this.handleKeyup.bind(this)
   }
 
+  componentWillUnmount() {
+    document.onkeyup = null
+  }
+
   handleKeyup(e) {
     const { previous, next } = this.props.pageContext
     switch (e.which) {
