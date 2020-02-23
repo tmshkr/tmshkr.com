@@ -4,7 +4,7 @@ title: "About"
 
 Hello, my name is Tim Shaker.
 
-I'm currently studying [Full Stack Web Development](https://learn.lambdaschool.com/course/cs-fsw) at Lambda School.
+I'm currently studying Full Stack Web Development at Lambda School. You can see what I've been working on lately [here](https://github.com/tmshkr/lambda-log).
 
 Before that, I was mostly a self-taught developer, focusing on JavaScript, Node, and React through the [freeCodeCamp curriculum](https://www.freecodecamp.org/tmshkr). I first learned the basics of programming in a C++ course at UCLA, and I've been tinkering with the web since I was a kid.
 
