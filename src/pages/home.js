@@ -17,12 +17,7 @@ function Home(props) {
             Check out what I've been working on lately:
           </p>
           <div>
-            <a
-              href="https://github.com/tmshkr/lambda-log"
-              target="_blank"
-              className="button"
-              rel="noopener noreferrer"
-            >
+            <a href="/blog/" className="button">
               Lambda Log
             </a>
             <p>Updated every weekday</p>
