@@ -119,6 +119,13 @@ const config = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: "gatsby-plugin-buildtime-timezone",
+      options: {
+        tz: "America/Los_Angeles",
+        format: "MMM DD, YYYY",
+      },
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-catch-links`,
   ],

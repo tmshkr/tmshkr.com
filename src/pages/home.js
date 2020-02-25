@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import SEO from "../components/seo"
 import Navbar from "../components/navbar"
-// import ArrowDown from "@fortawesome/fontawesome-free/svgs/solid/arrow-down.svg"
+import BuildTime from "../components/build-time"
 import "./home.scss"
 
 function Home(props) {
@@ -20,8 +20,8 @@ function Home(props) {
             <a href="/blog/" className="button">
               Lambda Log
             </a>
-            <p>Updated every weekday</p>
           </div>
+          <BuildTime />
         </div>
       </main>
     </Fragment>
