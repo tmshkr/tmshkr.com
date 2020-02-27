@@ -80,6 +80,6 @@
     "serve:client": "gatsby serve",
     "serve:functions": "netlify-lambda serve functions/",
     "new-post": "node .scripts/new-post.js",
-    "deploy": "gatsby build && netlify deploy"
+    "deploy": "gatsby clean && gatsby build && netlify deploy"
   }
 }
