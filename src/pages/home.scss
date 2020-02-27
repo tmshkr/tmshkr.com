@@ -22,11 +22,10 @@
     align-content: center;
     justify-content: center;
     text-align: center;
-    grid-template-rows: 3fr 2fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 1rem;
   }
   h1.hero {
     margin: 0;
-    margin-top: 3rem;
     align-self: end;
     font-size: 72px;
   }
