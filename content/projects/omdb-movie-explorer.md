@@ -1,5 +1,5 @@
 ---
-title: "OMDb Moview Explorer"
+title: "OMDb Movie Explorer"
 url: "https://omdb-movie-explorer-tmshkr.netlify.com/"
 github_repo: "https://github.com/tmshkr/React-Redux-App/"
 date: "2020-03-18"
