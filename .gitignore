@@ -73,5 +73,5 @@ drafts
 foo*
 .netlify/
 .history/
-lambda-log/
-content/
+lambda-log
+content
