@@ -74,3 +74,4 @@ foo*
 .netlify/
 .history/
 lambda-log/
+content/
