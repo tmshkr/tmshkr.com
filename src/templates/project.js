@@ -1,17 +1,18 @@
 import React, { Fragment, useEffect } from "react"
 import { Link, graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BreadcrumbPath from "../components/breadcrumb-path"
 import VideoPlayer from "../components/video-player"
-import ExternalLink from "@fortawesome/fontawesome-free/svgs/solid/external-link-alt.svg"
+import TitleLink from "../components/title-link"
 import ArrowLeft from "@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
 import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg"
 
 function ProjectTemplate(props) {
-  const project = props.data.markdownRemark
-  const { video, url } = project.frontmatter
+  const project = props.data.textDocument
+  const { video, url, title } = project.fields
   const { previous, next } = props.pageContext
 
   function handleKeyup(e) {
@@ -37,8 +38,8 @@ function ProjectTemplate(props) {
   return (
     <Fragment>
       <SEO
-        title={project.frontmatter.title}
-        description={project.frontmatter.description || project.excerpt}
+        title={project.fields.title}
+        description={project.fields.description || project.excerpt}
       />
       <div>
         <Layout
@@ -50,51 +51,18 @@ function ProjectTemplate(props) {
         >
           <BreadcrumbPath path={props.path} />
           {video && <VideoPlayer video={video} />}
-          <h2
-            css={css`
-              margin: 1em;
-              text-align: center;
-            `}
-          >
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              css={css`
-                padding: 0.33em;
-                border-radius: 0.11em;
-                body.dark & {
-                  color: #fff;
-                  fill: #fff;
-                  &:hover {
-                    background: rgba(187, 222, 251, 0.33);
-                  }
-                }
-                body.light & {
-                  color: #000;
-                  fill: #000;
-                  &:hover {
-                    background: rgba(96, 125, 139, 0.33);
-                  }
-                }
-
-                svg {
-                  width: 1rem;
-                  height: auto;
-                }
-              `}
-            >
-              {project.frontmatter.title} <ExternalLink />
-            </a>
-          </h2>
-
+          {project.html && <TitleLink title={title} url={url} />}
           <div
             className="content"
             css={css`
               margin: 1rem 0;
             `}
-            dangerouslySetInnerHTML={{ __html: project.html }}
-          />
+            dangerouslySetInnerHTML={project.html && { __html: project.html }}
+          >
+            {project.body && (
+              <MDXRenderer fields={project.fields}>{project.body}</MDXRenderer>
+            )}
+          </div>
           <hr
             css={css`
               margin-bottom: 2rem;
@@ -130,18 +98,22 @@ export default ProjectTemplate
 
 export const pageQuery = graphql`
   query ProjectBySlug($slug: String!) {
-    site {
-      siteMetadata {
+    textDocument(fields: { slug: { eq: $slug } }) {
+      fields {
         title
-        author
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
+        slug
+        date(formatString: "MMMM DD, YYYY")
+        excerpt
         url
         video
+        github_repo
+      }
+      excerpt
+      ... on Mdx {
+        body
+      }
+      ... on MarkdownRemark {
+        html
       }
     }
   }
