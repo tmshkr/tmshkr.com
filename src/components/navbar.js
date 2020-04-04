@@ -72,6 +72,7 @@ function Navbar(props) {
     return () => {
       mobileQuery.removeListener(callback)
     }
+    // eslint-disable-next-line
   }, [])
 
   // autohide navbar
@@ -113,6 +114,7 @@ function Navbar(props) {
         prevPageYOffset = 0
       }
     }
+    // eslint-disable-next-line
   }, [])
 
   function handleClickCapture(e) {

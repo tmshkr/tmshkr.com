@@ -31,6 +31,7 @@ function ProjectTemplate(props) {
   useEffect(() => {
     document.onkeyup = handleKeyup
     return () => (document.onkeyup = null)
+    // eslint-disable-next-line
   }, [])
 
   return (

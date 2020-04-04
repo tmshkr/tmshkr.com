@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Layout from "../../components/layout"
 import Subscribe from "../../components/subscribe"
 import SEO from "../../components/seo"
 
-function SubscribePage(props) {
+function SubscribePage() {
   return (
     <Layout className="text-center">
       <SEO title="Subscribe" />
