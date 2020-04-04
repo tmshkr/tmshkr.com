@@ -159,28 +159,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     case `MarkdownRemark`:
     case `Mdx`:
       const filePath = createFilePath({ node, getNode })
-      let date
-
-      if (!node.frontmatter.date) {
-        date = filePath.match(/\d{4}-\d{2}-\d{2}/) // YYYY-MM-DD
-      }
-
-      createNodeField({
-        name: `date`,
-        node,
-        value: node.frontmatter.date || (date && date[0]),
-      })
       createNodeField({
         name: `slug`,
         node,
         value: filePath,
       })
-      createNodeField({
-        name: `title`,
-        node,
-        value: node.frontmatter.title,
-      })
-      break
+      for (let key in node.frontmatter) {
+        createNodeField({
+          name: key,
+          node,
+          value: node.frontmatter[key],
+        })
+      }
   }
 }
 
