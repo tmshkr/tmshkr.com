@@ -17,8 +17,8 @@ function Home(props) {
             Check out what I've been working on lately:
           </p>
           <div>
-            <a href="/blog/" className="button">
-              Lambda Log
+            <a href="/projects/" className="button">
+              View Projects
             </a>
           </div>
           <BuildTime />

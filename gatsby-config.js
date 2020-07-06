@@ -63,13 +63,6 @@ const config = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/lambda-log/`,
-        name: `lambda-log`,
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: gatsbyRemarkPlugins,
@@ -142,6 +135,13 @@ if (process.env.NODE_ENV === "development") {
       path: `${__dirname}/drafts/`,
       name: `drafts`,
     },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/lambda-log/`,
+    //     name: `lambda-log`,
+    //   },
+    // },
   })
 }
 

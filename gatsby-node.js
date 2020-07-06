@@ -29,20 +29,6 @@ exports.createPages = async ({ graphql, actions }) => {
   }
   `
 
-  const lambdaLogQuery = `
-  query LambdaLog {
-    allTextDocument(filter: {fields: {slug: {glob: "/lambda-log/*/"}}}) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }  
-  `
-
   const projectQuery = `
   query Projects {
     allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}}, sort: {fields: fields___date, order: DESC}) {
