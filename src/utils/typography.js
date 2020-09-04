@@ -6,13 +6,11 @@ Wordpress2016.overrideThemeStyles = () => {
     "a.gatsby-resp-image-link, a": {
       boxShadow: `none`,
     },
-    "h1, h2, h3, h4, h5, h6, time.date, nav, .breadcrumb-path": {
+    "h1, h2, h3, h4, h5, h6, time.date, nav, .breadcrumb-path, .title-link": {
       fontFamily: `"Helvetica Neue", Helvetica, Arial, sans-serif`,
     },
   }
 }
-
-// Wordpress2016.baseFontSize = "21px"
 
 delete Wordpress2016.googleFonts
 

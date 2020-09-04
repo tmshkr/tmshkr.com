@@ -1,15 +1,14 @@
 #video-player {
-  width: 100vw;
-  margin: auto;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  > div {
-    max-width: 640px;
-    max-height: 360px;
+  @media screen and (max-width: 42rem) {
+    width: 100vw;
+    margin: auto;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
   }
+
   .player-wrapper {
     cursor: pointer;
     position: relative;

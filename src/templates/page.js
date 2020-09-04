@@ -37,12 +37,6 @@ export default Page
 
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-      }
-    }
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title

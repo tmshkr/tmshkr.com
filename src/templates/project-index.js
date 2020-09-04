@@ -7,14 +7,15 @@ import ArrowLeft from "@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
 import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg"
 
 function ProjectIndex(props) {
-  const posts = props.data.allTextDocument.edges
+  const posts = props.data.allMdx.edges
   const { currentPage, numPages } = props.pageContext
 
   return (
     <Layout>
       <SEO title="Projects" />
       {posts.map(({ node }) => {
-        const { date, excerpt, slug, title } = node.fields
+        const { slug } = node.fields
+        const { date, excerpt, title } = node.frontmatter
         return (
           <Fragment key={slug}>
             <Link
@@ -52,19 +53,19 @@ function ProjectIndex(props) {
       <ul className="pagination">
         <li>
           {currentPage < numPages && (
-            <Link to={`projects/${currentPage + 1}`}>
+            <Link to={`/projects/${currentPage + 1}`}>
               <ArrowLeft /> Prev
             </Link>
           )}
         </li>
         <li>
           {currentPage === 2 && (
-            <Link to={`projects/`}>
+            <Link to={`/projects/`}>
               Next <ArrowRight />
             </Link>
           )}
           {currentPage > 2 && (
-            <Link to={`projects/${currentPage - 1}`}>
+            <Link to={`/projects/${currentPage - 1}`}>
               Next <ArrowRight />
             </Link>
           )}
@@ -78,20 +79,21 @@ export default ProjectIndex
 
 export const pageQuery = graphql`
   query ProjectIndexFeed($skip: Int!, $limit: Int!) {
-    allTextDocument(
+    allMdx(
       filter: { fields: { slug: { glob: "/projects/*/" } } }
-      sort: { fields: fields___date, order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
     ) {
       edges {
         node {
           excerpt
-          fields {
+          frontmatter {
             date(formatString: "MMMM DD, YYYY")
-            excerpt
-            slug
             title
+          }
+          fields {
+            slug
           }
         }
       }

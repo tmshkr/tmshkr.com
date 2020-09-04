@@ -1,30 +1,35 @@
-import React, { Fragment } from "react"
+import React from "react"
+import { Link } from "gatsby"
+
 import SEO from "../components/seo"
 import Navbar from "../components/navbar"
 import BuildTime from "../components/build-time"
+import { Button } from "reactstrap"
 import "./home.scss"
 
 function Home(props) {
   return (
-    <Fragment>
+    <>
       <SEO />
       <Navbar />
       <main id="home">
-        <div id="hello">
-          <h1 className="hero">Hello, I'm Tim</h1>
+        <div id="hello" className="content">
+          <h1 className="hero">Hello World</h1>
           <p>
-            I'm currently studying Full Stack Web Development at Lambda School.
-            Check out what I've been working on lately:
+            My name is Tim Shaker.
+            <br />
+            I'm a full-stack engineer looking to build useful things.
+            <br />
+            Feel free to <Link to="/contact">contact</Link> me if you want to
+            work together.
           </p>
-          <div>
-            <a href="/projects/" className="button">
-              View Projects
-            </a>
-          </div>
+          <Button color="info" onClick={() => props.navigate("/projects")}>
+            View Projects
+          </Button>
           <BuildTime />
         </div>
       </main>
-    </Fragment>
+    </>
   )
 }
 

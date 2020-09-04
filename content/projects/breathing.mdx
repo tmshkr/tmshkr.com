@@ -1,0 +1,16 @@
+---
+title: "Breathing"
+url: "https://tmshkr.github.io/breathing/"
+github_repo: "https://github.com/tmshkr/breathing/"
+date: "2018-09-01"
+attachments:
+  - "./breathing.mp4"
+---
+
+import TitleLink from "../../src/components/title-link"
+import VideoPlayer from "../../src/components/video-player"
+
+<VideoPlayer video={props.attachments[0].publicURL} />
+<TitleLink {...props} />
+
+I made this simple vanilla JS app to assist with breathing meditation practice. It's based on the box breathing technique, a popular method of regulating the breath in order to improve concentration and wellbeing.

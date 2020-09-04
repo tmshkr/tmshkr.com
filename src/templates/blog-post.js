@@ -42,22 +42,19 @@ class BlogPostTemplate extends React.Component {
   }
 
   render() {
-    const post = this.props.data.textDocument
+    const post = this.props.data.mdx
     const { previous, next } = this.props.pageContext
 
     return (
       <Layout className="blog-post" autoHideNavbar={true}>
-        <SEO
-          title={post.fields.title}
-          description={post.fields.description || post.excerpt}
-        />
+        <SEO title={post.frontmatter.title} description={post.excerpt} />
         <h1
           style={{
             marginTop: rhythm(1),
             marginBottom: 0,
           }}
         >
-          {post.fields.title}
+          {post.frontmatter.title}
         </h1>
         <time
           className="date"
@@ -68,15 +65,10 @@ class BlogPostTemplate extends React.Component {
             paddingLeft: rhythm(0.1),
           }}
         >
-          {post.fields.date}
+          {post.frontmatter.date}
         </time>
-        <div
-          className="content"
-          dangerouslySetInnerHTML={
-            (post.html || post.content) && { __html: post.html || post.content }
-          }
-        >
-          {post.body && <MDXRenderer>{post.body}</MDXRenderer>}
+        <div className="content">
+          <MDXRenderer>{post.body}</MDXRenderer>
         </div>
         <hr
           style={{
@@ -87,14 +79,14 @@ class BlogPostTemplate extends React.Component {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                <ArrowLeft /> {previous.fields.title}
+                <ArrowLeft /> {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.fields.title} <ArrowRight />
+                {next.frontmatter.title} <ArrowRight />
               </Link>
             )}
           </li>
@@ -111,20 +103,16 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    textDocument(fields: { slug: { eq: $slug } }) {
-      fields {
-        title
+    mdx(fields: { slug: { eq: $slug } }) {
+      frontmatter {
         date(formatString: "MMMM DD, YYYY")
-        excerpt
+        title
+      }
+      fields {
         slug
       }
       excerpt
-      ... on Mdx {
-        body
-      }
-      ... on MarkdownRemark {
-        html
-      }
+      body
     }
   }
 `

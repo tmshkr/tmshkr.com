@@ -12,57 +12,59 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogPostsQuery = `
   query BlogPosts {
-    allTextDocument(filter: {fields: {slug: {glob: "/blog/*/"}}},
-    sort: {fields: fields___date, order: DESC}
-    limit: 1000
-    ) {
-
+    allMdx(filter: {fields: {slug: {glob: "/blog/*/"}}},
+    sort: {fields: [frontmatter___date], order: DESC},
+    limit: 1000) {
       edges {
         node {
           fields {
             slug
+          }
+          frontmatter {
             title
           }
         }
       }
     }
-  }
-  `
+  }`
 
   const projectQuery = `
   query Projects {
-    allTextDocument(filter: {fields: {slug: {glob: "/projects/*/"}}}, sort: {fields: fields___date, order: DESC}) {
+    allMdx(filter: {fields: {slug: {glob: "/projects/*/"}}},
+    sort: {fields: [frontmatter___date],
+      order: DESC}) {
       edges {
         node {
           fields {
             slug
+          }
+          frontmatter {
             title
           }
         }
       }
     }
-  }  
-  `
+  }`
+
+  const topLevelQuery = `
+  query TopLevelPages {
+    allMdx(filter: {fields: {slug: {glob: "/*/"}}}) {
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+        }
+      }
+    }
+  }`
 
   await createCollection(blogPost, blogPostsQuery)
   await createPaginatedIndex(blogIndex, blogPostsQuery, "blog")
   await createCollection(project, projectQuery)
   await createPaginatedIndex(projectIndex, projectQuery, "projects")
-
-  await createPages(
-    page,
-    `
-    query TopLevelPages {
-      allMarkdown(filter: {fields: {slug: {glob: "/*/"}}}) {
-        nodes {
-          fields {
-            slug
-          }
-        }
-      }
-    }    
-    `
-  )
+  await createPages(page, topLevelQuery)
 
   async function createCollection(component, query) {
     const result = await graphql(query)
@@ -71,7 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
       throw result.errors
     }
 
-    const { edges } = result.data.allTextDocument
+    const { edges } = result.data.allMdx
 
     edges.forEach((edge, index) => {
       const previous = index === edges.length - 1 ? null : edges[index + 1].node
@@ -82,7 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
         component,
         context: {
           slug: edge.node.fields.slug,
-          title: edge.node.fields.title,
+          title: edge.node.frontmatter.title,
           previous,
           next,
         },
@@ -97,7 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
       throw result.errors
     }
 
-    const { nodes } = result.data.allMarkdown
+    const { nodes } = result.data.allMdx
 
     nodes.forEach(node => {
       createPage({
@@ -105,7 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
         component,
         context: {
           slug: node.fields.slug,
-          title: node.fields.title,
+          title: node.frontmatter.title,
         },
       })
     })
@@ -118,7 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
       throw result.errors
     }
 
-    const posts = result.data.allTextDocument.edges
+    const posts = result.data.allMdx.edges
 
     const postsPerPage = 5
     const numPages = Math.ceil(posts.length / postsPerPage)
@@ -141,64 +143,12 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  switch (node.internal.type) {
-    case `MarkdownRemark`:
-    case `Mdx`:
-      const filePath = createFilePath({ node, getNode })
-      createNodeField({
-        name: `slug`,
-        node,
-        value: filePath,
-      })
-      for (let key in node.frontmatter) {
-        createNodeField({
-          name: key,
-          node,
-          value: node.frontmatter[key],
-        })
-      }
+  if (node.internal.type === `Mdx`) {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
   }
-}
-
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
-  const typeDefs = `
-    interface Markdown @nodeInterface {
-      id: ID!
-      fields: Fields
-      frontmatter: Frontmatter
-      excerpt: String
-    }
-
-    interface TextDocument @nodeInterface {
-      id: ID!
-      fields: Fields
-      excerpt: String
-    }
-
-    type Fields {
-      date: Date @dateformat
-      excerpt: String
-      slug: String!
-      title: String
-    }
-
-    type Frontmatter {
-      title: String
-      date: Date @dateformat
-    }
-
-    type MarkdownRemark implements Node & Markdown & TextDocument {
-      id: ID!
-      fields: Fields
-      frontmatter: Frontmatter
-    }
-
-    type Mdx implements Node & Markdown & TextDocument {
-      id: ID!
-      fields: Fields
-      frontmatter: Frontmatter
-    }
-  `
-  createTypes(typeDefs)
 }

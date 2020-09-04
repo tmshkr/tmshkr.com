@@ -1,23 +1,46 @@
-h2.title-link {
-  margin: 1em;
+div#title-link {
   text-align: center;
-  a.title-link {
+  margin: 2rem 0;
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+  a.github {
+    svg {
+      margin-left: 0.5rem;
+    }
+  }
+  a {
+    display: inline-block;
     padding: 0.33em;
     border-radius: 0.11em;
-    border-bottom: none !important;
-    box-shadow: none !important;
+    box-shadow: none;
+    padding: 0.33rem 0.5rem;
+    border-bottom: none;
+
     body.dark & {
       color: #fff;
       fill: #fff;
+      background-color: #233544;
+      box-shadow: 3px 3px #3b556b;
       &:hover {
-        background: rgba(187, 222, 251, 0.33);
+        background: #009688;
+      }
+      &:active {
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px #3b556b;
       }
     }
     body.light & {
       color: #000;
       fill: #000;
+      background-color: #bbcecd;
+      box-shadow: 3px 3px #8e8e8e;
       &:hover {
-        background: rgba(96, 125, 139, 0.33);
+        background: #71b7b2;
+      }
+      &:active {
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px #8e8e8e;
       }
     }
 

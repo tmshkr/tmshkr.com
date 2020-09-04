@@ -1,46 +1,10 @@
 require("dotenv").config()
 
-const gatsbyRemarkPlugins = [
-  {
-    resolve: "gatsby-remark-external-links",
-    options: {
-      target: "_blank",
-      rel: "noopener noreferrer",
-    },
-  },
-  {
-    resolve: `gatsby-remark-images`,
-    options: {
-      maxWidth: 590,
-    },
-  },
-  {
-    resolve: `gatsby-remark-responsive-iframe`,
-    options: {
-      wrapperStyle: `margin-bottom: 1.0725rem`,
-    },
-  },
-  {
-    resolve: "gatsby-remark-mermaid",
-    options: {
-      theme: "forest",
-      mermaidOptions: {
-        sequence: {
-          useMaxWidth: true,
-        },
-      },
-    },
-  },
-  `gatsby-remark-prismjs`,
-  `gatsby-remark-copy-linked-files`,
-  `gatsby-remark-smartypants`,
-]
-
 const config = {
   siteMetadata: {
     title: `tmshkr`,
     author: `Tim Shaker`,
-    description: `Tim Shaker is a designer/developer based in Orange County, California.`,
+    description: `Tim Shaker is a full-stack engineer based in Orange County, California.`,
     siteUrl: `https://www.tmshkr.com/`,
     social: {
       twitter: `tmshkr`,
@@ -58,40 +22,62 @@ const config = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/`,
+        path: `${__dirname}/content`,
         name: `content`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: gatsbyRemarkPlugins,
       },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        gatsbyRemarkPlugins,
+        extensions: [".mdx", ".md"],
+        // a workaround to solve mdx-remark plugin compat issue
+        // https://github.com/gatsbyjs/gatsby/issues/15486
+        plugins: [`gatsby-remark-images`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "noopener noreferrer",
+            },
+          },
+          {
+            resolve: "gatsby-remark-mermaid",
+            options: {
+              theme: "forest",
+              mermaidOptions: {
+                sequence: {
+                  useMaxWidth: true,
+                },
+              },
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
       },
     },
-    `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /\.svg$/,
-        },
-      },
-    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GA_TRACKING_ID,
       },
     },
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -99,12 +85,11 @@ const config = {
         short_name: `tmshkr.com`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#01579b`,
+        theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/tmshkr.png`,
+        icon: `./static/tm.png`,
       },
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
@@ -119,8 +104,20 @@ const config = {
         format: "MMM DD, YYYY",
       },
     },
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-catch-links`,
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.svg$/,
+        },
+      },
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
   proxy: {
     prefix: "/.netlify/functions",
@@ -135,13 +132,6 @@ if (process.env.NODE_ENV === "development") {
       path: `${__dirname}/drafts/`,
       name: `drafts`,
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/lambda-log/`,
-    //     name: `lambda-log`,
-    //   },
-    // },
   })
 }
 

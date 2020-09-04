@@ -8,14 +8,15 @@ import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg
 import "./blog-index.scss"
 
 function BlogIndex(props) {
-  const posts = props.data.allTextDocument.edges
+  const posts = props.data.allMdx.edges
   const { currentPage, numPages } = props.pageContext
 
   return (
     <Layout>
       <SEO title="Blog" />
       {posts.map(({ node }) => {
-        const { date, excerpt, slug, title } = node.fields
+        const { date, excerpt, title } = node.frontmatter
+        const { slug } = node.fields
         return (
           <Fragment key={slug}>
             <Link
@@ -79,21 +80,22 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query BlogIndexFeed($skip: Int!, $limit: Int!) {
-    allTextDocument(
+    allMdx(
       filter: { fields: { slug: { glob: "/blog/*/" } } }
-      sort: { fields: fields___date, order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
     ) {
       edges {
         node {
-          excerpt
-          fields {
+          frontmatter {
             date(formatString: "MMMM DD, YYYY")
-            excerpt
-            slug
             title
           }
+          fields {
+            slug
+          }
+          excerpt
         }
       }
     }

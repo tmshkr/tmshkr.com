@@ -5,14 +5,13 @@ import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BreadcrumbPath from "../components/breadcrumb-path"
-import VideoPlayer from "../components/video-player"
-import TitleLink from "../components/title-link"
 import ArrowLeft from "@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
 import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg"
+import "./project.scss"
 
 function ProjectTemplate(props) {
-  const project = props.data.textDocument
-  const { video, url, title } = project.fields
+  const project = props.data.mdx
+  const { attachments, url, title, github_repo } = project.frontmatter
   const { previous, next } = props.pageContext
 
   function handleKeyup(e) {
@@ -37,59 +36,56 @@ function ProjectTemplate(props) {
 
   return (
     <Fragment>
-      <SEO
-        title={project.fields.title}
-        description={project.fields.description || project.excerpt}
-      />
-      <div>
-        <Layout
-          id="project"
+      <SEO title={project.frontmatter.title} description={project.excerpt} />
+      <Layout
+        css={css`
+          margin-top: 0;
+          padding-top: 5.25rem;
+        `}
+        className={"project"}
+      >
+        <BreadcrumbPath path={props.path} />
+        <div
+          className="content"
           css={css`
-            margin-top: 0;
-            padding-top: 5.25rem;
+            margin: 1rem 0;
           `}
         >
-          <BreadcrumbPath path={props.path} />
-          {video && <VideoPlayer video={video} />}
-          {project.html && <TitleLink title={title} url={url} />}
-          <div
-            className="content"
-            css={css`
-              margin: 1rem 0;
-            `}
-            dangerouslySetInnerHTML={project.html && { __html: project.html }}
+          <MDXRenderer
+            attachments={attachments}
+            github_repo={github_repo}
+            url={url}
+            title={title}
           >
-            {project.body && (
-              <MDXRenderer fields={project.fields}>{project.body}</MDXRenderer>
+            {project.body}
+          </MDXRenderer>
+        </div>
+        <hr
+          css={css`
+            margin-bottom: 2rem;
+          `}
+        />
+        <ul className="pagination">
+          <li>
+            {previous && (
+              <Link
+                className="project-link"
+                to={previous.fields.slug}
+                rel="prev"
+              >
+                <ArrowLeft /> {previous.frontmatter.title}
+              </Link>
             )}
-          </div>
-          <hr
-            css={css`
-              margin-bottom: 2rem;
-            `}
-          />
-          <ul className="pagination">
-            <li>
-              {previous && (
-                <Link
-                  className="project-link"
-                  to={previous.fields.slug}
-                  rel="prev"
-                >
-                  <ArrowLeft /> {previous.fields.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link className="project-link" to={next.fields.slug} rel="next">
-                  {next.fields.title} <ArrowRight />
-                </Link>
-              )}
-            </li>
-          </ul>
-        </Layout>
-      </div>
+          </li>
+          <li>
+            {next && (
+              <Link className="project-link" to={next.fields.slug} rel="next">
+                {next.frontmatter.title} <ArrowRight />
+              </Link>
+            )}
+          </li>
+        </ul>
+      </Layout>
     </Fragment>
   )
 }
@@ -98,23 +94,21 @@ export default ProjectTemplate
 
 export const pageQuery = graphql`
   query ProjectBySlug($slug: String!) {
-    textDocument(fields: { slug: { eq: $slug } }) {
-      fields {
+    mdx(fields: { slug: { eq: $slug } }) {
+      frontmatter {
         title
-        slug
         date(formatString: "MMMM DD, YYYY")
-        excerpt
         url
-        video
         github_repo
+        attachments {
+          publicURL
+        }
+      }
+      fields {
+        slug
       }
       excerpt
-      ... on Mdx {
-        body
-      }
-      ... on MarkdownRemark {
-        html
-      }
+      body
     }
   }
 `

@@ -1,0 +1,15 @@
+---
+title: "Focus on This"
+url: "https://focus-on-this.web.app/"
+date: "2018-12-01"
+attachments:
+  - "./focus-on-this.mp4"
+---
+
+import TitleLink from "../../src/components/title-link"
+import VideoPlayer from "../../src/components/video-player"
+
+<VideoPlayer video={props.attachments[0].publicURL} />
+<TitleLink {...props} />
+
+I started making this pomodoro timer app as part of the freeCodeCamp curriculum. After completing the project, I continued to develop it, adding more features and connecting it to Firebase in order to sync the app's state between devices.

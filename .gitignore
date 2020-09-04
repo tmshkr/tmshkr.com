@@ -51,8 +51,8 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variables file
-.env
+# dotenv environment variable files
+.env*
 
 # gatsby files
 .cache/
@@ -68,10 +68,6 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+
 drafts
-.vscode/
-foo*
-.netlify/
-.history/
-lambda-log
-content
+.netlify

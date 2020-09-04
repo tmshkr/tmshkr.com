@@ -78,6 +78,9 @@ nav {
   a {
     font-size: 1.1rem;
     box-shadow: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   svg {

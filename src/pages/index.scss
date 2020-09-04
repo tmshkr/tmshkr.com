@@ -1,7 +1,11 @@
-// @import "../utils/variables";
+@import "~bootstrap";
 
 html {
   visibility: hidden;
+}
+body {
+  font-family: "Merriweather", "Georgia", serif;
+  line-height: 1.75;
 }
 
 html.wf-active,
@@ -38,4 +42,12 @@ hr {
 
 .text-center {
   text-align: center;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+svg {
+  vertical-align: middle;
 }

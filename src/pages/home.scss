@@ -23,18 +23,22 @@
     justify-content: center;
     text-align: center;
     grid-template-rows: 1fr 1fr 1fr 1rem;
+
+    svg {
+      fill: #fff;
+      width: 2.2rem;
+      margin: 0 1rem;
+    }
   }
   h1.hero {
     margin: 0;
     align-self: end;
     font-size: 72px;
   }
-  a.button {
-    background: #009688;
-    color: #fff;
-    padding: 1rem;
-    font-size: 1.5rem;
-    border-radius: 0.33rem;
+  button {
+    justify-self: center;
+    height: 3rem;
+    max-width: 10rem;
   }
 }
 

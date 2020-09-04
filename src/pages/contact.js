@@ -15,7 +15,7 @@ function Contact(props) {
       <h1>Contact</h1>
       <span className="line"></span>
       <div className="content">
-        <p>Feel free to connect on social media:</p>
+        <p>Connect on social media</p>
         <div id="social-links">
           <a
             href="https://www.linkedin.com/in/tmshkr/"
@@ -63,15 +63,10 @@ function Contact(props) {
             <Codepen />
           </a>
         </div>
-        You can also{" "}
+        You can also email me at{" "}
         <a href="&#109;&#97;i&#108;&#116;&#111;&#58;&#37;74im&#64;t&#109;sh&#107;r&#37;2E%63om">
-          &#101;m&#97;i&#108;
-        </a>{" "}
-        me and subscribe to my{" "}
-        <a rel="noopener noreferrer" target="_blank" href="/rss.xml">
-          RSS feed
+          t&#8204;im&#8204;@&#8204;tmshkr.com
         </a>
-        .
       </div>
       <hr />
     </Layout>

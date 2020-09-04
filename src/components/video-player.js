@@ -18,9 +18,9 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    // console.log(this.player)
     const { video } = this.props
     const { playing } = this.state
+
     return (
       <div id="video-player" className={playing ? "playing" : null}>
         <ReactPlayer
