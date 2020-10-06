@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
@@ -9,8 +9,8 @@ import ArrowLeft from "@fortawesome/fontawesome-free/svgs/solid/arrow-left.svg"
 import ArrowRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg"
 import "./blog-post.scss"
 
-class BlogPostTemplate extends React.Component {
-  componentDidMount() {
+function BlogPostTemplate(props) {
+  useEffect(() => {
     document.querySelectorAll(".gatsby-highlight pre").forEach(el => {
       if (el.clientWidth < el.scrollWidth) {
         el.parentElement.classList.add("full-width")
@@ -20,83 +20,79 @@ class BlogPostTemplate extends React.Component {
       el.attributes.width.value = "100%"
       el.attributes.height.value = "100%"
     })
-    document.onkeyup = this.handleKeyup.bind(this)
-  }
+    document.onkeyup = handleKeyup
+    return () => (document.onkeyup = null)
+    // eslint-disable-next-line
+  }, [])
 
-  componentWillUnmount() {
-    document.onkeyup = null
-  }
-
-  handleKeyup(e) {
-    const { previous, next } = this.props.pageContext
+  function handleKeyup(e) {
+    const { previous, next } = props.pageContext
     switch (e.which) {
       case 37:
-        previous && this.props.navigate(previous.fields.slug)
+        previous && props.navigate(previous.fields.slug)
         break
       case 39:
-        next && this.props.navigate(next.fields.slug)
+        next && props.navigate(next.fields.slug)
         break
       default:
         break
     }
   }
 
-  render() {
-    const post = this.props.data.mdx
-    const { previous, next } = this.props.pageContext
+  const post = props.data.mdx
+  const { previous, next } = props.pageContext
 
-    return (
-      <Layout className="blog-post" autoHideNavbar={true}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
-        <h1
-          style={{
-            marginTop: rhythm(1),
-            marginBottom: 0,
-          }}
-        >
-          {post.frontmatter.title}
-        </h1>
-        <time
-          className="date"
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            paddingLeft: rhythm(0.1),
-          }}
-        >
-          {post.frontmatter.date}
-        </time>
-        <div className="content">
-          <MDXRenderer>{post.body}</MDXRenderer>
-        </div>
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <ul className="pagination">
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                <ArrowLeft /> {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} <ArrowRight />
-              </Link>
-            )}
-          </li>
-        </ul>
-        {typeof window !== "undefined" && !window.__blogSubscribeHidden && (
-          <Subscribe canHide={true} />
-        )}
-      </Layout>
-    )
-  }
+  return (
+    <Layout className="blog-post" autoHideNavbar={true}>
+      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <h1
+        style={{
+          marginTop: rhythm(1),
+          marginBottom: 0,
+        }}
+      >
+        {post.frontmatter.title}
+      </h1>
+      <time
+        className="date"
+        style={{
+          ...scale(-1 / 5),
+          display: `block`,
+          marginBottom: rhythm(1),
+          paddingLeft: rhythm(0.1),
+        }}
+      >
+        {post.frontmatter.date}
+      </time>
+      <div className="content">
+        <MDXRenderer>{post.body}</MDXRenderer>
+      </div>
+      <hr
+        style={{
+          marginBottom: rhythm(1),
+        }}
+      />
+      <ul className="pagination">
+        <li>
+          {previous && (
+            <Link to={previous.fields.slug} rel="prev">
+              <ArrowLeft /> {previous.frontmatter.title}
+            </Link>
+          )}
+        </li>
+        <li>
+          {next && (
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} <ArrowRight />
+            </Link>
+          )}
+        </li>
+      </ul>
+      {typeof window !== "undefined" && !window.__blogSubscribeHidden && (
+        <Subscribe canHide={true} />
+      )}
+    </Layout>
+  )
 }
 
 export default BlogPostTemplate
