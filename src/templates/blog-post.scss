@@ -114,19 +114,6 @@ body.light {
   }
 }
 
-@media screen and (max-width: 590px) {
-  .gatsby-resp-image-wrapper {
-    width: 100vw;
-    margin: auto;
-    overflow: scroll;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-  }
-}
-
 div.footnotes {
   font-size: 0.777rem;
   p {
