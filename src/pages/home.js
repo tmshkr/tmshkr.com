@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 
 import SEO from "../components/seo"
 import Navbar from "../components/navbar"
-import BuildTime from "../components/build-time"
 import { Button } from "reactstrap"
 import "./home.scss"
 
@@ -26,7 +25,6 @@ function Home(props) {
           <Button color="info" onClick={() => props.navigate("/projects")}>
             View Projects
           </Button>
-          <BuildTime />
         </div>
       </main>
     </>
