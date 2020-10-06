@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react"
 
 function Comments(props) {
-  const comments = useRef(null)
+  const commentsRef = useRef(null)
+  const { term } = props
 
   useEffect(() => {
     const injectUtterances = () => {
@@ -9,26 +10,27 @@ function Comments(props) {
       scriptEl.async = true
       scriptEl.src = "https://utteranc.es/client.js"
       scriptEl.setAttribute("repo", "tmshkr/tmshkr.com-comments")
-      scriptEl.setAttribute("issue-term", "og:title")
+      scriptEl.setAttribute("issue-term", term)
       scriptEl.setAttribute("id", "utterances")
       scriptEl.setAttribute("theme", `github-${window.__theme}`)
       scriptEl.setAttribute("crossorigin", "anonymous")
-      comments.current.appendChild(scriptEl)
+      commentsRef.current.appendChild(scriptEl)
     }
     const handleThemeChange = e => {
-      const c = comments.current
+      const c = commentsRef.current
       if (c.firstChild) c.removeChild(c.firstChild)
       injectUtterances()
     }
-    if (comments.current) {
+    if (commentsRef.current) {
       injectUtterances()
       window.addEventListener("themechange", handleThemeChange)
     }
 
     return () => window.removeEventListener("themechange", handleThemeChange)
+    // eslint-disable-next-line
   }, [])
 
-  return <div ref={comments} className="Comments"></div>
+  return <div ref={commentsRef} className="Comments"></div>
 }
 
 export default Comments

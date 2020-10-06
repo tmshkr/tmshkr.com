@@ -88,7 +88,7 @@ function BlogPostTemplate(props) {
           )}
         </li>
       </ul>
-      <Comments />
+      <Comments term={post.frontmatter.title} />
     </Layout>
   )
 }
