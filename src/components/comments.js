@@ -5,26 +5,26 @@ function Comments(props) {
   const { term } = props
 
   useEffect(() => {
-    const injectUtterances = () => {
-      const scriptEl = document.createElement("script")
-      scriptEl.async = true
-      scriptEl.src = "https://utteranc.es/client.js"
-      scriptEl.setAttribute("repo", "tmshkr/tmshkr.com-comments")
-      scriptEl.setAttribute("issue-term", term)
-      scriptEl.setAttribute("id", "utterances")
-      scriptEl.setAttribute("theme", `github-${window.__theme}`)
-      scriptEl.setAttribute("crossorigin", "anonymous")
-      commentsRef.current.appendChild(scriptEl)
-    }
+    const script = document.createElement("script")
+    script.async = true
+    script.src = "https://utteranc.es/client.js"
+    script.setAttribute("repo", "tmshkr/tmshkr.com-comments")
+    script.setAttribute("issue-term", term)
+    script.setAttribute("id", "utterances")
+    script.setAttribute("theme", `github-${window.__theme}`)
+    script.setAttribute("crossorigin", "anonymous")
+    commentsRef.current.appendChild(script)
+
     const handleThemeChange = e => {
-      const c = commentsRef.current
-      if (c.firstChild) c.removeChild(c.firstChild)
-      injectUtterances()
+      document
+        .querySelector("iframe.utterances-frame")
+        .contentWindow.postMessage(
+          { type: "set-theme", theme: `github-${window.__theme}` },
+          "https://utteranc.es/"
+        )
     }
-    if (commentsRef.current) {
-      injectUtterances()
-      window.addEventListener("themechange", handleThemeChange)
-    }
+
+    window.addEventListener("themechange", handleThemeChange)
 
     return () => window.removeEventListener("themechange", handleThemeChange)
     // eslint-disable-next-line
