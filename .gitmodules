@@ -1,0 +1,3 @@
+[submodule "content"]
+	path = content
+	url = https://github.com/tmshkr/tmshkr.com-content.git
