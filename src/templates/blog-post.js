@@ -27,11 +27,11 @@ function BlogPostTemplate(props) {
 
   function handleKeyup(e) {
     const { previous, next } = props.pageContext
-    switch (e.which) {
-      case 37:
+    switch (e.code) {
+      case "ArrowLeft":
         previous && props.navigate(previous.fields.slug)
         break
-      case 39:
+      case "ArrowRight":
         next && props.navigate(next.fields.slug)
         break
       default:
