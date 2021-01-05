@@ -9,7 +9,7 @@
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
     "classnames": "^2.2.6",
     "d3": "^5.16.0",
