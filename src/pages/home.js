@@ -19,8 +19,8 @@ function Home(props) {
             <br />
             I'm a full-stack engineer looking to build useful things.
             <br />
-            Feel free to <Link to="/contact">contact</Link> me if you want to
-            work together.
+            Feel free to <Link to="/contact">contact</Link> me to collaborate on
+            interesting projects.
           </p>
           <Button color="info" onClick={() => props.navigate("/projects")}>
             View Projects
